@@ -11,7 +11,7 @@ Status Report Fall Week XX.md is a template for to copy-paste into new Status re
 
 | Document | Tasks | Accomplishments | Issues |
 |---|---|---|---|
-| Week 1 Status Report | We've accomplished a lot | Established meeting times with professor and sponsor | No problems to report! |
+| Week 1 Status Report | Created Discord Channel, Created Zoom Calendar | Conducted initial meetings with Advisor and Sponsor | No problems to report! |
 | Week 2 Status Report | | | |
 | Week 3 Status Report | | | |
 | Week 4 Status Report | | | |
