@@ -11,10 +11,10 @@ Status Report Fall Week XX.md is a template for to copy-paste into new Status re
 
 | Document | Tasks | Accomplishments | Issues |
 |---|---|---|---|
-| Week 1 Status Report | We decided which project to work on |  We formed our team | No problems to report! |
-| Week 2 Status Report | Met up and exchanged information | Form a team contract | No problems to report! |
-| Week 3 Status Report | Had a productive strategy session | Established meeting times with our advisor and sponsor | No problems to report!|
-| Week 4 Status Report | Created discord channel, created zoom calendar, learned project specifications | Conducted initial meetings with advisor and sponsor | No problems to report!|
+| Week 1 Status Report | Decided which project to work on |  We formed our team | No problems to report! |
+| Week 2 Status Report | Form a team contract | Met up and exchanged information | No problems to report! |
+| Week 3 Status Report | Have a productive strategy session | Established meeting times with our advisor and sponsor | No problems to report!|
+| Week 4 Status Report | Obtain domain knowledge and assess the current tools out there for travel/travel agencies | Create discord channel, create zoom calendar, conducted initial meetings with advisor and sponsor | No problems to report!|
 | Week 5 Status Report | | | |
 | Week 6 Status Report | | | |
 | Week 7 Status Report | | | |
