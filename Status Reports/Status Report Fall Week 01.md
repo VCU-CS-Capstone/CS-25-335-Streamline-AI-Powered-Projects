@@ -9,9 +9,8 @@
    - Meet with Advisor and Sponsor to discover project specifications
 
 ## 2) Milestones to be completed next week ##
-   - debug the code to be performed by student C
+   -  We will obtain more domain knowledge and assess the current tools out there for travel/travel agencies
 
 ## 3) Issues, problems or concerns ##
-   - student C needs to learn java
-   - database repository costs big $$$
+   - We will have to do research to learn which tools are going to be most useful
    
