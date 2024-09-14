@@ -5,12 +5,12 @@
 **Faculty Advisor: Caroline Budwell**
 
 ## 1) Accomplishments this week ##
-   - Create a Discord Server and Zoom Calendar
-   - Meet with Advisor and Sponsor to discover project specifications
+   - Exchanged information with teammates
+   - Made a diagram for how to accomplish the project if the project specifications lined in our favor
 
 ## 2) Milestones to be completed next week ##
-   -  We will obtain more domain knowledge and assess the current tools out there for travel/travel agencies
+   -  Form a team contract that everyone consents to establish alignment in the direction we want the project to go
 
 ## 3) Issues, problems or concerns ##
-   - We will have to do research to learn which tools are going to be most useful
+   - No problems yet
    
