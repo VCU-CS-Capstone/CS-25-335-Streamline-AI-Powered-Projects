@@ -36,13 +36,18 @@
 # David Newman
 
 ## 1) Accomplishments this week ##
-   - 
+   -  Reviewed meeting notes and questions document
+   -  Reported systems specifications for project criteria 
+   -  Recorded questions for sponsor on ideal characteristics of the delivery 
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Clarify ambiguities within the sponsor's specifications
+   -  Establish core functionality andswers to questions ranging from start to end
 
 ## 3) Issues, problems or concerns ##
-   - 
+   -  Clarification on the affiliate link and AI recommendations.
+   -  Need more detailed specifications for desired end goal. 
+   -  Ad platform? Ad placement? Unique AI tailored deals competing with Expedia? 
 
 # Marcio Tejada
 
