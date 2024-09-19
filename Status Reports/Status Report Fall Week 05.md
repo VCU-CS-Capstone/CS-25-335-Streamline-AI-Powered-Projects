@@ -47,10 +47,14 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   - 
+   - Reviewed the sponsor’s notes and went over last meeting's transcript to take key insights out of it.
+   - Wrote a list of important questions to ask next meeting to help us have a clearer idea of what the sponsor is looking for.
 
 ## 2) Milestones to be completed next week ##
-   -  
+   - Work with the team to clarify any remaining ambiguities in the sponsor’s vision.
+   - Establish key project milestones, including deliverables and critical deadlines.
+   - Begin drafting the project proposal and divvy up responsibilities amongst team members.
+ 
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - There is a lack of clarity on the sponsor’s expectations for the project.
