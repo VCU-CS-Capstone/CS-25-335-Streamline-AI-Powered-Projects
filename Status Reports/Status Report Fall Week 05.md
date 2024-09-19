@@ -7,10 +7,14 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   - 
+   - Set up GitHub repo
+   - Coordinated and scheduled meetings with advisor and sponsor
+   - Researched top 10 travel sites and their designs
+   - Polled family and coworkers for perspective on traveler needs, current websites/tools used to fulfill those needs, reasoning behind using those particular tools, and reasoning for use of a travel agency
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Work with team membmers to build and follow plan for next steps with well defined tasks and target dates
+   -  Continue to gather info on traveling and travel agencies
 
 ## 3) Issues, problems or concerns ##
    - 
