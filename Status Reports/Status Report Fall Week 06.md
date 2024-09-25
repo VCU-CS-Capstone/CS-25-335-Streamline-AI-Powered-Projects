@@ -18,11 +18,13 @@
 # Ethan DuBrueler
 
 ## 1) Accomplishments this week ##
-   - 
+   - Created scaffold code for the website with the home screen containing user blogs and a search bar for finding the user's ideal destination
+   - Described the objective of each portion of our sample website which were based off the Sponsor's notes
 
 
 
 ## 2) Milestones to be completed next week ##
+   -  Further personalize the website and make any adjustments that the Sponsor suggests
    -  
 
 
