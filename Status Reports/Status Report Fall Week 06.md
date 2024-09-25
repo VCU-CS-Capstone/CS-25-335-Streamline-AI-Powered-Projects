@@ -25,11 +25,11 @@
 
 ## 2) Milestones to be completed next week ##
    -  Further personalize the website and make any adjustments that the Sponsor suggests
-   -  
+   -  Learn how to integrate APIs (LLM, Image) into the website
 
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - No issues
 
 # David Newman
 
