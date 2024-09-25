@@ -1,4 +1,4 @@
-## Idea 1
+## Website Design Idea
 The website will be composed of tabs which include *Home*, *Destinations*, *Trip Planner*, *Blog*, *Community*
 
 On the main page there is a search bar that the user can use to determine where they want to travel either by typing it or interacting with
