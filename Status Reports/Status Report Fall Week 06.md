@@ -50,11 +50,12 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   - 
+   - Reviewed notes from the sponsor's previous meeting to ensure alignment between the project goals and sponsor expectations.
 
 
 ## 2) Milestones to be completed next week ##
-   - 
+   - Update the project timeline and milestones based on input from the sponsor and team feedback.
+
 
 
  
