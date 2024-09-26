@@ -34,16 +34,16 @@
 # David Newman
 
 ## 1) Accomplishments this week ##
-   -  
-
-
+   -  Discussed with the group different means of storage for research-related files. (We decided to centralize everything on Github).
+   -  Furthered skills in API integration in Python as a preparation for the project's specifications. 
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Discuss with the group how to implement API via the Python Requests library.
+   -  Discuss design specifications and reassess. 
 
 
 ## 3) Issues, problems or concerns ##
-   -  
+   -  No issues this week. 
 
 
 
