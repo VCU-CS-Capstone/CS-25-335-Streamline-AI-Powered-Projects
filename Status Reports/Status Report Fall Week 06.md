@@ -7,13 +7,13 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Discuessed research repository
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Meet with sponsor, walk through website layouts of different common website, and decide on a starting place for our own website design
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - None
 
 # Ethan DuBrueler
 
