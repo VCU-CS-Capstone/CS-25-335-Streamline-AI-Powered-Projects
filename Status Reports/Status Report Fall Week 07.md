@@ -7,13 +7,15 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Performed in-depth walk through of sponsor's site
+   -  Starting systems requirements document 
 
 ## 2) Milestones to be completed next week ##
-   -  
+   - Define required tasks, roles, and schedule for the project
+   - Complete Project Proposal
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - Need to work more in unison with the team
 
 # Ethan DuBrueler
 
