@@ -51,7 +51,7 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   -  
+   -  I’ve written a draft for a couple sections in the project proposal
 
 
 ## 2) Milestones to be completed next week ##
