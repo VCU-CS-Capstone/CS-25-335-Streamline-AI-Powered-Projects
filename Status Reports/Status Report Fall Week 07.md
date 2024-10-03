@@ -33,15 +33,16 @@
 # David Newman
 
 ## 1) Accomplishments this week ##
-   -  
-   -  
+   -  Developed a list of color pallete and font-typography websites that our sponsor can choose to represent her business. 
+   -  Researched AI generated video options. creatomate.com would be great for website structure. creatify.ai is useful for the actual video generation. 
 
 ## 2) Milestones to be completed next week ##
-   -  
-
+   -  Start implementing base architecture code for the video generation. (API AI Prompt based on user travel package information)
+   -  Dive deeper into API documentation, pricing, and other options. 
 
 ## 3) Issues, problems or concerns ##
-   -  
+   -  The AI generated video based on the travel package may not be easy to control because the technology is still relatively primative.
+   -  Nothing else seems too difficult. 
 
 
 
