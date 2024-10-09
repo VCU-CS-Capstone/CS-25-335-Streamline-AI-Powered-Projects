@@ -19,6 +19,7 @@
 
 ## 1) Accomplishments this week ##
    -  Finetuned the model on the sposor's approved destinations only using both finetuning via a jsonl file and a system prompt.
+   -  Discovered OpenAI has a deal for free finetuning until October 31st as a reward from their Dev Day.
 
 ## 2) Milestones to be completed next week ##
    -  Work on project proposal
