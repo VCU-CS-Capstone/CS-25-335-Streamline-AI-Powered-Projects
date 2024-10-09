@@ -32,8 +32,8 @@
 
 ## 1) Accomplishments this week ##
    -  Completed the prototype of the AI video generator for the user's vacation experience.
-   -  INPUT:    vacation destination <string>
-   -  OUTPUT:   AI voice + destination images summarizing highlights of the destination. <mp4 file>
+   -  INPUT:    vacation destination (string)
+   -  OUTPUT:   AI voice + destination images summarizing highlights of the destination. (mp4 file)
    -  (Test code is available in the Discord under notes/research. Takes ~1 minute to generate vs. competition ~3-5 minute average)
 
 ## 2) Milestones to be completed next week ##
