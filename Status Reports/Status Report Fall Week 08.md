@@ -18,13 +18,14 @@
 # Ethan DuBrueler
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Finetuned the model on the sposor's approved destinations only using both finetuning via a jsonl file and a system prompt.
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Work on project proposal
+   -  Decide where we want to go next with the website
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - None
 
 # David Newman
 
