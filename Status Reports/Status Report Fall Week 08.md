@@ -31,15 +31,18 @@
 # David Newman
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Completed the prototype of the AI video generator for the user's vacation experience.
+   -  INPUT:    vacation destination <string>
+   -  OUTPUT:   AI voice + destination images summarizing highlights of the destination. <mp4 file>
+   -  (Test code is available in the Discord under notes/research. Takes ~1 minute to generate vs. competition ~3-5 minute average)
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Discuss questions/concerns with the project team and the sponsor on the video generator prototype.
+   -  Make adjustments if necessary.
+   -  Convert the standalone Python script into an API endpoint. 
 
 ## 3) Issues, problems or concerns ##
-   -   
-
-
+   -  The sponsor may not like the current AI voice as it's kinda dry but we can always tinker the voice settings to her liking. 
 
 # Marcio Tejada
 
