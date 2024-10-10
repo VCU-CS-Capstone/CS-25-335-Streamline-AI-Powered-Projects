@@ -38,9 +38,9 @@ Sandals App Request URI Object & Useful Fields:
 
 General Architecture Requirements:
 
-1. Caller will need to be able report on what data its pulled, when, any errors that occur, and the context of those errors
-2. Caller will likely need to update all data every hour
-3. Caller should be able to handle processing as much valid data as is available. There should be a complete lack of data parsed if all and only all data points are invalid
-4. Caller should be written in a way that its schema is updatable
-5. Endpoints generated through caller should be regularly tested
-6. Website must be able to fallback to simple affiliate link page if calling process isn't functioning, which means service must be able to determine if calling process is functioning properly
+   1. Caller will need to be able report on what data its pulled, when, any errors that occur, and the context of those errors
+   2. Caller will likely need to update all data every hour
+   3. Caller should be able to handle processing as much valid data as is available. There should be a complete lack of data parsed if all and only all data points are invalid
+   4. Caller should be written in a way that its schema is updatable
+   5. Endpoints generated through caller should be regularly tested
+   6. Website must be able to fallback to simple affiliate link page if calling process isn't functioning, which means service must be able to determine if calling process is functioning properly
