@@ -7,13 +7,14 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Built out documentation of Sandals API, test responses, and requirements for service to call API
 
 ## 2) Milestones to be completed next week ##
-   - 
+   - Implement caller service and caller service tests
+   - Build out documentation for other affiliate website APIs, test responses, and caller requirements
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - Sandals API is publicly accessible but not officially released as public, no public documentation exists, and no agreement has been reached between Sandals to access API, so we'll likely need to find a more sustainable solution
 
 # Ethan DuBrueler
 
