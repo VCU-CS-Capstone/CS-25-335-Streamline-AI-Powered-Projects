@@ -48,10 +48,10 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Completed the initial draft of the project proposal, including the problem statement and design requirements. 
 
 ## 2) Milestones to be completed next week ##
-   -
+   - Finish the first version of the proposal and submit it.
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - None.
