@@ -19,12 +19,11 @@ You need to change each of the fields listed in the api call to whatever appropr
 2. Check In Dates
 3. Number of Adults
 
-Once you have each of the rooms, you will have everything you need to create a referal link directly to the room. 
+Once you have data for each of the rooms, you will have everything you need to create a referal link directly to the room. 
 
 The referal link will look like this:
 
 https://www.sandals.com/ochi/rooms-suites/detail/?categoryCode=PR&referral=138577
-
 
 Sandals App Request URI Object & Useful Fields:
 
