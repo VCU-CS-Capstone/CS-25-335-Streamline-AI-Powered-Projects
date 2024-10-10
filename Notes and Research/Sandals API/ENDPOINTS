@@ -1,0 +1,4 @@
+Homepage=https://www.sandals.com
+windows.sandals_app=https://www.sandals.com
+window.sandals_app.requestURI=https://www.sandals.com
+load-room-data-flexible=https://www.sandals.com/api/load-room-data-flexible/?resortCode=SGO&checkIn=2024-10-01&checkOut=2027-01-01&adult=2
