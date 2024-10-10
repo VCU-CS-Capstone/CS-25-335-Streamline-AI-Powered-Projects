@@ -1,0 +1,49 @@
+For the Sandals API, there are two main objects: Rooms and Resorts
+
+1. Rooms are uniquely identified by a combination of their category code, and their resort code and have a specific name, set of images, and set of available booking dates, based on adult headcount
+2. Resorts are uniquely identified by their resort code, and have a specific geographic location, name, and list of available rooms
+
+List of resort codes can be found at:
+
+https://www.sandals.com/
+
+In the rstCode field of an element of the FeaturedResults array within the results object within the window.sandals_app.requestURI object. Each element of the FeaturedResults array is a Result, containing the rstCode field. 
+
+List of avaialble rooms can be found out:
+
+https://www.sandals.com/api/load-room-data-flexible/?resortCode=SGO&checkIn=2024-10-01&checkOut=2027-01-01&adult=2
+
+You need to change each of the fields listed in the api call to whatever appropriate response, so you need to identify each of these before you make a call to the rooms api:
+
+1. Resort Name -> Resort Code
+2. Check In Dates
+3. Number of Adults
+
+Once you have each of the rooms, you will have everything you need to create a referal link directly to the room. 
+
+The referal link will look like this:
+
+https://www.sandals.com/ochi/rooms-suites/detail/?categoryCode=PR&referral=138577
+
+
+Sandals App Request URI Object & Useful Fields:
+
+   • Results (Array):
+      - FeaturedResorts (Array) (or possibly, Resorts (Array)):
+         a. rstCode
+         b. resortName
+         c. shortDescription
+         d. resortUTL
+         e. resortCountry
+         f. resortCity
+         g. webDescription
+         h. resortURL
+
+General Architecture Requirements:
+
+1. Caller will need to be able report on what data its pulled, when, any errors that occur, and the context of those errors
+2. Caller will likely need to update all data every hour
+3. Caller should be able to handle processing as much valid data as is available. There should be a complete lack of data parsed if all and only all data points are invalid
+4. Caller should be written in a way that its schema is updatable
+5. Endpoints generated through caller should be regularly tested
+6. Website must be able to fallback to simple affiliate link page if calling process isn't functioning, which means service must be able to determine if calling process is functioning properly
