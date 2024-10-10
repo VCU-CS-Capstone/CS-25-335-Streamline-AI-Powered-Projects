@@ -1,29 +1,28 @@
 For the Sandals API, there are two main objects: Rooms and Resorts
 
-1. Rooms are uniquely identified by a combination of their category code, and their resort code and have a specific name, set of images, and set of available booking dates, based on adult headcount
-2. Resorts are uniquely identified by their resort code, and have a specific geographic location, name, and list of available rooms
+   1. Rooms are uniquely identified by a combination of their category code, and their resort code and have a specific name, set of images, and set of available booking dates, based on adult headcount
+   2. Resorts are uniquely identified by their resort code, and have a specific geographic location, name, and list of available rooms
 
 List of resort codes can be found at:
 
-https://www.sandals.com/
+   https://www.sandals.com/
 
-In the rstCode field of an element of the FeaturedResults array within the results object within the window.sandals_app.requestURI object. Each element of the FeaturedResults array is a Result, containing the rstCode field. 
+   In the rstCode field of an element of the FeaturedResults array within the results object within the window.sandals_app.requestURI object. Each element of the FeaturedResults array is a Result, containing the rstCode field. 
 
 List of avaialble rooms can be found out:
 
-https://www.sandals.com/api/load-room-data-flexible/?resortCode=SGO&checkIn=2024-10-01&checkOut=2027-01-01&adult=2
+   https://www.sandals.com/api/load-room-data-flexible/?resortCode=SGO&checkIn=2024-10-01&checkOut=2027-01-01&adult=2
 
-You need to change each of the fields listed in the api call to whatever appropriate response, so you need to identify each of these before you make a call to the rooms api:
+   You need to change each of the fields listed in the api call to whatever appropriate response, so you need to identify each of these before you make a call to the rooms api:
 
-1. Resort Name -> Resort Code
-2. Check In Dates
-3. Number of Adults
+   1. Resort Name -> Resort Code
+   2. Check In Dates
+   3. Number of Adults
 
 Once you have data for each of the rooms, you will have everything you need to create a referal link directly to the room. 
-
 The referal link will look like this:
 
-https://www.sandals.com/ochi/rooms-suites/detail/?categoryCode=PR&referral=138577
+   https://www.sandals.com/ochi/rooms-suites/detail/?categoryCode=PR&referral=138577
 
 Sandals App Request URI Object & Useful Fields:
 
