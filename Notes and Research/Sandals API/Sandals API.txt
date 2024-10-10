@@ -28,13 +28,14 @@ Sandals App Request URI Object & Useful Fields:
 
    • Results (Array):
       - FeaturedResorts (Array) (or possibly, Resorts (Array)):
-         a. rstCode
-         b. resortName
-         c. shortDescription
-         e. resortCountry
-         f. resortCity
-         g. webDescription
-         h. resortURL
+         Resort (Object):
+            a. rstCode
+            b. resortName
+            c. shortDescription
+            e. resortCountry
+            f. resortCity
+            g. webDescription
+            h. resortURL
 
 General Architecture Requirements:
 
@@ -44,3 +45,17 @@ General Architecture Requirements:
    4. Caller should be written in a way that its schema is updatable
    5. Endpoints generated through caller should be regularly tested
    6. Website must be able to fallback to simple affiliate link page if calling process isn't functioning, which means service must be able to determine if calling process is functioning properly
+
+Potential Methods:
+
+   1. getResorts
+      a. getHomepage
+      b. parseObjectFromHomepage
+   2. getRooms
+      a. getRoomData
+      b. parseRoomData
+   3. verifyResorts
+   4. verifyRooms
+   5. putResponse
+   6. run
+      
