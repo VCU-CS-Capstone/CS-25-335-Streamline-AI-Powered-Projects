@@ -31,7 +31,6 @@ Sandals App Request URI Object & Useful Fields:
          a. rstCode
          b. resortName
          c. shortDescription
-         d. resortUTL
          e. resortCountry
          f. resortCity
          g. webDescription
