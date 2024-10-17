@@ -7,10 +7,11 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Researched Sandals & Beaches terms and conditions for content usage
+   -  Identified Sandals & Beaches content repository
 
 ## 2) Milestones to be completed next week ##
-   - 
+   - Acquire access to content repository
 
 ## 3) Issues, problems or concerns ##
    - 
