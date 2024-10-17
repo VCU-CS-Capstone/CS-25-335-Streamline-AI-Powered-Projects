@@ -33,13 +33,15 @@
 # David Newman
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Emailed the sponsor to exchange login info to access the database of images on sandals.com.
+   -  Setup a scraper using the Sandals API link.
+   -  Started implementing Sandals API code into the video generator prototype. 
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Finish the sandals video generator prototype.
 
 ## 3) Issues, problems or concerns ##
-   -   
+   -   None this week!
 
 
 
