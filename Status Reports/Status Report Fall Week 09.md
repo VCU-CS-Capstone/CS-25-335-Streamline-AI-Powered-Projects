@@ -46,10 +46,11 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Improved the blog section of the website.
+   -  Added: search function, tags, and display cards.
 
 ## 2) Milestones to be completed next week ##
-   -
+   - Keep building on the site and implement new features.
 
 ## 3) Issues, problems or concerns ##
    - 
