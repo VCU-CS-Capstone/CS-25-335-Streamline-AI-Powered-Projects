@@ -19,10 +19,9 @@
 
 ## 1) Accomplishments this week ##
    -  Made a sample video for the Sponsor to request that we invest in MiniMax AI video generator.
-   - 
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Mass produce videos once we buy this subscription 
 
 ## 3) Issues, problems or concerns ##
    - She hasn't sent the questions for finetuning, and after the 31st it's 90 cents to run.
