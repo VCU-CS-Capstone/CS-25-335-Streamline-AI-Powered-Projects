@@ -7,10 +7,10 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Reviewed Sandals terms and conditions
 
 ## 2) Milestones to be completed next week ##
-   - 
+   - Confirm data usage with sponsor
 
 ## 3) Issues, problems or concerns ##
    - 
