@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trip Planner - Your Travel Company</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Added jQuery UI CSS -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <!-- Added jQuery and jQuery UI scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="destination.html">Destinations</a></li>
+      <li><a href="trip-planner.html">Trip Planner</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Chatbot Section -->
+  <section class="chatbot">
+    <h2>Chat with Our AI Travel Assistant</h2>
+    <div class="chat-container">
+      <!-- Chatbot logo -->
+      <div class="chatbot-logo">
+        <img src="assets/images/image.png" alt="Chatbot" width="50" height="50" />
+      </div>
+      <div id="chat-window">
+        <div id="chat-output"></div>
+      </div>
+      <div class="input-section">
+        <input type="text" id="chat-input" placeholder="Ask me anything about your trip!" />
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chatbot Styles -->
+  <style>
+    .chatbot {
+      margin-top: 50px;
+      padding: 20px;
+    }
+
+    .chatbot-logo {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    #chat-window {
+      height: 300px;
+      overflow-y: scroll;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #f9f9f9;
+    }
+
+    #chat-output {
+      white-space: pre-line;
+      color: #000;
+    }
+
+    .input-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #chat-input {
+      width: 80%;
+      padding: 10px;
+    }
+
+    #send-btn {
+      padding: 10px;
+    }
+
+    /* Styling chat messages */
+    .chat-message {
+      margin-bottom: 10px;
+    }
+
+    .chat-message strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+  </style>
+
+  <!-- JavaScript for Chatbot -->
+  <script>
+    // Function to send a message to the chatbot
+    async function sendMessage(message, clearInput = true) {
+      if (!message) return;
+
+      // Display user input in the chat window
+      const chatOutput = document.getElementById('chat-output');
+      chatOutput.innerHTML += `<div class="chat-message"><strong>You:</strong> ${message}</div>`;
+
+      // Scroll chat window to the bottom
+      chatOutput.scrollTop = chatOutput.scrollHeight;
+
+      // Send the user input to the server
+      try {
+        const response = await fetch('/api/openai', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ prompt: message }),
+        });
+
+        const data = await response.json();
+
+        // Check if there was an error in the response
+        if (data.error) {
+          chatOutput.innerHTML += `<div class="chat-message"><strong>Error:</strong> ${data.error}</div>`;
+        } else {
+          // Display AI's response
+          chatOutput.innerHTML += `<div class="chat-message"><strong>AI:</strong> ${data.content.trim()}</div>`;
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        chatOutput.innerHTML += `<div class="chat-message"><strong>Error:</strong> Unable to contact the chatbot.</div>`;
+      }
+
+      // Scroll chat window to the bottom
+      chatOutput.scrollTop = chatOutput.scrollHeight;
+
+      // Clear input if clearInput is true
+      if (clearInput) {
+        document.getElementById('chat-input').value = '';
+      }
+    }
+
+    // Event listener for the send button
+    document.getElementById('send-btn').addEventListener('click', function () {
+      const userInput = document.getElementById('chat-input').value.trim();
+      sendMessage(userInput, true);
+    });
+
+    // Optionally send on "Enter" key press
+    document.getElementById('chat-input').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault(); // Prevent form submission
+        const userInput = document.getElementById('chat-input').value.trim();
+        sendMessage(userInput, true);
+      }
+    });
+
+    // On page load, check for the 'message' parameter in the URL
+    window.onload = function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const message = urlParams.get('message');
+      if (message) {
+        // Decode the message in case it contains special characters
+        const decodedMessage = decodeURIComponent(message);
+        // Set the message in the input field
+        document.getElementById('chat-input').value = decodedMessage;
+        // Automatically send the message
+        sendMessage(decodedMessage, true);
+      }
+    };
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 The Robert's Group</p>
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="terms.html">Terms and Conditions</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+    </ul>
+  </footer>
+  
+  <script src="assets/js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <title>Your Adventure Starts Here</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="destination.html">Destinations</a></li>
+      <li><a href="trip-planner.html">Trip Planner</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>Your Adventure Starts Here</h1>
+      <!-- Updated form action and input name -->
+      <form action="trip-planner.html" method="get">
+        <input type="text" name="message" placeholder="What kind of place do you want to go to?">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Featured Destinations -->
+  <section class="featured-destinations">
+    <h2>Featured Destinations</h2>
+    <div class="destinations-grid">
+      <!-- Repeat this block for each destination -->
+      <div class="destination-card">
+        <img src="assets/images/destination1.jpg" alt="Destination Image">
+        <h3>Destination Name</h3>
+        <p>Brief description of the destination.</p>
+      </div>
+      <!-- Add more destination cards as needed -->
+    </div>
+  </section>
+
+  <!-- Recent Blog Posts -->
+  <section class="recent-blog-posts">
+    <h2>Recent Blog Posts</h2>
+    <div class="blog-posts-grid">
+      <div class="blog-post-card">
+        <img src="assets/images/blog1.jpg" alt="Blog Image">
+        <h3>Blog Post Title</h3>
+        <p>Snippet of the blog post.</p>
+      </div>
+      <!-- Add more blog post cards as needed -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 The Robert's Group</p>
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="terms.html">Terms and Conditions</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+    </ul>
+  </footer>
+  <script src="assets/js/scripts.js"></script>
+</body>
+</html>
