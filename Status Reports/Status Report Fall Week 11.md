@@ -47,10 +47,11 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   -  
+   - Implemented an interactive map on the blog page that displays markers for each blog post location.
 
 ## 2) Milestones to be completed next week ##
-   -
+   - Finalize styling and responsiveness for the map and info card to ensure a consistent look across different devices.
+   - Add more blog posts with corresponding pins on the map to enhance content variety and user interaction.
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - Keep an eye on browser compatibility for the interactive map features to ensure a seamless experience for all users.
