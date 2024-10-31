@@ -65,6 +65,18 @@ const blogPosts = [
       lat: 15.8700,
       lng: 100.9925,
       url: "thailand-blog-post.html"
+    },
+    {
+      title: "Adventure in the Amazon Rainforest",
+      lat: 3.4653,
+      lng: -62.2159,
+      url: "amazon-blog-post.html"
+    },
+    {
+      title: "Cultural Experiences in Japan",
+      lat: 35.6764,
+      lng: 139.6500,
+      url: "japan-blog-post.html"
     }
   ];
 

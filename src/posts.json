@@ -22,5 +22,21 @@
       "category": "City Guide",
       "tags": ["Europe", "City Life", "Romance"],
       "url": "paris-blog-post.html"
+    },
+    {
+      "title": "Adventure in the Amazon Rainforest",
+      "snippet": "Join us as we delve into the wonders of the Amazon rainforest, filled with unique wildlife and breathtaking scenery...",
+      "image": "assets/images/blog4.jpg",
+      "category": "Adventure",
+      "tags": ["Nature", "Wildlife", "South America"],
+      "url": "amazon-blog-post.html"
+    },
+    {
+      "title": "Cultural Experiences in Japan",
+      "snippet": "A journey through Japan's rich cultural heritage, from traditional festivals to modern art...",
+      "image": "assets/images/blog5.jpg",
+      "category": "Culture",
+      "tags": ["Asia", "Tradition", "Art"],
+      "url": "japan-blog-post.html"
     }
   ]
