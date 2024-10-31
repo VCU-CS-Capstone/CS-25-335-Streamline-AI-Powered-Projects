@@ -1,0 +1,26 @@
+[
+    {
+      "title": "Exploring the Alps",
+      "snippet": "Discover the beauty of the Swiss Alps in this detailed travel guide...",
+      "image": "assets/images/blog1.jpg",
+      "category": "Destinations",
+      "tags": ["Mountains", "Adventure", "Europe"],
+      "url": "alps-blog-post.html"
+    },
+    {
+      "title": "Best Beaches in Thailand",
+      "snippet": "A guide to the most serene and picturesque beaches in Thailand...",
+      "image": "assets/images/blog2.jpg",
+      "category": "Beach",
+      "tags": ["Asia", "Relaxation", "Nature"],
+      "url": "thailand-blog-post.html"
+    },
+    {
+      "title": "Paris City Guide",
+      "snippet": "Experience the charm of Paris with our essential guide to the City of Light...",
+      "image": "assets/images/blog3.jpg",
+      "category": "City Guide",
+      "tags": ["Europe", "City Life", "Romance"],
+      "url": "paris-blog-post.html"
+    }
+  ]

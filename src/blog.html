@@ -6,6 +6,7 @@
   <title>Travel Guides - Travel Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
   <!-- Navigation Bar -->
@@ -22,16 +23,42 @@
   <!-- Blog Content -->
   <section class="blog-content">
     <h1 class="section-title">Travel Guides</h1>
-    <div class="blog-posts-grid">
+    <!-- Search Bar -->
+    <input type="text" id="searchBar" placeholder="Search blog posts..." onkeyup="searchBlogPosts()" />
+
+    <div class="blog-posts-grid" id="blogPostsContainer">
+      <!-- Example Blog Post Cards with Unique Locations -->
       <div class="blog-post-card">
-        <img src="assets/images/blog1.jpg" alt="Blog Image">
+        <img src="assets/images/alps.jpg" alt="Alps">
         <div class="blog-post-content">
-          <h3>Blog Post Title</h3>
-          <p>Snippet of the blog post.</p>
-          <a href="blog-post.html" class="read-more">Read More</a>
+          <h3>Alps Adventure</h3>
+          <p>Discover the beautiful scenery of the Alps.</p>
+          <a href="alps-blog-post.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <div class="blog-post-card">
+        <img src="assets/images/paris.jpg" alt="Paris">
+        <div class="blog-post-content">
+          <h3>Paris City Guide</h3>
+          <p>A comprehensive guide to the best of Paris.</p>
+          <a href="paris-blog-post.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <div class="blog-post-card">
+        <img src="assets/images/thailand.jpg" alt="Thailand">
+        <div class="blog-post-content">
+          <h3>Exploring Thailand</h3>
+          <p>Experience the vibrant culture of Thailand.</p>
+          <a href="thailand-blog-post.html" class="read-more">Read More</a>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- Interactive Map Section -->
+  <section class="interactive-map">
+    <h2>Explore Destinations on the Map</h2>
+    <div id="map" style="height: 500px;"></div>
   </section>
 
   <!-- Footer -->
@@ -44,6 +71,10 @@
       <li><a href="privacy.html">Privacy Policy</a></li>
     </ul>
   </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="assets/js/scripts.js"></script>
 </body>
 </html>
+
