@@ -7,10 +7,11 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Moved website source onto GitHub
+   -  Started design document on websites' required logical user and backend functions and data
 
 ## 2) Milestones to be completed next week ##
-   - 
+   - Complete design document and go over with team
 
 ## 3) Issues, problems or concerns ##
    - 
