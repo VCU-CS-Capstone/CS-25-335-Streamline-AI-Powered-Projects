@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Destination Name - Travel Website</title>
+  <title>Travel Guides - Travel Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/destinations.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
   <!-- Navigation Bar -->
@@ -19,13 +20,67 @@
     </ul>
   </nav>
 
-  <!-- Destination Overview -->
-  <section class="destination-overview">
-    <h1 class="section-title">Destination Name</h1>
-    <div class="destination-media">
-      <img src="assets/images/destination-detail.jpg" alt="Destination Image">
+  <!-- Travel Guide Videos -->
+  <section class="travel-videos">
+    <h1 class="section-title">Travel Guides</h1>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="searchBar" placeholder="Search for a video..." onkeyup="searchVideos()" />
     </div>
-    <p>Detailed information about the destination, including history, culture, and climate.</p>
+
+    <div class="video-grid" id="videoGrid">
+      <!-- Video Cards -->
+      <div class="video-card" data-title="Daytona">
+        <h3>Daytona</h3>
+        <video controls class="no-fullscreen">
+          <source src="assets/videos/daytona.mp4" type="video/mp4">
+        </video>
+        <p>Discover the action-packed land of Daytona.</p>
+      </div>
+
+      <div class="video-card" data-title="Paris City Guide">
+        <h3>Paris City Guide</h3>
+        <video controls class="no-fullscreen">
+          <source src="assets/videos/paris-city-guide.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>A comprehensive guide to the best of Paris.</p>
+      </div>
+
+      <div class="video-card" data-title="Exploring Thailand">
+        <h3>Exploring Thailand</h3>
+        <video controls class="no-fullscreen">
+          <source src="assets/videos/thailand-exploration.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>Experience the vibrant culture of Thailand.</p>
+      </div>
+
+      <div class="video-card" data-title="Adventure in the Amazon Rainforest">
+        <h3>Adventure in the Amazon Rainforest</h3>
+        <video controls class="no-fullscreen">
+          <source src="assets/videos/amazon-adventure.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>Explore the diverse ecosystem of the Amazon.</p>
+      </div>
+
+      <div class="video-card" data-title="Exploring Japan">
+        <h3>Exploring Japan</h3>
+        <video controls class="no-fullscreen">
+          <source src="assets/videos/japan-exploration.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>Discover the traditions and sights of Japan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Map Section -->
+  <section class="interactive-map">
+    <h2>Explore Destinations on the Map</h2>
+    <div id="map" style="height: 500px;"></div>
   </section>
 
   <!-- Footer -->
@@ -38,6 +93,63 @@
       <li><a href="privacy.html">Privacy Policy</a></li>
     </ul>
   </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="assets/js/scripts.js"></script>
+  <!-- Add the search function script -->
+  <script>
+    function searchVideos() {
+      const input = document.getElementById('searchBar').value.toLowerCase();
+      const videoCards = document.getElementsByClassName('video-card');
+
+      for (let i = 0; i < videoCards.length; i++) {
+        const title = videoCards[i].getAttribute('data-title').toLowerCase();
+        if (title.includes(input)) {
+          videoCards[i].style.display = '';
+        } else {
+          videoCards[i].style.display = 'none';
+        }
+      }
+    }
+
+    // Disable Full-Screen Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const videos = document.querySelectorAll('video.no-fullscreen');
+      videos.forEach(function(video) {
+        // Prevent full-screen using event listeners
+        video.addEventListener('fullscreenchange', exitFullScreenHandler);
+        video.addEventListener('webkitfullscreenchange', exitFullScreenHandler);
+        video.addEventListener('mozfullscreenchange', exitFullScreenHandler);
+        video.addEventListener('msfullscreenchange', exitFullScreenHandler);
+
+        // Prevent full-screen via double-click
+        video.addEventListener('dblclick', function(event) {
+          event.preventDefault();
+        });
+
+        // Prevent full-screen via keyboard shortcuts
+        video.addEventListener('keydown', function(event) {
+          if ((event.key === 'f' || event.key === 'F') && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+          }
+        });
+      });
+
+      function exitFullScreenHandler(e) {
+        if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
