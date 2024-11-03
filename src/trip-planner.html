@@ -40,6 +40,9 @@
     </div>
   </section>
 
+  <elevenlabs-convai agent-id="GoSz0y0KS3kr0zc2FeLP"></elevenlabs-convai>
+  <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
+
   <!-- Chatbot Styles -->
   <style>
     .chatbot {
@@ -82,18 +85,33 @@
     }
 
     /* Styling chat messages */
-    .chat-message {
-      margin-bottom: 10px;
-    }
+    /* Remove block display from strong elements for inline bold text */
+  .chat-message strong {
+    margin-bottom: 5px;
+    display: inline; /* Change from block to inline */
+  }
 
-    .chat-message strong {
-      display: block;
-      margin-bottom: 5px;
-    }
+  /* Adjust message spacing */
+  .chat-message {
+    margin-bottom: 10px;
+  }
+
+  elevenlabs-convai {
+    position: fixed !important; /* Make sure the widget stays in the specified position */
+    top: 500px; /* Adjust the top distance as needed */
+    right: 100px; /* Adjust the right distance as needed */
+    z-index: 1000; /* Ensure it's on top of other elements */
+  }
+
   </style>
 
   <!-- JavaScript for Chatbot -->
   <script>
+    // Function to format **bold text** to <strong>bold text</strong>
+    function formatBoldText(text) {
+      return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    }
+
     // Function to send a message to the chatbot
     async function sendMessage(message, clearInput = true) {
       if (!message) return;
@@ -121,8 +139,9 @@
         if (data.error) {
           chatOutput.innerHTML += `<div class="chat-message"><strong>Error:</strong> ${data.error}</div>`;
         } else {
-          // Display AI's response
-          chatOutput.innerHTML += `<div class="chat-message"><strong>AI:</strong> ${data.content.trim()}</div>`;
+          // Format and display AI's response
+          const formattedResponse = formatBoldText(data.content.trim());
+          chatOutput.innerHTML += `<div class="chat-message"><strong>AI:</strong> ${formattedResponse}</div>`;
         }
       } catch (error) {
         console.error('Error:', error);
