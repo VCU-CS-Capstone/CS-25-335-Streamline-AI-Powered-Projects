@@ -1,0 +1,222 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  line-height: 1.6;
+  color: #fff;
+  background-color: #4682B4; /* Background Blue */
+  padding: 0 1rem 1rem 1rem; /* Added padding to right, left, and bottom */
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+/* Navigation Bar */
+nav {
+  background-color: #000; /* Black */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(100% - 2rem); /* Adjusted width to account for body padding */
+  z-index: 1000;
+  transition: background-color 0.3s ease, padding 0.3s ease;
+  padding: 1rem 0;
+  margin-left: 1rem; /* Align nav with body padding */
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 0 1.5rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover, nav ul li.active a {
+  color: #FFD700; /* Gold */
+}
+
+/* Section Titles */
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 6rem; /* Added margin-top to push content below fixed nav */
+  margin-bottom: 3rem;
+  color: #fff;
+}
+
+/* Travel Videos Section */
+.travel-videos {
+  padding: 5rem 2rem;
+  background-color: #4682B4; /* Matching the ocean blue */
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  justify-content: center;
+  padding: 0 2rem;
+}
+
+.video-card {
+  background-color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  padding: 1.5rem;
+  margin: 1rem; /* Added margin for spacing */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.video-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.video-card video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9; /* Maintains the 16:9 aspect ratio */
+  display: block;
+  border-radius: 8px;
+}
+
+.video-card p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* Hide the full-screen button */
+video::-webkit-media-controls-fullscreen-button {
+  display: none;
+}
+
+video::-moz-fullscreen-button {
+  display: none;
+}
+
+video::-ms-fullscreen-button {
+  display: none;
+}
+
+video::fullscreen-button {
+  display: none;
+}
+
+/* Search Bar */
+.search-bar {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#searchBar {
+  width: 50%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+#searchBar::placeholder {
+  color: #999;
+}
+
+/* Interactive Map */
+.interactive-map {
+  margin: 5rem 0;
+  text-align: center;
+  padding: 0 1rem; /* Added padding to the sides */
+}
+
+.interactive-map h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+/* Footer */
+footer {
+  background-color: #000; /* Black */
+  color: #fff;
+  padding: 3rem 2rem;
+  text-align: center;
+  width: calc(100% - 2rem); /* Adjusted width to account for body padding */
+  margin-left: 1rem; /* Align footer with body padding */
+}
+
+footer ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+footer ul li {
+  margin: 0 1rem;
+}
+
+footer ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer ul li a:hover {
+  color: #FFD700; /* Gold */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .video-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+    margin-top: 7rem;
+  }
+
+  #searchBar {
+    width: 80%;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .video-card {
+    padding: 1rem;
+  }
+}
