@@ -32,13 +32,14 @@
 # David Newman
 
 ## 1) Accomplishments this week ##
-   -  
+   - Created bot service in python that queues all the images to upload to hailuoai.video whenever another upload is free.
+   - Started download video service to categorize videos with their proper locations by comparing 1st frames in .mp4 to all the possible images. 
 
 ## 2) Milestones to be completed next week ##
-   -  
+   - Finish all videos and send them to sponsor. 
 
 ## 3) Issues, problems or concerns ##
-   -   
+   - I logged out my access to the account earlier in the week snd did not realize. All is good now that I am logged in.
 
 
 
