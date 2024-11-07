@@ -1,42 +1,58 @@
 [
     {
-      "title": "Exploring the Alps",
-      "snippet": "Discover the beauty of the Swiss Alps in this detailed travel guide...",
-      "image": "assets/images/blog1.jpg",
-      "category": "Destinations",
-      "tags": ["Mountains", "Adventure", "Europe"],
-      "url": "alps-blog-post.html"
-    },
-    {
-      "title": "Best Beaches in Thailand",
-      "snippet": "A guide to the most serene and picturesque beaches in Thailand...",
-      "image": "assets/images/blog2.jpg",
+      "title": "Daytona Beach Adventures",
+      "snippet": "Explore the sandy shores and vibrant nightlife of Daytona Beach...",
+      "image": "assets/images/daytona.jpg",
       "category": "Beach",
-      "tags": ["Asia", "Relaxation", "Nature"],
-      "url": "thailand-blog-post.html"
+      "tags": ["USA", "Adventure", "Beach"],
+      "url": "src/daytona-beach.html"
     },
     {
-      "title": "Paris City Guide",
-      "snippet": "Experience the charm of Paris with our essential guide to the City of Light...",
-      "image": "assets/images/blog3.jpg",
-      "category": "City Guide",
-      "tags": ["Europe", "City Life", "Romance"],
-      "url": "paris-blog-post.html"
+      "title": "Discover Jamaica",
+      "snippet": "From beaches to mountains, Jamaica offers a unique blend of culture and nature...",
+      "image": "assets/images/jamaica.jpg",
+      "category": "Island",
+      "tags": ["Caribbean", "Culture", "Nature"],
+      "url": "src/jamaica.html"
     },
     {
-      "title": "Adventure in the Amazon Rainforest",
-      "snippet": "Join us as we delve into the wonders of the Amazon rainforest, filled with unique wildlife and breathtaking scenery...",
-      "image": "assets/images/blog4.jpg",
-      "category": "Adventure",
-      "tags": ["Nature", "Wildlife", "South America"],
-      "url": "amazon-blog-post.html"
+      "title": "The Beauty of the Bahamas",
+      "snippet": "Experience the turquoise waters and rich marine life of the Bahamas...",
+      "image": "assets/images/bahamas.jpg",
+      "category": "Island",
+      "tags": ["Caribbean", "Beach", "Marine Life"],
+      "url": "src/bahamas.html"
     },
     {
-      "title": "Cultural Experiences in Japan",
-      "snippet": "A journey through Japan's rich cultural heritage, from traditional festivals to modern art...",
-      "image": "assets/images/blog5.jpg",
-      "category": "Culture",
-      "tags": ["Asia", "Tradition", "Art"],
-      "url": "japan-blog-post.html"
+      "title": "Dominican Republic Getaway",
+      "snippet": "Explore the vibrant culture, stunning beaches, and exciting nightlife...",
+      "image": "assets/images/dominican-republic.jpg",
+      "category": "Island",
+      "tags": ["Caribbean", "Culture", "Nightlife"],
+      "url": "src/dominican-republic.html"
+    },
+    {
+      "title": "Colorful Curacao",
+      "snippet": "With its colorful buildings and vibrant atmosphere, Curacao is a Caribbean gem...",
+      "image": "assets/images/curacao.jpg",
+      "category": "Island",
+      "tags": ["Caribbean", "Culture", "Scenic"],
+      "url": "src/curacao.html"
+    },
+    {
+      "title": "Aruba Adventures",
+      "snippet": "Known for its beautiful beaches and year-round sunshine, Aruba is a dream destination...",
+      "image": "assets/images/aruba.jpg",
+      "category": "Beach",
+      "tags": ["Caribbean", "Sunshine", "Relaxation"],
+      "url": "src/aruba.html"
+    },
+    {
+      "title": "Turks and Caicos Paradise",
+      "snippet": "Experience the luxury and tranquility of the Turks and Caicos Islands...",
+      "image": "assets/images/turks-and-caicos.jpg",
+      "category": "Island",
+      "tags": ["Caribbean", "Luxury", "Beach"],
+      "url": "src/turks-and-caicos.html"
     }
   ]

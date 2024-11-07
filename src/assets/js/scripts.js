@@ -77,6 +77,41 @@ const blogPosts = [
       lat: 35.6764,
       lng: 139.6500,
       url: "japan-blog-post.html"
+    },
+    {
+      title: "Daytona Beach",
+      latitude: 29.2108,
+      longitude: -81.0228
+    },
+    {
+      title: "Jamaica",
+      latitude: 18.1096,
+      longitude: -77.2975
+    },
+    {
+      title: "Bahamas",
+      latitude: 25.0343,
+      longitude: -77.3963
+    },
+    {
+      title: "Dominican Republic",
+      latitude: 18.7357,
+      longitude: -70.1627
+    },
+    {
+      title: "Curacao",
+      latitude: 12.1696,
+      longitude: -68.9900
+    },
+    {
+      title: "Aruba",
+      latitude: 12.5211,
+      longitude: -69.9683
+    },
+    {
+      title: "Turks and Caicos",
+      latitude: 21.6940,
+      longitude: -71.7979
     }
   ];
 
