@@ -46,10 +46,10 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Updated the cards on the blog posts to include some destinations provided by the sponsor.
 
 ## 2) Milestones to be completed next week ##
-   -
+   - Work on poster.
 
 ## 3) Issues, problems or concerns ##
    - 
