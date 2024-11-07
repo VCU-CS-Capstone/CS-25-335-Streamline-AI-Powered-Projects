@@ -7,10 +7,11 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Continued work on website design document
+   -  Started work on Fall Design Poster
 
 ## 2) Milestones to be completed next week ##
-   - 
+   - Complete Fall Design Poster
 
 ## 3) Issues, problems or concerns ##
    - 
