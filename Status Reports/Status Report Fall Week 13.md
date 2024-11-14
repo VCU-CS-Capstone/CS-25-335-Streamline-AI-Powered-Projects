@@ -33,13 +33,16 @@
 # David Newman
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Completed upload image to convert to video bot. 
+   -  Completed video downloading bot.
+   -  Organized videos into proper folders next to proper image file. 
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Streamline the video generation script. 
+   -  Mass generate a bunch of videos. 
 
 ## 3) Issues, problems or concerns ##
-   -   
+   -  Sponsor has not responded to my 10 questions. 
 
 
 
