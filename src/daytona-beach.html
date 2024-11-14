@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daytona Beach Adventures - Travel Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      color: #0056b3;
+    }
+    p, ul {
+      line-height: 1.6;
+    }
+
+    /* Navigation Styling */
+    nav {
+      background-color: #333;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav ul li a {
+      color: #f8f9fa;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Header Styling */
+    .blog-header {
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+    .blog-header img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+    .blog-header h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.5em;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    /* Main Content Styling */
+    .blog-content {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .section h2 {
+      font-size: 1.8em;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid #0056b3;
+      padding-bottom: 5px;
+    }
+    .section img {
+      width: 100%;
+      height: auto;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+    .cta-button {
+      display: block;
+      width: fit-content;
+      margin: 20px auto;
+      padding: 12px 24px;
+      font-size: 1em;
+      background-color: #0056b3;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      text-align: center;
+    }
+    .cta-button:hover {
+      background-color: #004080;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: #333;
+      color: #f8f9fa;
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    footer ul li a {
+      color: #f8f9fa;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="destination.html">Destinations</a></li>
+      <li><a href="trip-planner.html">Trip Planner</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+  </nav>
+
+  <!-- Blog Header -->
+  <header class="blog-header">
+    <img src="assets/images/daytona.jpg" alt="Daytona Beach">
+    <h1>Daytona Beach Adventures</h1>
+  </header>
+
+  <!-- Blog Content Section -->
+  <main class="blog-content">
+    <section class="section">
+      <h2>Top Activities in Daytona Beach</h2>
+      <img src="assets/images/daytona-activities.jpg" alt="Top Activities in Daytona Beach">
+      <p>Daytona Beach offers something for everyone. Whether you're a beach lover, motorsports enthusiast, or nightlife fan, this city has it all.</p>
+      <ul>
+        <li><strong>Beachfront Fun:</strong> Enjoy 23 miles of beautiful white sand beaches with areas designated for sunbathing, swimming, and driving.</li>
+        <li><strong>Daytona International Speedway:</strong> Known as the "World Center of Racing," the speedway offers tours and events, including the famous Daytona 500.</li>
+        <li><strong>Ocean Walk Shoppes:</strong> A beachfront entertainment complex with restaurants, shops, and a movie theater.</li>
+        <li><strong>Ponce Inlet:</strong> Take a short drive south of Daytona to visit the historic Ponce de Leon Inlet Lighthouse and enjoy beautiful views of the coast.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Dining in Daytona Beach</h2>
+      <img src="assets/images/daytona-dining.jpg" alt="Dining in Daytona Beach">
+      <p>Daytona Beach offers a variety of dining options to satisfy any craving. From beachside cafes to upscale seafood restaurants, there's something for every palate.</p>
+      <ul>
+        <li><strong>Ocean Deck:</strong> A beachside restaurant known for its fresh seafood and live music atmosphere.</li>
+        <li><strong>Joe's Crab Shack:</strong> A family-friendly spot right on the beach offering seafood favorites with an ocean view.</li>
+        <li><strong>Don Vito's Italian Restaurant:</strong> A local favorite for Italian cuisine and a cozy atmosphere.</li>
+        <li><strong>The Cellar Restaurant:</strong> For a fine dining experience, The Cellar offers upscale dishes in a historic setting.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Nightlife and Entertainment</h2>
+      <img src="assets/images/daytona-nightlife.jpg" alt="Nightlife in Daytona Beach">
+      <p>After the sun sets, Daytona Beach comes alive with bars, clubs, and live music venues. Here are some top spots to enjoy the vibrant nightlife:</p>
+      <ul>
+        <li><strong>Main Street Station:</strong> A popular venue with live bands and a laid-back vibe.</li>
+        <li><strong>The Bank & Blues Club:</strong> Located on historic Main Street, this club features blues bands and a lively atmosphere.</li>
+        <li><strong>The Oyster Pub:</strong> A casual spot for drinks and oysters with a large sports bar area.</li>
+        <li><strong>Razzle's Nightclub:</strong> A nightclub with a spacious dance floor, DJ music, and VIP sections.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Local Tips for Travelers</h2>
+      <img src="assets/images/daytona-tips.jpg" alt="Travel Tips for Daytona Beach">
+      <p>Here are some insider tips to make the most of your Daytona Beach adventure:</p>
+      <ul>
+        <li><strong>Best Time to Visit:</strong> Daytona Beach is enjoyable year-round, but spring and early summer offer the best weather. Be prepared for crowds during peak racing events like the Daytona 500.</li>
+        <li><strong>Beach Driving:</strong> Daytona Beach is one of the few places where you can drive on the beach. There are designated areas for cars, so make sure to follow local rules and watch for pedestrians.</li>
+        <li><strong>Free Activities:</strong> Many beachside parks and events, such as the Daytona Beach Bandshell Concert Series, are free and family-friendly.</li>
+        <li><strong>Parking:</strong> Parking can be challenging during busy times, but several public lots are available near the beach. Consider arriving early for the best spots.</li>
+      </ul>
+    </section>
+
+    <!-- Call to Action -->
+    <a href="trip-planner.html" class="cta-button">Plan Your Daytona Beach Adventure Now!</a>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 The Robert's Group</p>
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="terms.html">Terms and Conditions</a></li
+

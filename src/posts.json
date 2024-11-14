@@ -5,7 +5,7 @@
       "image": "assets/images/daytona.jpg",
       "category": "Beach",
       "tags": ["USA", "Adventure", "Beach"],
-      "url": "src/daytona-beach.html"
+      "url": "daytona-beach.html"
     },
     {
       "title": "Discover Jamaica",
@@ -13,7 +13,7 @@
       "image": "assets/images/jamaica.jpg",
       "category": "Island",
       "tags": ["Caribbean", "Culture", "Nature"],
-      "url": "src/jamaica.html"
+      "url": "jamaica.html"
     },
     {
       "title": "The Beauty of the Bahamas",
@@ -21,7 +21,7 @@
       "image": "assets/images/bahamas.jpg",
       "category": "Island",
       "tags": ["Caribbean", "Beach", "Marine Life"],
-      "url": "src/bahamas.html"
+      "url": "bahamas.html"
     },
     {
       "title": "Dominican Republic Getaway",

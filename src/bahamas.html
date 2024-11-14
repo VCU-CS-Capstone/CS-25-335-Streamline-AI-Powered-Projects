@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Beauty of the Bahamas - Travel Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      color: #0056b3;
+    }
+
+    /* Navigation Styling */
+    nav {
+      background-color: #333;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav ul li a {
+      color: #f8f9fa;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Header Styling */
+    .blog-header {
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+    .blog-header img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+    .blog-header h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.5em;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    /* Main Content Styling */
+    .blog-content {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .section h2 {
+      font-size: 1.8em;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid #0056b3;
+      padding-bottom: 5px;
+    }
+    .section img {
+      width: 100%;
+      height: auto;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+    .cta-button {
+      display: block;
+      width: fit-content;
+      margin: 20px auto;
+      padding: 12px 24px;
+      font-size: 1em;
+      background-color: #0056b3;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+      background-color: #004080;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: #333;
+      color: #f8f9fa;
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    footer ul li a {
+      color: #f8f9fa;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="destination.html">Destinations</a></li>
+      <li><a href="trip-planner.html">Trip Planner</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+  </nav>
+
+  <!-- Blog Header -->
+  <header class="blog-header">
+    <img src="assets/images/bahamas.jpg" alt="Bahamas">
+    <h1>The Beauty of the Bahamas</h1>
+  </header>
+
+  <!-- Blog Content Section -->
+  <main class="blog-content">
+    <section class="section">
+      <h2>Top Activities in the Bahamas</h2>
+      <img src="assets/images/bahamas-activities.jpg" alt="Top Activities in the Bahamas">
+      <p>The Bahamas is a playground for water sports, beach relaxation, and natural wonders. Here are must-see experiences.</p>
+      <ul>
+        <li><strong>Exuma Cays Land and Sea Park:</strong> Snorkel in the first marine protected area in the Bahamas, teeming with wildlife.</li>
+        <li><strong>Swim with Pigs at Pig Beach:</strong> A unique and famous experience where visitors can swim with wild pigs on Big Major Cay.</li>
+        <li><strong>Blue Hole Diving:</strong> Discover the Bahamas’ blue holes, including Dean’s Blue Hole, one of the deepest in the world.</li>
+        <li><strong>Atlantis Paradise Island:</strong> A luxurious resort with a water park, casino, and a marine habitat.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Dining in the Bahamas</h2>
+      <img src="assets/images/bahamas-dining.jpg" alt="Dining in the Bahamas">
+      <p>Enjoy Bahamian cuisine, known for fresh seafood, conch, and island flavors. Here are top places to dine.</p>
+      <ul>
+        <li><strong>Fish Fry at Arawak Cay:</strong> A popular spot for authentic Bahamian cuisine, including conch salad, fried fish, and more.</li>
+        <li><strong>Graycliff Restaurant:</strong> Known for its fine dining, historical ambiance, and extensive wine cellar.</li>
+        <li><strong>The Poop Deck:</strong> A casual dining spot with fresh seafood and harbor views in Nassau.</li>
+        <li><strong>Sunset Grill:</strong> A relaxed beachside restaurant with fresh conch dishes and stunning sunset views.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Local Tips for Travelers</h2>
+      <img src="assets/images/bahamas-tips.jpg" alt="Travel Tips for the Bahamas">
+      <p>Make the most of your Bahamas trip with these travel tips:</p>
+      <ul>
+        <li><strong>Best Time to Visit:</strong> The Bahamas is great year-round, but the peak season is from December to April, with mild temperatures and low rainfall.</li>
+        <li><strong>Currency:</strong> The Bahamian dollar (BSD) is pegged to the U.S. dollar, so U.S. dollars are widely accepted.</li>
+        <li><strong>Respect Marine Life:</strong> The Bahamas is known for its vibrant marine life, so remember to respect coral reefs and local regulations while snorkeling or diving.</li>
+        <li><strong>Transportation:</strong> Consider renting a car on larger islands, or take ferries between islands to explore more remote spots.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Where to Stay</h2>
+      <img src="assets/images/bahamas-stay.jpg" alt="Places to Stay in the Bahamas">
+      <p>The Bahamas offers a range of accommodations, from luxury resorts to secluded beach cottages.</p>
+      <ul>
+        <li><strong>Atlantis Paradise Island:</strong> A sprawling resort with casinos, water parks, and world-class dining options.</li>
+        <li><strong>SLS Baha Mar:</strong> An upscale resort with a lively atmosphere, chic decor, and beachfront access.</li>
+        <li><strong>The Ocean Club:</strong> An exclusive Four Seasons Resort with a serene environment, tropical gardens, and luxury amenities.</li>
+        <li><strong>Pink Sands Resort:</strong> Located on Harbour Island, known for its beautiful pink-sand beaches and tranquil atmosphere.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Call to Action -->
+  <a href="trip-planner.html" class="cta-button">Plan Your Bahamas Adventure Now!</a>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 The Robert's Group</p>
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="terms.html">Terms and Conditions</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+    </ul>
+  </footer>
+</body>
+</html>
