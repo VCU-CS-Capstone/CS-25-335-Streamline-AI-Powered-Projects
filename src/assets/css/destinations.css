@@ -1,3 +1,9 @@
+
+/* Global Variables */
+:root {
+  --blog-side-margin: 1vw;
+}
+
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -15,8 +21,8 @@ body {
   font-family: 'Roboto', Arial, sans-serif;
   line-height: 1.6;
   color: #fff;
-  background-color: #4682B4; /* Background Blue */
-  padding: 0 1rem 1rem 1rem; /* Added padding to right, left, and bottom */
+  background-color: #4682B4; 
+  /* Background Blue */
 }
 
 h1, h2, h3 {
@@ -31,11 +37,12 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  width: calc(100% - 2rem); /* Adjusted width to account for body padding */
+  width: calc(100%);
   z-index: 1000;
   transition: background-color 0.3s ease, padding 0.3s ease;
   padding: 1rem 0;
-  margin-left: 1rem; /* Align nav with body padding */
+  margin-left: 0;
+  margin-right: 0;
 }
 
 nav ul {
@@ -153,7 +160,8 @@ video::fullscreen-button {
 .interactive-map {
   margin: 5rem 0;
   text-align: center;
-  padding: 0 1rem; /* Added padding to the sides */
+  margin-left: var(--blog-side-margin);
+  margin-right: var(--blog-side-margin);
 }
 
 .interactive-map h2 {
@@ -163,14 +171,20 @@ video::fullscreen-button {
   color: #fff;
 }
 
+#map {
+  width: 100%;
+  height: 500px;
+  border-radius: 8px;
+  margin-top: 1em;
+}
+
 /* Footer */
 footer {
   background-color: #000; /* Black */
   color: #fff;
   padding: 3rem 2rem;
   text-align: center;
-  width: calc(100% - 2rem); /* Adjusted width to account for body padding */
-  margin-left: 1rem; /* Align footer with body padding */
+  width: calc(100%); /* Adjusted width to account for body padding */
 }
 
 footer ul {
