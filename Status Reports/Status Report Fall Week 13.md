@@ -7,10 +7,11 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Updated Fall Design Poster
 
 ## 2) Milestones to be completed next week ##
-   - 
+   - Draft for sandals promotion video
+   - Complete design poster
 
 ## 3) Issues, problems or concerns ##
    - 
