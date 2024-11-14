@@ -46,10 +46,11 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Created blog pages for Daytona Beach, Jamaica, and the Bahamas.
 
 ## 2) Milestones to be completed next week ##
-   -
+   - Create more blog pages
+   - Improve the overall design and aesthetic of the website.
 
 ## 3) Issues, problems or concerns ##
    - 
