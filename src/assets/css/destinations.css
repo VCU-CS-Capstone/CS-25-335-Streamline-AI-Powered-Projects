@@ -1,7 +1,7 @@
 
 /* Global Variables */
 :root {
-  --blog-side-margin: 1vw;
+  --map-side-margin: 15px;
 }
 
 /* Reset and Base Styles */
@@ -160,8 +160,8 @@ video::fullscreen-button {
 .interactive-map {
   margin: 5rem 0;
   text-align: center;
-  margin-left: var(--blog-side-margin);
-  margin-right: var(--blog-side-margin);
+  margin-left: var(--map-side-margin);
+  margin-right: var(--map-side-margin);
 }
 
 .interactive-map h2 {
@@ -184,7 +184,6 @@ footer {
   color: #fff;
   padding: 3rem 2rem;
   text-align: center;
-  width: calc(100%); /* Adjusted width to account for body padding */
 }
 
 footer ul {
