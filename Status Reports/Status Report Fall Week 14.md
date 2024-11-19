@@ -19,13 +19,14 @@
 # Ethan DuBrueler
 
 ## 1) Accomplishments this week ##
-   -  
+   - continued working on videos 
+   - ran a marathon
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  more videos
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - nothing
 
 
 # David Newman
