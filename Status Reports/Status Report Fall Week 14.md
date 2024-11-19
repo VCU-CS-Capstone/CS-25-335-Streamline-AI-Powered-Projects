@@ -7,7 +7,7 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  Added global vars to CSS files
+   -  Added global vars to CSS files and adjusted element margins
 
 ## 2) Milestones to be completed next week ##
    - 
