@@ -32,13 +32,14 @@
 # David Newman
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Started the code to tie the AI mp4 videos together.
+   -  Read the Sponsor's responses to the 10 questions and implement her answers into the plan. 
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Continue working on the video generator and fine-tune it to the sponsor's liking. 
 
 ## 3) Issues, problems or concerns ##
-   -  
+   -  None so far. 
 
 
 
