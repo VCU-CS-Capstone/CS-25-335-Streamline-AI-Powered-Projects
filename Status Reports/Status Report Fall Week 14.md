@@ -45,10 +45,10 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Created more blog pages.
 
 ## 2) Milestones to be completed next week ##
-   - 
+   - Improve design of the site.
 
 ## 3) Issues, problems or concerns ##
    - 
