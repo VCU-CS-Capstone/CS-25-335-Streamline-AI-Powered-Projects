@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colorful Curacao - Travel Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      color: #0056b3;
+    }
+
+    /* Navigation Styling */
+    nav {
+      background-color: #333;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav ul li a {
+      color: #f8f9fa;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Header Styling */
+    .blog-header {
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+    .blog-header img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+    .blog-header h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.5em;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    /* Main Content Styling */
+    .blog-content {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .section h2 {
+      font-size: 1.8em;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid #0056b3;
+      padding-bottom: 5px;
+    }
+    .section img {
+      width: 100%;
+      height: auto;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+    .cta-button {
+      display: block;
+      width: fit-content;
+      margin: 20px auto;
+      padding: 12px 24px;
+      font-size: 1em;
+      background-color: #0056b3;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+      background-color: #004080;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: #333;
+      color: #f8f9fa;
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    footer ul li a {
+      color: #f8f9fa;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destination.html">Destinations</a></li>
+        <li><a href="trip-planner.html">Trip Planner</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="community.html">Community</a></li>
+      </ul>
+    </nav>
+  
+    <!-- Blog Header -->
+    <header class="blog-header">
+      <img src="assets/images/curacao.jpg" alt="Curacao">
+      <h1>Colorful Curacao</h1>
+    </header>
+  
+    <!-- Blog Content Section -->
+    <main class="blog-content">
+      <section class="section">
+        <h2>Discovering Curacao's Beauty</h2>
+        <img src="assets/images/curacao-beauty.jpg" alt="Curacao Beauty">
+        <p>Curacao is a vibrant and picturesque island in the Caribbean, known for its colorful Dutch colonial architecture, stunning beaches, and lively atmosphere. Here are some of the must-visit spots.</p>
+        <ul>
+          <li><strong>Willemstad:</strong> Explore the UNESCO World Heritage Site, famous for its colorful Dutch colonial buildings lining the waterfront.</li>
+          <li><strong>Blue Bay Beach:</strong> Relax on one of Curacao's most popular beaches, where you can enjoy crystal-clear waters and breathtaking views.</li>
+          <li><strong>Shete Boka National Park:</strong> Visit the rugged coastline with dramatic rocky cliffs, crashing waves, and unique wildlife.</li>
+          <li><strong>Hato Caves:</strong> Discover the awe-inspiring limestone caves with stalactites and stalagmites, offering a glimpse into the island's geological history.</li>
+        </ul>
+      </section>
+  
+      <section class="section">
+        <h2>Food and Drink in Curacao</h2>
+        <img src="assets/images/curacao-dining.jpg" alt="Curacao Dining">
+        <p>Curacao's culinary scene is a delightful mix of Caribbean, Latin American, and European flavors. Here are some top dining experiences:</p>
+        <ul>
+          <li><strong>Restaurant & Café de Kroon:</strong> Enjoy island dishes with a mix of Dutch influences and local specialties.</li>
+          <li><strong>Gouverneur de Rouville:</strong> Dine at this historic restaurant with stunning views of the harbor and an extensive menu of Caribbean and international cuisine.</li>
+          <li><strong>Plaza Bieu:</strong> A vibrant food court offering authentic street food from Curacaoan vendors, perfect for a taste of the local culture.</li>
+          <li><strong>Brisa do Mar:</strong> A seafood restaurant by the water, known for its fresh catches and laid-back atmosphere.</li>
+        </ul>
+      </section>
+  
+      <section class="section">
+        <h2>Top Tips for Visiting Curacao</h2>
+        <img src="assets/images/curacao-tips.jpg" alt="Travel Tips for Curacao">
+        <p>Make the most of your Curacao trip with these helpful tips:</p>
+        <ul>
+          <li><strong>Best Time to Visit:</strong> The dry season from January to April offers pleasant weather and fewer crowds, making it the ideal time to visit.</li>
+          <li><strong>Currency:</strong> The local currency is the Netherlands Antillean Guilder (ANG), but U.S. dollars are widely accepted in most places.</li>
+          <li><strong>Transportation:</strong> Renting a car is recommended for exploring the island, as public transportation options can be limited.</li>
+          <li><strong>Snorkeling and Diving:</strong> Curacao is famous for its vibrant coral reefs and crystal-clear waters, making it a prime spot for snorkeling and diving.</li>
+        </ul>
+      </section>
+  
+      <section class="section">
+        <h2>Where to Stay in Curacao</h2>
+        <img src="assets/images/curacao-stay.jpg" alt="Curacao Accommodations">
+        <p>Whether you’re looking for luxury resorts or charming boutique hotels, Curacao offers a range of accommodations to suit every traveler.</p>
+        <ul>
+          <li><strong>Renaissance Curacao Resort & Casino:</strong> A luxury resort with a private beach, casino, and upscale amenities.</li>
+          <li><strong>Santa Barbara Beach & Golf Resort:</strong> A tranquil beachfront resort with golf, spas, and a variety of dining options.</li>
+          <li><strong>Avila Beach Hotel:</strong> A historic hotel with beautiful ocean views, located just outside Willemstad's city center.</li>
+          <li><strong>Kontiki Beach Resort:</strong> A relaxing resort offering beachfront bungalows and a laid-back vibe for a more intimate experience.</li>
+        </ul>
+      </section>
+    </main>
+  
+    <!-- Call to Action -->
+    <a href="trip-planner.html" class="cta-button">Plan Your Curacao Adventure Now!</a>
+  
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 The Robert's Group</p>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="terms.html">Terms and Conditions</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </footer>
+  </body>
+  </html>

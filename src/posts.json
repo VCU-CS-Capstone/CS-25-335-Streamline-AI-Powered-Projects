@@ -29,7 +29,7 @@
       "image": "assets/images/dominican-republic.jpg",
       "category": "Island",
       "tags": ["Caribbean", "Culture", "Nightlife"],
-      "url": "src/dominican-republic.html"
+      "url": "dominican-republic.html"
     },
     {
       "title": "Colorful Curacao",
@@ -37,7 +37,7 @@
       "image": "assets/images/curacao.jpg",
       "category": "Island",
       "tags": ["Caribbean", "Culture", "Scenic"],
-      "url": "src/curacao.html"
+      "url": "curacao.html"
     },
     {
       "title": "Aruba Adventures",
