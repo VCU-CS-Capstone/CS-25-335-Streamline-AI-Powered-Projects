@@ -31,13 +31,14 @@
 # David Newman
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Developed a folder of horizontal and vertical videos. 
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Add OpenAI voice to the video generation code
+   -  Tweak the view of the captions ever so slightly. 
 
 ## 3) Issues, problems or concerns ##
-   -   
+   -  Captions are not clean and digestible. Can be fixed with editing and tinkering. 
 
 
 
