@@ -19,10 +19,10 @@
 
 ## 1) Accomplishments this week ##
    -  Finished replacing every video's old voice with the new one
-   -  Added some new destination videos
 
 ## 2) Milestones to be completed next week ##
    -  Work on the chatbot again
+   -  Add 7 new destination videos
 
 ## 3) Issues, problems or concerns ##
    - none
