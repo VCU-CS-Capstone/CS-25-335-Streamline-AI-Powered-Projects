@@ -1,3 +1,33 @@
+// ===== Random Background Image Logic =====
+const images = [
+  '../assets/images/bg1.jpg',
+  '../assets/images/bg2.jpg',
+  '../assets/images/bg3.jpg',
+  '../assets/images/bg4.jpg',
+  '../assets/images/bg5.jpg',
+  '../assets/images/bg6.jpg',
+  '../assets/images/bg7.jpg',
+  '../assets/images/bg8.jpg',
+  '../assets/images/bg9.jpg',
+  '../assets/images/bg10.jpg',
+  '../assets/images/bg11.jpg',
+  '../assets/images/bg12.jpg'
+];
+
+function setRandomBackground() {
+  const randomIndex = Math.floor(Math.random() * images.length);
+  const selectedImage = images[randomIndex];
+  document.body.style.background = `url('${selectedImage}') no-repeat center center fixed`;
+  document.body.style.backgroundSize = 'cover';
+}
+
+// Set an initial random background
+setRandomBackground();
+
+// Change background every 5 seconds
+setInterval(setRandomBackground, 5000);
+
+// ===== Existing Fetch and Blog Post Logic =====
 // Fetch blog posts from JSON file
 fetch('posts.json')
   .then(response => response.json())
@@ -113,34 +143,52 @@ const blogPosts = [
       latitude: 21.6940,
       longitude: -71.7979
     }
-  ];
+];
+
+// 1. Choose a random index from the array
+const randomIndex = Math.floor(Math.random() * blogPosts.length);
+const randomPost = blogPosts[randomIndex];
+
+// 2. Build the HTML for our random post
+const randomBlogHTML = `
+  <div class="blog-post-card">
+    <img src="${randomPost.imageSrc}" alt="${randomPost.altText}">
+    <h3>${randomPost.title}</h3>
+    <p>${randomPost.snippet}</p>
+    <a href="${randomPost.link}" class="read-more">Read More</a>
+  </div>
+`;
+
+// 3. Inject this HTML into the page
+const randomBlogContainer = document.getElementById("randomBlogContainer");
+randomBlogContainer.innerHTML = randomBlogHTML;
 
 
-  // Initialize map
-  const map = L.map('map').setView([20.0, 0.0], 2); // World view
+// Initialize map
+const map = L.map('map').setView([20.0, 0.0], 2); // World view
 
-  // Add tile layer to map
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
+// Add tile layer to map
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
 
-  // Add markers for each blog post
-  blogPosts.forEach(post => {
-    const marker = L.marker([post.lat, post.lng]).addTo(map);
-    marker.bindPopup(`<b>${post.title}</b><br><a href="${post.url}">Read More</a>`);
-    marker.on('click', function() {
-      window.location.href = post.url;
-    });
+// Add markers for each blog post
+blogPosts.forEach(post => {
+  const marker = L.marker([post.lat, post.lng]).addTo(map);
+  marker.bindPopup(`<b>${post.title}</b><br><a href="${post.url}">Read More</a>`);
+  marker.on('click', function() {
+    window.location.href = post.url;
   });
+});
 
-  // Search function
-  function searchBlogPosts() {
-    const query = document.getElementById("searchBar").value.toLowerCase();
-    const postsContainer = document.getElementById("blogPostsContainer");
-    const blogCards = postsContainer.getElementsByClassName("blog-post-card");
+// Search function
+function searchBlogPosts() {
+  const query = document.getElementById("searchBar").value.toLowerCase();
+  const postsContainer = document.getElementById("blogPostsContainer");
+  const blogCards = postsContainer.getElementsByClassName("blog-post-card");
 
-    Array.from(blogCards).forEach(card => {
-      const title = card.querySelector("h3").textContent.toLowerCase();
-      card.style.display = title.includes(query) ? "block" : "none";
-    });
-  }
+  Array.from(blogCards).forEach(card => {
+    const title = card.querySelector("h3").textContent.toLowerCase();
+    card.style.display = title.includes(query) ? "block" : "none";
+  });
+}
