@@ -31,7 +31,7 @@ app.post('/api/openai', async (req, res) => {
 
   try {
     const response = await openai.chat.completions.create({
-      model: 'ft:gpt-4o-mini-2024-07-18:personal:hotelbot:AGFmNIcw', // Updated model name to a default one
+      model: 'ft:gpt-4o-mini-2024-07-18:personal:travelbot:ANoYID2C', //local finetuned version
       messages: conversationHistory,
       temperature: 0.7,
     });
