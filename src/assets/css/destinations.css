@@ -1,10 +1,3 @@
-
-/* Global Variables */
-:root {
-  --map-side-margin: 15px;
-}
-
-/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -21,8 +14,30 @@ body {
   font-family: 'Roboto', Arial, sans-serif;
   line-height: 1.6;
   color: #fff;
-  background-color: #4682B4; 
-  /* Background Blue */
+  background-color: #4682B4; /* Background Blue */
+}
+
+/* Add universal dark overlay */
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5); /* Dark overlay */
+  z-index: 1;
+  pointer-events: none;
+}
+
+main, nav, section, footer {
+  position: relative;
+  z-index: 2;
 }
 
 h1, h2, h3 {
@@ -37,12 +52,10 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  width: calc(100%);
+  width: 100%;
   z-index: 1000;
   transition: background-color 0.3s ease, padding 0.3s ease;
   padding: 1rem 0;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 nav ul {
@@ -68,19 +81,20 @@ nav ul li a:hover, nav ul li.active a {
   color: #FFD700; /* Gold */
 }
 
-/* Section Titles */
+/* Section Title */
 .section-title {
   text-align: center;
   font-size: 2.5rem;
-  margin-top: 6rem; /* Added margin-top to push content below fixed nav */
+  margin-top: 6rem; 
   margin-bottom: 3rem;
   color: #fff;
+  /* Removed background and radius */
 }
 
 /* Travel Videos Section */
 .travel-videos {
   padding: 5rem 2rem;
-  background-color: #4682B4; /* Matching the ocean blue */
+  text-align: center; 
 }
 
 .video-grid {
@@ -92,11 +106,11 @@ nav ul li a:hover, nav ul li.active a {
 }
 
 .video-card {
-  background-color: #fff;
+  background-color: #00aee8;
   border-radius: 8px;
   text-align: center;
   padding: 1.5rem;
-  margin: 1rem; /* Added margin for spacing */
+  margin: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -109,7 +123,7 @@ nav ul li a:hover, nav ul li.active a {
 .video-card video {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9; /* Maintains the 16:9 aspect ratio */
+  aspect-ratio: 16 / 9;
   display: block;
   border-radius: 8px;
 }
@@ -120,19 +134,22 @@ nav ul li a:hover, nav ul li.active a {
   margin-top: 1rem;
 }
 
+/* Remove backgrounds from travel-videos text */
+.travel-videos p, .travel-videos h2 {
+  /* Removed background and radius */
+  color: #fff;
+}
+
 /* Hide the full-screen button */
 video::-webkit-media-controls-fullscreen-button {
   display: none;
 }
-
 video::-moz-fullscreen-button {
   display: none;
 }
-
 video::-ms-fullscreen-button {
   display: none;
 }
-
 video::fullscreen-button {
   display: none;
 }
@@ -160,22 +177,14 @@ video::fullscreen-button {
 .interactive-map {
   margin: 5rem 0;
   text-align: center;
-  margin-left: var(--map-side-margin);
-  margin-right: var(--map-side-margin);
+  padding: 0 1rem;
 }
 
 .interactive-map h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #fff;
-}
-
-#map {
-  width: 100%;
-  height: 500px;
-  border-radius: 8px;
-  margin-top: 1em;
+  color: #00aee8;
 }
 
 /* Footer */
@@ -184,6 +193,7 @@ footer {
   color: #fff;
   padding: 3rem 2rem;
   text-align: center;
+  width: 100vw;
 }
 
 footer ul {
