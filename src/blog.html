@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel Guides - Travel Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/blog.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
@@ -28,6 +28,7 @@
 
     <div class="blog-posts-grid" id="blogPostsContainer">
       <!-- Example Blog Post Cards with Unique Locations -->
+
       <div class="blog-post-card">
         <img src="assets/images/daytona.jpg" alt="Daytona Beach">
         <div class="blog-post-content">
@@ -113,6 +114,24 @@
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="assets/js/scripts.js"></script>
+
+  <!-- Simple search functionality -->
+  <script>
+    function searchBlogPosts() {
+      const input = document.getElementById('searchBar').value.toLowerCase();
+      const blogPosts = document.querySelectorAll('.blog-post-card');
+
+      blogPosts.forEach(post => {
+        const title = post.querySelector('h3') ? post.querySelector('h3').textContent.toLowerCase() : '';
+        const snippet = post.querySelector('p') ? post.querySelector('p').textContent.toLowerCase() : '';
+
+        if (title.includes(input) || snippet.includes(input)) {
+          post.style.display = '';
+        } else {
+          post.style.display = 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
-
