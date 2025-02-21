@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <title>Your Adventure Starts Here</title>
-  <link rel="stylesheet" href="assets/css/blog.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
   <!-- Navigation Bar -->
@@ -30,31 +30,14 @@
     </div>
   </section>
 
-  <!-- Featured Destinations -->
-  <section class="featured-destinations">
-    <h2>Featured Destinations</h2>
-    <div class="destinations-grid">
-      <!-- Repeat this block for each destination -->
-      <div class="destination-card">
-        <img src="assets/images/destination1.jpg" alt="Destination Image">
-        <h3>Destination Name</h3>
-        <p>Brief description of the destination.</p>
-      </div>
-      <!-- Add more destination cards as needed -->
+  
+  <!-- Recommended Blog Post (Random) -->
+  <section class="featured-blog-post">
+    <h2>Recommended Blog Post</h2>
+    <div id="randomBlogContainer">
+      <!-- We will insert a random blog post here via JavaScript -->
     </div>
-  </section>
-
-  <!-- Recent Blog Posts -->
-  <section class="recent-blog-posts">
-    <h2>Recent Blog Posts</h2>
-    <div class="blog-posts-grid">
-      <div class="blog-post-card">
-        <img src="assets/images/blog1.jpg" alt="Blog Image">
-        <h3>Blog Post Title</h3>
-        <p>Snippet of the blog post.</p>
-      </div>
-      <!-- Add more blog post cards as needed -->
-    </div>
+    <button onclick="location.href='blog.html'">See All Blog Posts</button>
   </section>
 
   <!-- Footer -->
@@ -67,6 +50,68 @@
       <li><a href="privacy.html">Privacy Policy</a></li>
     </ul>
   </footer>
+
+  <!-- Existing scripts for your site -->
   <script src="assets/js/scripts.js"></script>
+
+  <!-- Script to fetch blog.html, parse blog-posts, and display a random one -->
+  <script>
+    // Ensure you're serving from http:// or https://, not file://
+    fetch('blog.html')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not OK');
+        }
+        return response.text();
+      })
+      .then(html => {
+        // Parse the returned blog.html text into a DOM
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Select all .blog-post-card elements
+        const cards = doc.querySelectorAll('.blog-post-card');
+        const blogPosts = [];
+
+        // Convert each card into a simple data object
+        cards.forEach(card => {
+          const img = card.querySelector('img');
+          const titleEl = card.querySelector('h3');
+          const snippetEl = card.querySelector('p');
+          const linkEl = card.querySelector('a');
+
+          blogPosts.push({
+            imageSrc: img ? img.getAttribute('src') : '',
+            altText: img ? img.getAttribute('alt') : '',
+            title: titleEl ? titleEl.textContent.trim() : '',
+            snippet: snippetEl ? snippetEl.textContent.trim() : '',
+            link: linkEl ? linkEl.getAttribute('href') : '#'
+          });
+        });
+
+        // Pick one random blog post
+        const randomIndex = Math.floor(Math.random() * blogPosts.length);
+        const randomPost = blogPosts[randomIndex];
+
+        // Build the HTML for that random post
+        const randomBlogHTML = `
+          <div class="blog-post-card">
+            <img src="${randomPost.imageSrc}" alt="${randomPost.altText}">
+            <h3>${randomPost.title}</h3>
+            <p>${randomPost.snippet}</p>
+            <a href="${randomPost.link}" class="read-more">Read More</a>
+          </div>
+        `;
+
+        // Inject that into our homepage
+        const randomBlogContainer = document.getElementById('randomBlogContainer');
+        if (randomBlogContainer) {
+          randomBlogContainer.innerHTML = randomBlogHTML;
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching blog.html:', error);
+      });
+  </script>
 </body>
 </html>
