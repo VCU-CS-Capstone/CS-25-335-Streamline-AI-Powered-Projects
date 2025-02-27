@@ -21,10 +21,10 @@
    -  UI changes: video frame and blogs recommended
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Implement the updated chatbot code into the website
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - none
 
 # David Newman
 
