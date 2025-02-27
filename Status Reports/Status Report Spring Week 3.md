@@ -18,13 +18,13 @@
 # Ethan DuBrueler
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Added voices to new videos on the website
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Add much needed UI changes
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - none
 
 # David Newman
 
