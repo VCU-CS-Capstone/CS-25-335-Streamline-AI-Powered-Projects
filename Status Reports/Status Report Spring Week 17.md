@@ -18,7 +18,7 @@
 # Ethan DuBrueler
 
 ## 1) Accomplishments this week ##
-   -  
+   -  UI changes: video frame and blogs recommended
 
 ## 2) Milestones to be completed next week ##
    -  
