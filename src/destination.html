@@ -252,6 +252,69 @@
         </div>
       </div>
     </section>
+
+    <!-- Greece Section -->
+    <section class="category-section">
+      <h2>Greece</h2>
+      <div class="video-grid" id="greeceGrid">
+        <div class="video-card" data-title="Santorini">
+          <h3>Santorini</h3>
+          <!-- Replace the video source with your actual file if available -->
+          <video controls class="no-fullscreen">
+            <source src="assets/videos/santorini.mov" type="video/mp4">
+          </video>
+          <p>A volcanic island with iconic white-washed buildings, blue-domed churches, and stunning sunsets.</p>
+        </div>
+        <div class="video-card" data-title="Mykonos">
+          <h3>Mykonos</h3>
+          <!-- Replace the video source with your actual file if available -->
+          <video controls class="no-fullscreen">
+            <source src="assets/videos/Mykonos.mov" type="video/mp4">
+          </video>
+          <p>A cosmopolitan island known for its vibrant nightlife, luxurious resorts, and beautiful beaches.</p>
+        </div>
+        <div class="video-card" data-title="Athens">
+          <h3>Athens</h3>
+          <!-- Replace the video source with your actual file if available -->
+          <video controls class="no-fullscreen">
+            <source src="assets/videos/Athens.mov" type="video/mp4">
+          </video>
+          <p>A historic city with ancient ruins, world-class museums, and a lively atmosphere.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Italy Section -->
+    <section class="category-section">
+      <h2>Italy</h2>
+      <div class="video-grid" id="italyGrid">
+        <div class="video-card" data-title="Amalfi Coast">
+          <h3>Amalfi Coast</h3>
+          <!-- Replace the video source with your actual file if available -->
+          <video controls class="no-fullscreen">
+            <source src="assets/videos/Amalfi Coast.mov" type="video/mp4">
+          </video>
+          <p>A picturesque coastline with charming towns, stunning cliffs, and crystal-clear waters. Popular towns include Positano, Amalfi, and Ravello.</p>
+        </div>
+        <div class="video-card" data-title="Venice">
+          <h3>Venice</h3>
+          <!-- Replace the video source with your actual file if available -->
+          <video controls class="no-fullscreen">
+            <source src="assets/videos/Venice.mov" type="video/mp4">
+          </video>
+          <p>A romantic city known for its canals, gondolas, and historic architecture. Explore iconic landmarks like St. Mark's Square and the Rialto Bridge.</p>
+        </div>
+        <div class="video-card" data-title="Tuscany">
+          <h3>Tuscany</h3>
+          <!-- Replace the video source with your actual file if available -->
+          <video controls class="no-fullscreen">
+            <source src="assets/videos/Tuscany.mov" type="video/mp4">
+          </video>
+          <p>A region famous for its rolling hills, vineyards, and charming medieval towns. Popular destinations include Florence, Siena, and Pisa.</p>
+        </div>
+      </div>
+    </section>
+
   </section>
 
   <!-- Interactive Map Section -->
@@ -274,7 +337,6 @@
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="assets/js/scripts.js"></script>
-  <!-- Add the search function script -->
   <script>
     function searchVideos() {
       const input = document.getElementById('searchBar').value.toLowerCase();
@@ -308,8 +370,9 @@
         });
       });
 
-      function exitFullScreenHandler(e) {
-        if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+      function exitFullScreenHandler() {
+        if (document.fullscreenElement || document.webkitFullscreenElement ||
+            document.mozFullScreenElement || document.msFullscreenElement) {
           if (document.exitFullscreen) {
             document.exitFullscreen();
           } else if (document.webkitExitFullscreen) {
