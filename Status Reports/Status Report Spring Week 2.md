@@ -46,10 +46,15 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Created initial Figma wireframes for the website
+   -  Shared designs with the team for feedback
+   -  Implemented improvements based on feedback (better spacing, typography, and button placement)
+   -  Worked on the blog integration to ensure consistency
 
 ## 2) Milestones to be completed next week ##
-   -
+   - Finalize Figma design and start UB component development
+   - Add blog post previews to the homepage layout
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - Some UI elements didn't align well with our brand identity
+   - Needed to tweak color scheme and typography choices
