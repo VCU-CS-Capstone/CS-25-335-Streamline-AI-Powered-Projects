@@ -43,10 +43,15 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Refined Figma designs with additional details
+   -  Improved homepage layout and blog post with UI
+   -  Updated blog section to include featured articles
+   -  Tested different grid structures for the article display 
 
 ## 2) Milestones to be completed next week ##
-   -
+   - Begin implementing final design updates on the live site
+   - Optimize blog layout for faster loading times
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - Some elements felt cluttered, requiring a more minimal approach
+   - Adjusted mobile responsiveness to improve usability 
