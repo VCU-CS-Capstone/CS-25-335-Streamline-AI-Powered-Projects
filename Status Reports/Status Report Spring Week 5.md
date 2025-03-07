@@ -46,10 +46,15 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Conducted usability testing with team members
+   -  Identified areas for further UI/UX refinement
+   -  Made final Figma updates to reflect feedback
+   -  Polished overall design consistency across pages
 
 ## 2) Milestones to be completed next week ##
-   -
+   - Prepare for the final review and submit design updates
+   - Start implementing any last-minute improvements
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - Some users found the filtering system confusing - needed adjustments
+   - Ensured SEO-friendly blog structures for better visibility
