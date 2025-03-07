@@ -32,13 +32,14 @@
 # David Newman
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Completed running all vacation videos.
+   -  Total of 44 with vertical and horizontal formats
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Start working on web architecture with Marcio. 
 
 ## 3) Issues, problems or concerns ##
-   -   
+   -  Only concern I have is if the sponsor wants more videos, we should find more listings to generate content from if she does. 
 
 
 
