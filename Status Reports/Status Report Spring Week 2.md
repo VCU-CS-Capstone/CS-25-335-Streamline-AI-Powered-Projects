@@ -30,13 +30,16 @@
 # David Newman
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Removed captions completely from video. (Extremely difficult to line up text to what is being spoken).
+   -  Continued working on the new OpenAI TTS service with targeting a Carribbean accent for the videos. 
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Finish the Carribbean Accent for the narration.
+   -  Finishing the above task will help with setting a better tone for the videos. 
 
 ## 3) Issues, problems or concerns ##
-   -   
+   -   Captions are simply very difficult to match up with audio clips in Python.
+   -   If I had more time, I could do extensive research at breaking down the timestamps for words being spoken within a .mp3 file, and match up the captions to the proper times. 
 
 
 
