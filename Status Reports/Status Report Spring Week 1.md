@@ -45,10 +45,15 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Focused on improving the design and UX of the website
+   -  Researched modern UI/UX in travel platforms
+   -  Identified key areas for user experience enhancements
+   -  Collected feedback from team members on site navigation
 
 ## 2) Milestones to be completed next week ##
-   -
+   - Start drafting wireframes for an improved layout
+   - Continue refining user flow and navigation
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - Initial design lacked consistency across pages
+   - Needed to align UX with project goals and user needs 
