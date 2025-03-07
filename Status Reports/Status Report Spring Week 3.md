@@ -29,13 +29,14 @@
 # David Newman
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Finished implementing the Carribean accent into the voice service. 
 
 ## 2) Milestones to be completed next week ##
-   -  
+   -  Implement object rekognition service.
+   -  Object rekognition service will help display a video that actually reflects the topic being discussed by the narrator at that time. 
 
 ## 3) Issues, problems or concerns ##
-   -   
+   -   OpenAI TTS service sometimes does not follow the accent 100%. This will have to be debugged repeatedly. 
 
 
 
