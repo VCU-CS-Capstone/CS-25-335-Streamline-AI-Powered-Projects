@@ -44,10 +44,16 @@
 # Marcio Tejada
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Applied UI updates to the live site
+   -  Implemented new blog design with improved readability
+   -  Added categories and filters to the blog for better navigation
+   -  Ensured consistency in button styling, font hierarchy, and colors
 
 ## 2) Milestones to be completed next week ##
-   -
+   - Conduct usability testing to gather user feedback
+   - Make final refinements based on test results
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - Needed to fix spacing issues on smaller screens
+   - Improved image optimization for faster page load speeds 
+
