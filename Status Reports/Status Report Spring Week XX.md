@@ -39,7 +39,7 @@
 
 
 
-# Marcio Tejada
+# Marcio Tejeda
 
 ## 1) Accomplishments this week ##
    -  
