@@ -7,13 +7,13 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Created draft Sandals 777 promo video
 
 ## 2) Milestones to be completed next week ##
-   - 
+   - Update visuals for promo video and determine more rigorous requirements/standards for videos
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - No current rigorous method for generating promo video dynamically while mainting visual appeal
 
 # Ethan DuBrueler
 
