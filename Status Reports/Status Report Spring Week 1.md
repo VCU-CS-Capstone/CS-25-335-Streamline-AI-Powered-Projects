@@ -7,13 +7,13 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Implemented automatic email reminding program using Google Apps Script
 
 ## 2) Milestones to be completed next week ##
-   - 
+   - Draft for Sandals 777 Promo Video
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - n/a
 
 # Ethan DuBrueler
 
