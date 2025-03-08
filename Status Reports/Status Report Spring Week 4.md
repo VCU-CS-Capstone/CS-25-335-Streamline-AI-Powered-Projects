@@ -7,13 +7,13 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Tested object recognition service 
 
 ## 2) Milestones to be completed next week ##
-   - 
+   - Create promo video from photos uploaded to Edusourced from Sponsor
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - n/a
 
 # Ethan DuBrueler
 
