@@ -7,13 +7,14 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Updated automatic email reminding system to allow for week skipping, and enabled week skipping for sponsor.
+   -  Created flow diagram for Sandals 777 promo video and compiled images
 
 ## 2) Milestones to be completed next week ##
-   - 
+   - Complete draft for 777 promo video.
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - n/a
 
 # Ethan DuBrueler
 
