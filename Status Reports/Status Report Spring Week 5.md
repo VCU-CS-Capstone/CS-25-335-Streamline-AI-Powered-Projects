@@ -7,13 +7,13 @@
 # Noah Davis
 
 ## 1) Accomplishments this week ##
-   -  
+   -  Complete draft of promo video using photos taken from sponsor uploaded on Edusource
 
 ## 2) Milestones to be completed next week ##
-   - 
+   - Work with team on web back end
 
 ## 3) Issues, problems or concerns ##
-   - 
+   - n/a
 
 # Ethan DuBrueler
 
