@@ -3,20 +3,356 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Destinations - Travel Website</title>
+  <title>Destinations - ParadisePortfolios</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Add Instrument Sans font -->
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/destinations.css">
+  <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Global Typography */
+    body {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 100%;
+      letter-spacing: -0.02em;
+    }
+    
+    /* Navbar styles */
+    .navbar {
+      background-color: #ffffff;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1300px;
+      padding: 0 20px;
+    }
+    
+    .logo a {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #0056b3;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+    
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    
+    .hamburger .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      transition: right 0.3s ease-in-out;
+    }
+    
+    .nav-item {
+      margin: 0 1.2rem;
+    }
+    
+    .nav-links {
+      color: #333;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links:hover, .nav-links.active {
+      color: #0056b3;
+    }
+    
+    .contact-info {
+      text-align: right;
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-phone {
+      color: #333;
+      text-decoration: none;
+      margin-right: 1rem;
+    }
+    
+    .social-icons a {
+      color: #333;
+      margin-left: 0.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    /* Hide old nav */
+    nav:not(.navbar) {
+      display: none;
+    }
+    
+    .travel-videos {
+      margin-top: 90px;
+    }
+    
+    /* Search Input Styles */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 30px auto;
+      max-width: 600px;
+      position: relative;
+      height: 70px !important;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 18px;
+      border: 2px solid #444;
+      border-radius: 5px;
+      outline: none;
+      transition: all 0.3s ease;
+      font-family: 'Instrument Sans', sans-serif;
+      background-color: #333 !important;
+      height: 70px !important;
+    }
+    
+    .search-input:focus {
+      border-color: #0056b3;
+      box-shadow: 0 0 10px rgba(0, 86, 179, 0.2);
+    }
+    
+    .search-button {
+      position: absolute;
+      right: 0px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #0056b3 !important;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 10px;
+      transition: color 0.3s ease;
+      height: 70px !important;
+    }
+    
+    .search-button:hover {
+      color: #003d82;
+    }
+    
+    .dark-mode .search-input {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #f5f5f5;
+      border-color: #555;
+    }
+    
+    .dark-mode .search-input::placeholder {
+      color: #aaa;
+    }
+    
+    .dark-mode .search-button {
+      color: #f5f5f5;
+    }
+    
+    .dark-mode .search-button:hover {
+      color: #ffd700;
+    }
+    
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      
+      .navbar-links {
+        position: fixed;
+        top: 70px;
+        right: -300px;
+        width: 250px;
+        height: 100vh;
+        background-color: #ffffff;
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 20px;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+      }
+      
+      .navbar-links.active {
+        right: 0;
+      }
+      
+      .nav-item {
+        margin: 10px 0;
+      }
+      
+      .nav-item a {
+        color: #333;
+      }
+      
+      .dark-mode .navbar-links {
+        background-color: #000000;
+      }
+      
+      .dark-mode .nav-item a {
+        color: #f5f5f5;
+      }
+      
+      .mobile-only {
+        display: block;
+      }
+      
+      .contact-info {
+        display: none;
+      }
+      
+      /* Hamburger animation */
+      .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+      
+      body.menu-open {
+        overflow: hidden;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
+  <div id="bg1" class="bg"></div>
+  <div id="bg2" class="bg"></div>
+  
+  <!-- New Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <a href="index.html">ParadisePortfolios</a>
+      </div>
+      
+      <button class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item">
+          <a href="index.html" class="nav-links">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="destination.html" class="nav-links active">Destinations</a>
+        </li>
+        <li class="nav-item">
+          <a href="trip-planner.html" class="nav-links">Trip Planner</a>
+        </li>
+        <li class="nav-item">
+          <a href="explore.html" class="nav-links">Explore</a>
+        </li>
+        <li class="nav-item">
+          <a href="blog.html" class="nav-links">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a href="book.html" class="nav-links">Book</a>
+        </li>
+        <li class="nav-item">
+          <a href="contact-us.html" class="nav-links">Contact Us</a>
+        </li>
+        <li class="nav-item mobile-only">
+          <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+      
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Old Navigation Bar - Hidden -->
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="destination.html">Destinations</a></li>
       <li><a href="trip-planner.html">Trip Planner</a></li>
+      <li><a href="explore.html">Explore</a></li>
       <li><a href="blog.html">Blog</a></li>
-      <li><a href="community.html">Community</a></li>
+      <li><a href="book.html">Book</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
     </ul>
   </nav>
 
@@ -25,365 +361,457 @@
     <h1 class="section-title">Destinations</h1>
 
     <!-- Search Bar -->
-    <div class="search-bar">
-      <input type="text" id="searchBar" placeholder="Search for a video..." onkeyup="searchVideos()" />
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="" id="destinationSearch" aria-label="Search destinations">
+        <button type="submit" class="search-button">
+          <i class="fas fa-arrow-right"></i>
+        </button>
     </div>
 
-    <!-- Caribbean Section -->
-    <section class="category-section">
-      <h2>Caribbean</h2>
-      <div class="video-grid" id="caribbeanGrid">
-        <div class="video-card" data-title="Jamaica">
-          <h3>Jamaica</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/jamaica.mov" type="video/mp4">
-          </video>
-          <p>Discover the vibrant culture, reggae music, and stunning beaches of Jamaica. Popular destinations include Negril, Montego Bay, and Ocho Rios.</p>
+    <div class="destination-section-containers">
+      <!-- Caribbean Section -->
+      <section class="category-section">
+        <h2>Caribbean</h2>
+        <div class="video-grid" id="caribbeanGrid">
+          <div class="video-card" data-title="Jamaica">
+            <h3>Jamaica</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/jamaica.mov?v=1742084068095" type="video/mp4">
+            </video>
+            <p>Discover the vibrant culture, reggae music, and stunning beaches of Jamaica. Popular destinations include Negril, Montego Bay, and Ocho Rios.</p>
+          </div>
+          <div class="video-card" data-title="Dominican Republic">
+            <h3>Dominican Republic</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Dominican%20Republic.mov?v=1741222999244" type="video/mp4">
+            </video>
+            <p>Explore the Dominican Republic's white-sand beaches, lush rainforests, and vibrant nightlife. Popular destinations include Santo Domingo and Punta Cana.</p>
+          </div>
+          <div class="video-card" data-title="Bahamas">
+            <h3>Bahamas</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/bahamas.mov?v=1742084146538" type="video/mp4">
+            </video>
+            <p>Experience the Bahamas' bustling cities, secluded islands, and vibrant coral reefs.</p>
+          </div>
+          <div class="video-card" data-title="Curaçao">
+            <h3>Curaçao</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/curacao.mov?v=1741222183283" type="video/mp4">
+            </video>
+            <p>Discover the Dutch colonial architecture, vibrant nightlife, and beautiful beaches of Curaçao. Explore the historic city of Willemstad.</p>
+          </div>
+          <div class="video-card" data-title="Aruba">
+            <h3>Aruba</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/aruba.mov?v=1741222082302" type="video/mp4">
+            </video>
+            <p>Discover the stunning beaches, crystal-clear waters, and laid-back atmosphere of Aruba. Enjoy windsurfing, kitesurfing, and beach relaxation.</p>
+          </div>
+          <div class="video-card" data-title="Turks and Caicos">
+            <h3>Turks and Caicos</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Turks%20and%20Caicos.mov?v=1741223227915" type="video/mp4">
+            </video>
+            <p>Enjoy the pristine beaches, turquoise waters, and world-class diving in Turks and Caicos.</p>
+          </div>
         </div>
-        <div class="video-card" data-title="Dominican Republic">
-          <h3>Dominican Republic</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Dominican Republic.mov" type="video/mp4">
-          </video>
-          <p>Explore the Dominican Republic's white-sand beaches, lush rainforests, and vibrant nightlife. Popular destinations include Santo Domingo and Punta Cana.</p>
+      </section>
+
+      <!-- Mexico Section -->
+      <section class="category-section">
+        <h2>Mexico</h2>
+        <div class="video-grid" id="mexicoGrid">
+          <div class="video-card" data-title="Cancun">
+            <h3>Cancun</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/cancun.mov?v=1742084543878" type="video/mp4">
+            </video>
+            <p>Discover Cancun's white-sand beaches, vibrant nightlife, and all-inclusive resorts.</p>
+          </div>
+          <div class="video-card" data-title="Riviera Maya">
+            <h3>Riviera Maya</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Riviera%20Maya.mov?v=1742084608412" type="video/mp4">
+            </video>
+            <p>Explore Riviera Maya's secluded beaches, ancient Mayan ruins, and stunning cenotes.</p>
+          </div>
+          <div class="video-card" data-title="Yucatan Peninsula">
+            <h3>Yucatan Peninsula</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Yucatan%20Peninsula.mov?v=1741223497888" type="video/mp4">
+            </video>
+            <p>Home to historic cities like Chichen Itza, the Yucatan Peninsula features Mayan ruins and beautiful beaches.</p>
+          </div>
+          <div class="video-card" data-title="Puerto Vallarta">
+            <h3>Puerto Vallarta</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Puerto%20Vallarta.mov?v=1741223471966" type="video/mp4">
+            </video>
+            <p>Puerto Vallarta offers old-world charm, beautiful beaches, and activities like sailing, snorkeling, and jungle exploration.</p>
+          </div>
+          <div class="video-card" data-title="Cabo San Lucas">
+            <h3>Cabo San Lucas</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Cabo%20San%20Lucas.mov?v=1741222083935" type="video/mp4">
+            </video>
+            <p>Experience the luxurious beaches, world-class golf courses, and vibrant nightlife of Cabo San Lucas.</p>
+          </div>
         </div>
-        <div class="video-card" data-title="Bahamas">
-          <h3>Bahamas</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/bahamas.mov" type="video/mp4">
-          </video>
-          <p>Experience the Bahamas' bustling cities, secluded islands, and vibrant coral reefs.</p>
+      </section>
+
+      <!-- Hawaii Section -->
+      <section class="category-section">
+        <h2>Hawaii</h2>
+        <div class="video-grid" id="hawaiiGrid">
+          <div class="video-card" data-title="Oahu">
+            <h3>Oahu</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Oahu.mov?v=1741223091929" type="video/mp4">
+            </video>
+            <p>Explore Oahu's bustling cities, beautiful beaches, and historical sites.</p>
+          </div>
+          <div class="video-card" data-title="Maui">
+            <h3>Maui</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Maui.mov?v=1741223166844" type="video/mp4">
+            </video>
+            <p>Discover the stunning beaches, lush rainforests, and volcanic landscapes of Maui.</p>
+          </div>
+          <div class="video-card" data-title="Kauai">
+            <h3>Kauai</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Kauai.mov?v=1742084609461" type="video/mp4">
+            </video>
+            <p>Known as the "Garden Isle," Kauai offers lush rainforests, waterfalls, and secluded beaches.</p>
+          </div>
+          <div class="video-card" data-title="Big Island">
+            <h3>Big Island</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Big%20Island.mov?v=1741222147396" type="video/mp4">
+            </video>
+            <p>Experience the diverse landscapes, volcanoes, and beaches of the Big Island of Hawaii.</p>
+          </div>
         </div>
-        <div class="video-card" data-title="Curaçao">
-          <h3>Curaçao</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Curacao.mov" type="video/mp4">
-          </video>
-          <p>Discover the Dutch colonial architecture, vibrant nightlife, and beautiful beaches of Curaçao. Explore the historic city of Willemstad.</p>
+      </section>
+
+      <!-- Latin America Section -->
+      <section class="category-section">
+        <h2>Latin America</h2>
+        <div class="video-grid" id="latinAmericaGrid">
+          <div class="video-card" data-title="Belize">
+            <h3>Belize</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Belize.mov?v=1741222106687" type="video/mp4">
+            </video>
+            <p>Discover Belize's stunning beaches, Mayan ruins, and vibrant coral reefs.</p>
+          </div>
+          <div class="video-card" data-title="Costa Rica">
+            <h3>Costa Rica</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Costa%20Rica.mov?v=1742084596366" type="video/mp4">
+            </video>
+            <p>Explore Costa Rica's lush rainforests, volcanic mountains, and pristine beaches.</p>
+          </div>
+          <div class="video-card" data-title="Panama">
+            <h3>Panama</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Panama.mov?v=1741223133375" type="video/mp4">
+            </video>
+            <p>Experience Panama's mix of rainforests, beaches, and colonial towns. Visit the Panama Canal and Bocas del Toro.</p>
+          </div>
         </div>
-        <div class="video-card" data-title="Aruba">
-          <h3>Aruba</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/aruba.mov" type="video/mp4">
-          </video>
-          <p>Discover the stunning beaches, crystal-clear waters, and laid-back atmosphere of Aruba. Enjoy windsurfing, kitesurfing, and beach relaxation.</p>
+      </section>
+
+      <!-- United Kingdom Section -->
+      <section class="category-section">
+        <h2>United Kingdom</h2>
+        <div class="video-grid" id="ukGrid">
+          <div class="video-card" data-title="England">
+            <h3>England</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/England.mov?v=1741223013723" type="video/mp4">
+            </video>
+            <p>Explore historic cities like London, Oxford, and Bath, and visit iconic landmarks such as Buckingham Palace and Stonehenge.</p>
+          </div>
+          <div class="video-card" data-title="Ireland">
+            <h3>Ireland</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Ireland.mov?v=1741223446650" type="video/mp4">
+            </video>
+            <p>Experience the stunning landscapes, charming villages, and rich history of Ireland. Visit Dublin, the Giant's Causeway, and the Cliffs of Moher.</p>
+          </div>
+          <div class="video-card" data-title="Scotland">
+            <h3>Scotland</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Scotland.mov?v=1741223200995" type="video/mp4">
+            </video>
+            <p>Discover the rugged beauty of the Scottish Highlands, explore Loch Ness, and visit Edinburgh Castle.</p>
+          </div>
         </div>
-        <div class="video-card" data-title="Turks and Caicos">
-          <h3>Turks and Caicos</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Turks and Caicos.mov" type="video/mp4">
-          </video>
-          <p>Enjoy the pristine beaches, turquoise waters, and world-class diving in Turks and Caicos.</p>
+      </section>
+
+      <!-- Florida Section -->
+      <section class="category-section">
+        <h2>Florida</h2>
+        <div class="video-grid" id="floridaGrid">
+          <div class="video-card" data-title="Florida Keys">
+            <h3>Florida Keys</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Florida%20Keys.mov?v=1741223012492" type="video/mp4">
+            </video>
+            <p>Enjoy the laid-back atmosphere, beautiful beaches, and water sports in the Florida Keys.</p>
+          </div>
+          <div class="video-card" data-title="Tampa/Clearwater/Siesta Key">
+            <h3>Tampa Bay Area</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Tampa%20Bay%20Area.mov?v=1741223497966" type="video/mp4">
+            </video>
+            <p>Visit theme parks, beaches, and historic attractions in Tampa, Clearwater, and Siesta Key.</p>
+          </div>
+          <div class="video-card" data-title="Destin">
+            <h3>Destin</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Destin.mov?v=1741223425620" type="video/mp4">
+            </video>
+            <p>Known for its white-sand beaches, emerald-green waters, and family-friendly atmosphere, Destin is a great destination for families.</p>
+          </div>
+          <div class="video-card" data-title="Daytona">
+            <h3>Daytona</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Daytona.mov?v=1741222947789" type="video/mp4">
+            </video>
+            <p>Enjoy the beaches, surfing, and NASCAR racing in the Daytona, Cocoa Beach, and Palm Coast region.</p>
+          </div>
+          <div class="video-card" data-title="Orlando">
+            <h3>Orlando</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Orlando.mov?v=1741223100271" type="video/mp4">
+            </video>
+            <p>Home to Disney World, Universal Studios, and SeaWorld, Orlando is perfect for families with young children.</p>
+          </div>
         </div>
+      </section>
+
+      <!-- Greece Section -->
+      <section class="category-section">
+        <h2>Greece</h2>
+        <div class="video-grid" id="greeceGrid">
+          <div class="video-card" data-title="Santorini">
+            <h3>Santorini</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Santorini.mov?v=1742084651431" type="video/mp4">
+            </video>
+            <p>A volcanic island with iconic white-washed buildings, blue-domed churches, and stunning sunsets.</p>
+          </div>
+          <div class="video-card" data-title="Mykonos">
+            <h3>Mykonos</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Mykonos.mov?v=1741223343415" type="video/mp4">
+            </video>
+            <p>A cosmopolitan island known for its vibrant nightlife, luxurious resorts, and beautiful beaches.</p>
+          </div>
+          <div class="video-card" data-title="Athens">
+            <h3>Athens</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Athens.mov?v=1741222185184" type="video/mp4">
+            </video>
+            <p>A historic city with ancient ruins, world-class museums, and a lively atmosphere.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Italy Section -->
+      <section class="category-section">
+        <h2>Italy</h2>
+        <div class="video-grid" id="italyGrid">
+          <div class="video-card" data-title="Amalfi Coast">
+            <h3>Amalfi Coast</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Amalfi%20Coast.mov?v=1741221992693" type="video/mp4">
+            </video>
+            <p>A picturesque coastline with charming towns, stunning cliffs, and crystal-clear waters. Popular towns include Positano, Amalfi, and Ravello.</p>
+          </div>
+          <div class="video-card" data-title="Venice">
+            <h3>Venice</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Venice.mov?v=1741223252007" type="video/mp4">
+            </video>
+            <p>A romantic city known for its canals, gondolas, and historic architecture. Explore iconic landmarks like St. Mark's Square and the Rialto Bridge.</p>
+          </div>
+          <div class="video-card" data-title="Tuscany">
+            <h3>Tuscany</h3>
+            <video controls class="no-fullscreen">
+              <source src="assets/videos/Tuscany.mov?v=1741223235041" type="video/mp4">
+            </video>
+            <p>A region famous for its rolling hills, vineyards, and charming medieval towns. Popular destinations include Florence, Siena, and Pisa.</p>
+          </div>
+        </div>
+      </section>
       </div>
     </section>
+    </div>
 
-    <!-- Mexico Section -->
-    <section class="category-section">
-      <h2>Mexico</h2>
-      <div class="video-grid" id="mexicoGrid">
-        <div class="video-card" data-title="Cancun">
-          <h3>Cancun</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/cancun.mov" type="video/mp4">
-          </video>
-          <p>Discover Cancun's white-sand beaches, vibrant nightlife, and all-inclusive resorts.</p>
-        </div>
-        <div class="video-card" data-title="Riviera Maya">
-          <h3>Riviera Maya</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/riviera maya.mov" type="video/mp4">
-          </video>
-          <p>Explore Riviera Maya's secluded beaches, ancient Mayan ruins, and stunning cenotes.</p>
-        </div>
-        <div class="video-card" data-title="Yucatan Peninsula">
-          <h3>Yucatan Peninsula</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Yucatan Peninsula.mov" type="video/mp4">
-          </video>
-          <p>Home to historic cities like Chichen Itza, the Yucatan Peninsula features Mayan ruins and beautiful beaches.</p>
-        </div>
-        <div class="video-card" data-title="Puerto Vallarta">
-          <h3>Puerto Vallarta</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/puerto vallarta.mov" type="video/mp4">
-          </video>
-          <p>Puerto Vallarta offers old-world charm, beautiful beaches, and activities like sailing, snorkeling, and jungle exploration.</p>
-        </div>
-        <div class="video-card" data-title="Cabo San Lucas">
-          <h3>Cabo San Lucas</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/cabo san lucas.mov" type="video/mp4">
-          </video>
-          <p>Experience the luxurious beaches, world-class golf courses, and vibrant nightlife of Cabo San Lucas.</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- Hawaii Section -->
-    <section class="category-section">
-      <h2>Hawaii</h2>
-      <div class="video-grid" id="hawaiiGrid">
-        <div class="video-card" data-title="Oahu">
-          <h3>Oahu</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/oahu.mov" type="video/mp4">
-          </video>
-          <p>Explore Oahu's bustling cities, beautiful beaches, and historical sites.</p>
-        </div>
-        <div class="video-card" data-title="Maui">
-          <h3>Maui</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/maui.mov" type="video/mp4">
-          </video>
-          <p>Discover the stunning beaches, lush rainforests, and volcanic landscapes of Maui.</p>
-        </div>
-        <div class="video-card" data-title="Kauai">
-          <h3>Kauai</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/kauai.mov" type="video/mp4">
-          </video>
-          <p>Known as the "Garden Isle," Kauai offers lush rainforests, waterfalls, and secluded beaches.</p>
-        </div>
-        <div class="video-card" data-title="Big Island">
-          <h3>Big Island</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/big island.mov" type="video/mp4">
-          </video>
-          <p>Experience the diverse landscapes, volcanoes, and beaches of the Big Island of Hawaii.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Latin America Section -->
-    <section class="category-section">
-      <h2>Latin America</h2>
-      <div class="video-grid" id="latinAmericaGrid">
-        <div class="video-card" data-title="Belize">
-          <h3>Belize</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/belize.mov" type="video/mp4">
-          </video>
-          <p>Discover Belize's stunning beaches, Mayan ruins, and vibrant coral reefs.</p>
-        </div>
-        <div class="video-card" data-title="Costa Rica">
-          <h3>Costa Rica</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Costa Rica.mov" type="video/mp4">
-          </video>
-          <p>Explore Costa Rica's lush rainforests, volcanic mountains, and pristine beaches.</p>
-        </div>
-        <div class="video-card" data-title="Panama">
-          <h3>Panama</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Panama.mov" type="video/mp4">
-          </video>
-          <p>Experience Panama's mix of rainforests, beaches, and colonial towns. Visit the Panama Canal and Bocas del Toro.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- United Kingdom Section -->
-    <section class="category-section">
-      <h2>United Kingdom</h2>
-      <div class="video-grid" id="ukGrid">
-        <div class="video-card" data-title="England">
-          <h3>England</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/England.mov" type="video/mp4">
-          </video>
-          <p>Explore historic cities like London, Oxford, and Bath, and visit iconic landmarks such as Buckingham Palace and Stonehenge.</p>
-        </div>
-        <div class="video-card" data-title="Ireland">
-          <h3>Ireland</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Ireland.mov" type="video/mp4">
-          </video>
-          <p>Experience the stunning landscapes, charming villages, and rich history of Ireland. Visit Dublin, the Giant's Causeway, and the Cliffs of Moher.</p>
-        </div>
-        <div class="video-card" data-title="Scotland">
-          <h3>Scotland</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Scotland.mov" type="video/mp4">
-          </video>
-          <p>Discover the rugged beauty of the Scottish Highlands, explore Loch Ness, and visit Edinburgh Castle.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Florida Section -->
-    <section class="category-section">
-      <h2>Florida</h2>
-      <div class="video-grid" id="floridaGrid">
-        <div class="video-card" data-title="Florida Keys">
-          <h3>Florida Keys</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Florida Keys.mov" type="video/mp4">
-          </video>
-          <p>Enjoy the laid-back atmosphere, beautiful beaches, and water sports in the Florida Keys.</p>
-        </div>
-        <div class="video-card" data-title="Tampa/Clearwater/Siesta Key">
-          <h3>Tampa Bay Area</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Tampa Bay Area.mov" type="video/mp4">
-          </video>
-          <p>Visit theme parks, beaches, and historic attractions in Tampa, Clearwater, and Siesta Key.</p>
-        </div>
-        <div class="video-card" data-title="Destin">
-          <h3>Destin</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Destin.mov" type="video/mp4">
-          </video>
-          <p>Known for its white-sand beaches, emerald-green waters, and family-friendly atmosphere, Destin is a great destination for families.</p>
-        </div>
-        <div class="video-card" data-title="Daytona">
-          <h3>Daytona</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/daytona.mov" type="video/mp4">
-          </video>
-          <p>Enjoy the beaches, surfing, and NASCAR racing in the Daytona, Cocoa Beach, and Palm Coast region.</p>
-        </div>
-        <div class="video-card" data-title="Orlando">
-          <h3>Orlando</h3>
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Orlando.mov" type="video/mp4">
-          </video>
-          <p>Home to Disney World, Universal Studios, and SeaWorld, Orlando is perfect for families with young children.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Greece Section -->
-    <section class="category-section">
-      <h2>Greece</h2>
-      <div class="video-grid" id="greeceGrid">
-        <div class="video-card" data-title="Santorini">
-          <h3>Santorini</h3>
-          <!-- Replace the video source with your actual file if available -->
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/santorini.mov" type="video/mp4">
-          </video>
-          <p>A volcanic island with iconic white-washed buildings, blue-domed churches, and stunning sunsets.</p>
-        </div>
-        <div class="video-card" data-title="Mykonos">
-          <h3>Mykonos</h3>
-          <!-- Replace the video source with your actual file if available -->
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Mykonos.mov" type="video/mp4">
-          </video>
-          <p>A cosmopolitan island known for its vibrant nightlife, luxurious resorts, and beautiful beaches.</p>
-        </div>
-        <div class="video-card" data-title="Athens">
-          <h3>Athens</h3>
-          <!-- Replace the video source with your actual file if available -->
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Athens.mov" type="video/mp4">
-          </video>
-          <p>A historic city with ancient ruins, world-class museums, and a lively atmosphere.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Italy Section -->
-    <section class="category-section">
-      <h2>Italy</h2>
-      <div class="video-grid" id="italyGrid">
-        <div class="video-card" data-title="Amalfi Coast">
-          <h3>Amalfi Coast</h3>
-          <!-- Replace the video source with your actual file if available -->
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Amalfi Coast.mov" type="video/mp4">
-          </video>
-          <p>A picturesque coastline with charming towns, stunning cliffs, and crystal-clear waters. Popular towns include Positano, Amalfi, and Ravello.</p>
-        </div>
-        <div class="video-card" data-title="Venice">
-          <h3>Venice</h3>
-          <!-- Replace the video source with your actual file if available -->
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Venice.mov" type="video/mp4">
-          </video>
-          <p>A romantic city known for its canals, gondolas, and historic architecture. Explore iconic landmarks like St. Mark's Square and the Rialto Bridge.</p>
-        </div>
-        <div class="video-card" data-title="Tuscany">
-          <h3>Tuscany</h3>
-          <!-- Replace the video source with your actual file if available -->
-          <video controls class="no-fullscreen">
-            <source src="assets/videos/Tuscany.mov" type="video/mp4">
-          </video>
-          <p>A region famous for its rolling hills, vineyards, and charming medieval towns. Popular destinations include Florence, Siena, and Pisa.</p>
-        </div>
-      </div>
-    </section>
-
-  </section>
-
-  <!-- Interactive Map Section -->
-  <section class="interactive-map">
-    <h2>Explore Destinations on the Map</h2>
-    <div id="map" style="height: 500px;"></div>
-  </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2024 The Robert's Group</p>
+    <p>&copy; 2025 ParadisePortfolios</p>
     <ul>
       <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="terms.html">Terms and Conditions</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
     </ul>
   </footer>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <!-- Inline fallback: replace Glitch CDN video URLs with local assets -->
   <script>
-    function searchVideos() {
-      const input = document.getElementById('searchBar').value.toLowerCase();
-      const videoCards = document.getElementsByClassName('video-card');
-
-      for (let i = 0; i < videoCards.length; i++) {
-        const title = videoCards[i].getAttribute('data-title').toLowerCase();
-        if (title.includes(input)) {
-          videoCards[i].style.display = '';
-        } else {
-          videoCards[i].style.display = 'none';
-        }
-      }
-    }
-
-    // Disable Full-Screen Functionality
     document.addEventListener('DOMContentLoaded', function() {
-      const videos = document.querySelectorAll('video.no-fullscreen');
-      videos.forEach(function(video) {
-        video.addEventListener('fullscreenchange', exitFullScreenHandler);
-        video.addEventListener('webkitfullscreenchange', exitFullScreenHandler);
-        video.addEventListener('mozfullscreenchange', exitFullScreenHandler);
-        video.addEventListener('msfullscreenchange', exitFullScreenHandler);
-        video.addEventListener('dblclick', function(event) {
-          event.preventDefault();
+      document.querySelectorAll('video source').forEach(function(source) {
+        var src = source.getAttribute('src');
+        if (src && src.includes('cdn.glitch')) {
+          var parts = src.split('%2Fvideos%2F');
+          var file = decodeURIComponent(parts[1].split('?')[0]);
+          source.src = 'assets/videos/' + file;
+          var video = source.closest('video');
+          if (video) video.load();
+        }
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Navigation and menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const overlay = document.querySelector('.overlay');
+      
+      if (hamburger) {
+        hamburger.addEventListener('click', function() {
+          this.classList.toggle('active');
+          navLinks.classList.toggle('active');
+          document.body.classList.toggle('menu-open');
+          
+          if (overlay) {
+            overlay.classList.toggle('active');
+          }
         });
-        video.addEventListener('keydown', function(event) {
-          if ((event.key === 'f' || event.key === 'F') && (event.ctrlKey || event.metaKey)) {
-            event.preventDefault();
+      }
+      
+      // Category filter buttons
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const categorySections = document.querySelectorAll('.category-section');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all buttons
+          filterBtns.forEach(b => b.classList.remove('active'));
+          
+          // Add active class to clicked button
+          btn.classList.add('active');
+          
+          const category = btn.getAttribute('data-category');
+          
+          // Show all sections for "all" category
+          if (category === 'all') {
+            categorySections.forEach(section => {
+              section.style.display = 'block';
+            });
+          } else {
+            // Otherwise, show only the matching section and hide others
+            categorySections.forEach(section => {
+              const sectionId = section.querySelector('.video-grid').id.toLowerCase();
+              section.style.display = sectionId.includes(category.toLowerCase()) ? 'block' : 'none';
+            });
           }
         });
       });
 
-      function exitFullScreenHandler() {
-        if (document.fullscreenElement || document.webkitFullscreenElement ||
-            document.mozFullScreenElement || document.msFullscreenElement) {
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-          } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
+      // Search functionality
+      const searchInput = document.getElementById('destinationSearch');
+      
+      function searchDestinations() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const videoCards = document.querySelectorAll('.video-card');
+        let hasVisibleCards = false;
+        
+        videoCards.forEach(card => {
+          const title = card.querySelector('h3').textContent.toLowerCase();
+          const description = card.querySelector('p').textContent.toLowerCase();
+          const dataTitle = card.getAttribute('data-title').toLowerCase();
+          
+          if (title.includes(searchTerm) || description.includes(searchTerm) || dataTitle.includes(searchTerm)) {
+            card.style.display = 'block';
+            hasVisibleCards = true;
+          } else {
+            card.style.display = 'none';
           }
-        }
+        });
+        
+        // Show/hide sections based on whether they have any visible cards
+        categorySections.forEach(section => {
+          const visibleCards = section.querySelectorAll('.video-card[style="display: block;"]');
+          section.style.display = visibleCards.length > 0 ? 'block' : 'none';
+        });
       }
+      
+      if (searchInput) {
+        searchInput.addEventListener('keyup', searchDestinations);
+      }
+      
+      // Typing animation for search
+      const phrases = [
+        "Turks and Caicos",
+        "Cancun",
+        "Maui",
+        "Costa Rica",
+        "Athens",
+        "Orlando",
+        "Venice"
+      ];
+      
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let typingSpeed = 100;
+      let pauseEnd = 1500;
+      
+      function typeText() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+          // Deleting text
+          charIndex--;
+          typingSpeed = 50; // Faster when deleting
+        } else {
+          // Typing text
+          charIndex++;
+          typingSpeed = 100; // Normal speed when typing
+        }
+        
+        if (searchInput) {
+          searchInput.setAttribute('placeholder', currentPhrase.substring(0, charIndex));
+        }
+        
+        if (!isDeleting && charIndex === currentPhrase.length) {
+          // Finished typing, pause before deleting
+          isDeleting = true;
+          typingSpeed = pauseEnd;
+        } else if (isDeleting && charIndex === 0) {
+          // Finished deleting, move to next phrase
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+        }
+        
+        setTimeout(typeText, typingSpeed);
+      }
+      
+      // Start typing animation after a delay
+      setTimeout(typeText, 1000);
     });
   </script>
 </body>
