@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <title>Contact Us - ParadisePortfolios</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .contact-section {
+      padding: 4rem 2rem;
+      margin: 100px auto 2rem;
+      background-color: #ffffff;
+      border-radius: 8px;
+      color: #333;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      max-width: 1300px;
+    }
+    
+    .dark-mode .contact-section {
+      background-color: #2a2a2a;
+      color: #f5f5f5;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .contact-section h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1.5rem;
+      color: #0056b3;
+      font-weight: bold;
+    }
+    
+    .dark-mode .contact-section h2 {
+      color: #3a8bd8;
+    }
+    
+    .contact-list {
+      list-style: none;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      padding: 0;
+    }
+    
+    .contact-list li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .contact-list a {
+      color: #ffd700;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-list a:hover {
+      color: #e6c200;
+    }
+    
+    .featured-blog-section {
+      padding: 3rem 2rem;
+      max-width: 1300px;
+      margin: 2rem auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .dark-mode .featured-blog-section {
+      background-color: rgba(42, 42, 42, 0.9);
+    }
+    
+    .featured-blog-section h2 {
+      text-align: center;
+      color: #0056b3;
+      margin-bottom: 2rem;
+    }
+    
+    .dark-mode .featured-blog-section h2 {
+      color: #3a8bd8;
+    }
+    
+    .blog-post-card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+      max-width: 600px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .dark-mode .blog-post-card {
+      background-color: #333;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .blog-post-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    
+    .blog-post-card h3 {
+      padding: 1rem 1rem 0.5rem;
+      margin: 0;
+      color: #0056b3;
+    }
+    
+    .dark-mode .blog-post-card h3 {
+      color: #3a8bd8;
+    }
+    
+    .blog-post-card p {
+      padding: 0 1rem;
+      margin: 0 0 1rem;
+      color: #666;
+    }
+    
+    .dark-mode .blog-post-card p {
+      color: #ccc;
+    }
+    
+    .blog-post-card .read-more {
+      display: inline-block;
+      margin: 0 1rem 1rem;
+      color: #ffd700;
+      font-weight: bold;
+    }
+    
+    .blog-post-card .read-more:hover {
+      color: #e6c200;
+    }
+    
+    .btn-primary {
+      padding: 1rem 2rem;
+      background-color: #ffd700;
+      color: #333;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background-color: #e6c200;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .contact-section, .featured-blog-section {
+        margin: 90px 1rem 1rem;
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Layers -->
+  <div id="bg1" class="bg"></div>
+  <div id="bg2" class="bg"></div>
+
+  <!-- Global Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <a href="index.html">ParadisePortfolios</a>
+      </div>
+      
+      <button class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item">
+          <a href="index.html" class="nav-links">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="destination.html" class="nav-links">Destinations</a>
+        </li>
+        <li class="nav-item">
+          <a href="trip-planner.html" class="nav-links">Trip Planner</a>
+        </li>
+        <li class="nav-item">
+          <a href="explore.html" class="nav-links">Explore</a>
+        </li>
+        <li class="nav-item">
+          <a href="blog.html" class="nav-links">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a href="book.html" class="nav-links">Book</a>
+        </li>
+        <li class="nav-item">
+          <a href="contact-us.html" class="nav-links active">Contact Us</a>
+        </li>
+        <li class="nav-item mobile-only">
+          <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+      
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Contact Information Section -->
+  <section class="contact-section">
+    <h2>Get in Touch</h2>
+    <ul class="contact-list">
+      <li><strong>Paradise Portfolios</strong></li>
+      <li>Richmond, Virginia</li>
+      <li>Phone: (804) 592-0201</li>
+      <li>Email: <a href="mailto:Amanda@TheVacationChic.com">Amanda@TheVacationChic.com</a></li>
+      <li>Facebook: <a href="https://facebook.com/thevacationchic" target="_blank">facebook.com/thevacationchic</a></li>
+      <li>Instagram: <a href="https://instagram.com/thevacationchic" target="_blank">@thevacationchic</a></li>
+      <li>X: <a href="https://x.com/thevacationchic" target="_blank">@thevacationchic</a></li>
+    </ul>
+  </section>
+
+  <!-- Recommended Blog Post Section -->
+  <section class="featured-blog-section">
+    <h2>Recommended Blog Post</h2>
+    <div id="randomBlogContainer">
+      <!-- Random blog post inserted via JavaScript -->
+    </div>
+    <div class="text-center" style="margin-top: 2rem;">
+      <button onclick="location.href='blog.html'" class="btn-primary">See All Blog Posts</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 ParadisePortfolios</p>
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
+    </ul>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script>
+    // Fetch and display a random blog post
+    fetch('blog.html')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not OK');
+        }
+        return response.text();
+      })
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const cards = doc.querySelectorAll('.blog-post-card');
+        const blogPosts = [];
+        
+        cards.forEach(card => {
+          const img = card.querySelector('img');
+          const titleEl = card.querySelector('h3');
+          const snippetEl = card.querySelector('p');
+          const linkEl = card.querySelector('a');
+          
+          blogPosts.push({
+            imageSrc: img ? img.getAttribute('src') : '',
+            altText: img ? img.getAttribute('alt') : '',
+            title: titleEl ? titleEl.textContent.trim() : '',
+            snippet: snippetEl ? snippetEl.textContent.trim() : '',
+            link: linkEl ? linkEl.getAttribute('href') : '#'
+          });
+        });
+        
+        // Pick a random post or the first one if empty
+        const randomIndex = Math.floor(Math.random() * blogPosts.length);
+        const postToDisplay = blogPosts.length > 0 ? blogPosts[randomIndex] : {
+          imageSrc: 'assets/images/placeholder.jpg',
+          altText: 'Blog post placeholder',
+          title: 'Check out our blog',
+          snippet: 'Discover travel tips and destination guides on our blog.',
+          link: 'blog.html'
+        };
+        
+        const blogHTML = `
+          <div class="blog-post-card">
+            <img src="${postToDisplay.imageSrc}" alt="${postToDisplay.altText}">
+            <h3>${postToDisplay.title}</h3>
+            <p>${postToDisplay.snippet}</p>
+            <a href="${postToDisplay.link}" class="read-more">Read More</a>
+          </div>
+        `;
+        
+        const randomBlogContainer = document.getElementById('randomBlogContainer');
+        if (randomBlogContainer) {
+          randomBlogContainer.innerHTML = blogHTML;
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching blog.html:', error);
+      });
+  </script>
+</body>
+</html>
