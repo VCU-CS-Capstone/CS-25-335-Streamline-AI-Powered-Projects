@@ -2,202 +2,233 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Trip Planner - Your Travel Company</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Assistant - ParadisePortfolios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <!-- Added jQuery UI CSS -->
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-  <!-- Added jQuery and jQuery UI scripts -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* ---------- GLOBAL TYPOGRAPHY ---------- */
+    body            { font-family:'Instrument Sans',sans-serif; }
+    h1,h2,h3,h4,h5,h6{
+      font-family:'Instrument Sans',sans-serif;
+      font-weight:600;font-size:32px;line-height:100%;letter-spacing:-0.02em;color:#fff;
+    }
+
+    /* ---------- HEADER ---------- */
+    .header{display:flex;justify-content:space-between;align-items:center;
+      padding:1rem;background:#fff;position:fixed;top:0;left:0;right:0;z-index:1000}
+    .logo{font-family:'Playfair Display',serif;font-weight:700;color:#000;text-decoration:none;font-size:1.5rem}
+    .mobile-menu-toggle{display:none;background:none;border:none;color:#000;font-size:1.5rem;cursor:pointer}
+    .contact-info{display:flex;align-items:center;text-align:right}
+    .contact-phone{color:#000;text-decoration:none;margin-right:1rem}
+    .social-icons a{color:#000;margin-left:.5rem;font-size:1.2rem}
+
+    /* ---------- CHAT UI ---------- */
+    .chat-container{
+      max-width:800px;margin:100px auto 2rem;height:calc(100vh - 200px);
+      display:flex;flex-direction:column;background:rgba(255,255,255,.9);
+      border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);overflow:hidden;transition:.3s;
+    }
+    .dark-mode .chat-container{background:#222;box-shadow:0 4px 8px rgba(0,0,0,.3)}
+    .chat-header{background:#0056b3;color:#fff;padding:1rem;text-align:center;transition:.3s}
+    .dark-mode .chat-header{background:#3a8bd8}
+    .chat-header h2{margin:0;font-size:1.5rem;color:#fff}
+    .chat-messages{flex:1;padding:1rem;overflow-y:auto;display:flex;flex-direction:column;transition:.3s}
+    .dark-mode .chat-messages{background:#333}
+    .message{
+      max-width:80%;margin-bottom:1rem;padding:.75rem;border-radius:8px;line-height:1.5;word-wrap:break-word;transition:.3s;
+    }
+    .user-message{background:#e6f3ff;color:#333;align-self:flex-end;border-bottom-right-radius:0}
+    .dark-mode .user-message{background:#2a6fb8;color:#f5f5f5}
+    .bot-message{background:#f0f0f0;color:#333;align-self:flex-start;border-bottom-left-radius:0}
+    .dark-mode .bot-message{background:#444;color:#f5f5f5}
+    .chat-input{display:flex;padding:1rem;background:#fff;border-top:1px solid #eee;transition:.3s}
+    .dark-mode .chat-input{background:#222;border-top-color:#444}
+    .chat-input input{
+      flex:1;padding:.75rem;border:1px solid #ccc;border-radius:4px 0 0 4px;font-size:1rem;transition:.3s;
+    }
+    .dark-mode .chat-input input{background:#333;color:#f5f5f5;border-color:#444}
+    .chat-input button{
+      background:#0056b3;color:#fff;border:none;border-radius:0 4px 4px 0;padding:0 1rem;cursor:pointer;transition:.3s;
+    }
+    .dark-mode .chat-input button{background:#3a8bd8}
+    .intro-message{text-align:center;margin:1rem;color:#555;font-style:italic;transition:.3s}
+    .dark-mode .intro-message{color:#aaa}
+
+    /* ---------- SHADE OVERLAY – NOW HIDDEN ---------- */
+    .overlay{display:none;}
+
+    /* ---------- MOBILE ---------- */
+    @media(max-width:768px){
+      .chat-container{height:calc(100vh - 150px);margin:80px 1rem 1rem}
+      .message{max-width:90%}
+      .navbar-links{background:#fff}
+      .dark-mode .navbar-links{background:#000}
+      .nav-item a{color:#333}
+      .dark-mode .nav-item a{color:#f5f5f5}
+      .mobile-only{display:block}
+      .mobile-menu-toggle{display:block}
+      .nav-links{display:none}
+      .nav-links.active{display:flex}
+      .logo{font-size:1.2rem}
+      .contact-info{display:none}
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="destination.html">Destinations</a></li>
-      <li><a href="trip-planner.html">Trip Planner</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="community.html">Community</a></li>
-    </ul>
-  </nav>
-  
-  <!-- Chatbot Section -->
-  <section class="chatbot">
-    <h2>Chat with Our AI Travel Assistant</h2>
-    <div class="chat-container">
-      <!-- Chatbot logo -->
-      <div class="chatbot-logo">
-        <img src="assets/images/image.png" alt="Chatbot" width="50" height="50" />
-      </div>
-      <div id="chat-window">
-        <div id="chat-output"></div>
-      </div>
-      <div class="input-section">
-        <input type="text" id="chat-input" placeholder="Ask me anything about your trip!" />
-        <button id="send-btn">Send</button>
+  <div id="bg1" class="bg"></div>
+  <div id="bg2" class="bg"></div>
+
+  <!-- ---------- GLOBAL NAVBAR (same as index) ---------- -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="index.html">ParadisePortfolios</a></div>
+
+      <button class="hamburger" id="hamburger">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="index.html"        class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="destination.html"  class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="trip-planner.html" class="nav-links active">Trip Planner</a></li>
+        <li class="nav-item"><a href="explore.html"      class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="blog.html"         class="nav-links">Blog</a></li>
+        <li class="nav-item"><a href="book.html"         class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="contact-us.html"   class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only">
+          <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        </li>
+      </ul>
+
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
       </div>
     </div>
-  </section>
+  </nav>
 
-  <elevenlabs-convai agent-id="GoSz0y0KS3kr0zc2FeLP"></elevenlabs-convai>
-  <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
+  <div class="overlay" id="overlay"></div>
 
-  <!-- Chatbot Styles -->
-  <style>
-    .chatbot {
-      margin-top: 50px;
-      padding: 20px;
-    }
+  <!-- ---------- CHAT INTERFACE ---------- -->
+  <div class="chat-container">
+    <div class="chat-header"><h2>Travel Assistant</h2></div>
 
-    .chatbot-logo {
-      text-align: center;
-      margin-bottom: 10px;
-    }
+    <div class="chat-messages" id="chatMessages">
+      <p class="intro-message">Welcome to our Travel Planning Assistant! Ask me about destinations, travel tips, or how to plan your perfect vacation.</p>
+      <div class="message bot-message">Hi there! I'm your travel assistant. How can I help you plan your dream vacation today?</div>
+    </div>
 
-    #chat-window {
-      height: 300px;
-      overflow-y: scroll;
-      border: 1px solid #ddd;
-      padding: 10px;
-      margin-bottom: 10px;
-      background-color: #726a6a;
-    }
+    <div class="chat-input">
+      <input id="userInput" type="text" placeholder="Type your message here..." autocomplete="off">
+      <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
 
-    #chat-output {
-      white-space: pre-line;
-      color: #fff;
-    }
-
-    .input-section {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    #chat-input {
-      width: 80%;
-      padding: 10px;
-    }
-
-    #send-btn {
-      padding: 10px;
-    }
-
-    /* Styling chat messages */
-    /* Remove block display from strong elements for inline bold text */
-  .chat-message strong {
-    margin-bottom: 5px;
-    display: inline; /* Change from block to inline */
-  }
-
-  /* Adjust message spacing */
-  .chat-message {
-    margin-bottom: 10px;
-  }
-
-  elevenlabs-convai {
-    position: fixed !important; /* Make sure the widget stays in the specified position */
-    top: 500px; /* Adjust the top distance as needed */
-    right: 100px; /* Adjust the right distance as needed */
-    z-index: 1000; /* Ensure it's on top of other elements */
-  }
-
-  </style>
-
-  <!-- JavaScript for Chatbot -->
-  <script>
-    // Function to format **bold text** to <strong>bold text</strong>
-    function formatBoldText(text) {
-      return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-    }
-
-    // Function to send a message to the chatbot
-    async function sendMessage(message, clearInput = true) {
-      if (!message) return;
-
-      // Display user input in the chat window
-      const chatOutput = document.getElementById('chat-output');
-      chatOutput.innerHTML += `<div class="chat-message"><strong>You:</strong> ${message}</div>`;
-
-      // Scroll chat window to the bottom
-      chatOutput.scrollTop = chatOutput.scrollHeight;
-
-      // Send the user input to the server
-      try {
-        const response = await fetch('/api/openai', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ prompt: message }),
-        });
-
-        const data = await response.json();
-
-        // Check if there was an error in the response
-        if (data.error) {
-          chatOutput.innerHTML += `<div class="chat-message"><strong>Error:</strong> ${data.error}</div>`;
-        } else {
-          // Format and display AI's response
-          const formattedResponse = formatBoldText(data.content.trim());
-          chatOutput.innerHTML += `<div class="chat-message"><strong>AI:</strong> ${formattedResponse}</div>`;
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        chatOutput.innerHTML += `<div class="chat-message"><strong>Error:</strong> Unable to contact the chatbot.</div>`;
-      }
-
-      // Scroll chat window to the bottom
-      chatOutput.scrollTop = chatOutput.scrollHeight;
-
-      // Clear input if clearInput is true
-      if (clearInput) {
-        document.getElementById('chat-input').value = '';
-      }
-    }
-
-    // Event listener for the send button
-    document.getElementById('send-btn').addEventListener('click', function () {
-      const userInput = document.getElementById('chat-input').value.trim();
-      sendMessage(userInput, true);
-    });
-
-    // Optionally send on "Enter" key press
-    document.getElementById('chat-input').addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') {
-        e.preventDefault(); // Prevent form submission
-        const userInput = document.getElementById('chat-input').value.trim();
-        sendMessage(userInput, true);
-      }
-    });
-
-    // On page load, check for the 'message' parameter in the URL
-    window.onload = function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const message = urlParams.get('message');
-      if (message) {
-        // Decode the message in case it contains special characters
-        const decodedMessage = decodeURIComponent(message);
-        // Set the message in the input field
-        document.getElementById('chat-input').value = decodedMessage;
-        // Automatically send the message
-        sendMessage(decodedMessage, true);
-      }
-    };
-  </script>
-
-  <!-- Footer -->
+  <!-- ---------- FOOTER ---------- -->
   <footer>
-    <p>&copy; 2024 The Robert's Group</p>
+    <p>&copy; 2025 ParadisePortfolios</p>
     <ul>
       <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="terms.html">Terms and Conditions</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
     </ul>
   </footer>
-  
+
+  <!-- ---------- SCRIPTS ---------- -->
   <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script>
+    /* ---------- URL PARAM → INITIAL MESSAGE ---------- */
+    const urlParams      = new URLSearchParams(window.location.search);
+    const initialMessage = urlParams.get('message');
+
+    /* ---------- BASIC DOM HOOKS ---------- */
+    const chatMessages = document.getElementById('chatMessages');
+    const userInput    = document.getElementById('userInput');
+    const sendButton   = document.getElementById('sendButton');
+
+    /* ---------- ADD MESSAGE (now with **bold** support) ---------- */
+    function addMessage(message, isUser){
+      const div=document.createElement('div');
+      div.classList.add('message', isUser ? 'user-message' : 'bot-message');
+
+      if(isUser){
+        div.textContent = message;                 // user bubbles stay plain text
+      }else{
+        // 1) escape HTML to prevent XSS
+        const safe = message
+          .replace(/&/g,'&amp;')
+          .replace(/</g,'&lt;')
+          .replace(/>/g,'&gt;');
+
+        // 2) convert **text** → <strong>text</strong>
+        const withBold = safe.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+
+        div.innerHTML = withBold;
+      }
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    /* ---------- SEND TO BACKEND ---------- */
+    async function sendMessage(prompt){
+      try{
+        const res = await fetch('/api/openai',{
+          method:'POST',headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({prompt})
+        });
+        if(!res.ok) throw new Error('network');
+        const data = await res.json();
+        return data.content;
+      }catch(e){
+        console.error(e);
+        return "I'm sorry, I couldn't process your request. Please try again later.";
+      }
+    }
+
+    /* ---------- HANDLE USER INPUT ---------- */
+    async function handleUserInput(){
+      const text = userInput.value.trim();
+      if(!text) return;
+      addMessage(text,true);           // user bubble
+      userInput.value='';
+
+      const typing=document.createElement('div');
+      typing.classList.add('message','bot-message');
+      typing.textContent='Typing...';
+      chatMessages.appendChild(typing);
+
+      const reply = await sendMessage(text);
+
+      chatMessages.removeChild(typing);
+      addMessage(reply,false);         // bot bubble
+    }
+
+    sendButton.addEventListener('click',handleUserInput);
+    userInput.addEventListener('keypress',e=>{if(e.key==='Enter')handleUserInput()});
+
+    /* ---------- AUTO‑TRIGGER IF ?message=… ---------- */
+    if(initialMessage){
+      userInput.value = initialMessage;
+      handleUserInput();
+    }
+  </script>
 </body>
 </html>
