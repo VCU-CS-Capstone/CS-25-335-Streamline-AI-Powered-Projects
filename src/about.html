@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <title>About Us - ParadisePortfolios</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Leaflet CSS (if needed for maps or other integrations) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <style>
+    .about-us {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 100px auto;
+      background: #ffffff;
+      border-radius: 8px;
+      color: #333;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      box-shadow: var(--shadow-light);
+    }
+    
+    .dark-mode .about-us {
+      background: #222222;
+      color: var(--dark-text);
+      box-shadow: var(--shadow-dark);
+    }
+    
+    .about-us h1, .about-us h2 {
+      font-family: 'Instrument Sans', serif;
+      color: #000;
+      margin-bottom: 2rem;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    
+    .about-us h1 {
+      text-align: center;
+      font-size: 2em;
+    }
+    
+    .dark-mode .about-us h1, .dark-mode .about-us h2 {
+      color: #ffffff;
+    }
+    
+    .bio {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .bio-image {
+      flex: 1 1 300px;
+      text-align: center;
+      padding: 1rem;
+    }
+    
+    .bio-image img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .dark-mode .bio-image img {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .bio-content {
+      flex: 2 1 500px;
+      padding: 1rem;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: var(--primary-color);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      font-family: 'Instrument Sans', sans-serif;
+      transition: background-color 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      background-color: var(--secondary-color);
+    }
+    
+    .dark-mode .cta-button {
+      background-color: #3a8bd8;
+    }
+    
+    .dark-mode .cta-button:hover {
+      background-color: #2a6fb8;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Layers -->
+  <div id="bg1" class="bg"></div>
+  <div id="bg2" class="bg"></div>
+
+  <!-- Global Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <a href="index.html">ParadisePortfolios</a>
+      </div>
+      
+      <button class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item">
+          <a href="index.html" class="nav-links">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="destination.html" class="nav-links">Destinations</a>
+        </li>
+        <li class="nav-item">
+          <a href="trip-planner.html" class="nav-links">Trip Planner</a>
+        </li>
+        <li class="nav-item">
+          <a href="explore.html" class="nav-links">Explore</a>
+        </li>
+        <li class="nav-item">
+          <a href="blog.html" class="nav-links">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a href="book.html" class="nav-links">Book</a>
+        </li>
+        <li class="nav-item">
+          <a href="contact-us.html" class="nav-links">Contact Us</a>
+        </li>
+        <li class="nav-item mobile-only">
+          <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+      
+      <div class="contact-info">
+        <a href="tel:804-592-0201" class="contact-phone">(804) 592-0201</a>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="overlay" id="overlay"></div>
+
+  <!-- About Us Content -->
+  <section class="about-us">
+    <h1>About Us</h1>
+    
+    <!-- Amanda's Bio -->
+    <div class="bio">
+      <div class="bio-image">
+        <img src="assets/images/amanda.png" alt="Amanda Roberts">
+      </div>
+      <div class="bio-content">
+        <h2>Amanda Roberts - The Vacation Chic</h2>
+        <p>Hi! My name is Amanda Roberts, also known as <strong>The Vacation Chic</strong>. I am a travel expert who specializes in helping couples and families reconnect through travel. Many people mistakenly associate "travel agent" with expensive trips or scams, but my services are absolutely free with your vacation—and I have access to the best offers, deals, and exclusive booking packages available.</p>
+        <p>Every day, my focus is to provide top-level customer service from the moment you decide to plan your vacation, destination wedding, or honeymoon, until you return home safely. I'll be your personal concierge through every step, sharing my expertise at no extra cost. Whether you're planning a honeymoon, a family vacation, a destination wedding, or a romantic getaway, I am here to help.</p>
+      </div>
+    </div>
+    
+    <!-- Steve's Bio -->
+    <div class="bio">
+    <div class="bio-image">
+        <img src="assets/images/steve.jpg" alt="Steve DuVal">
+      </div>
+      <div class="bio-content">
+        <h2>Steve DuVal - The Vacation Guy</h2>
+        <p>Hi! My name is Steve DuVal, otherwise known as <strong>The Vacation Guy</strong> working with <strong>The Vacation Chic</strong>! I have always loved to travel, and I am so excited to now be working in this industry creating memorable vacations for couples, families, and groups. I have been a Physical Therapist since 1993 and run my own private practice. My beautiful wife and our three teens live in Richmond, and we have greatly enjoyed traveling and creating lasting memories.</p>
+        <p>Being detail-oriented is one of my biggest assets—it helps ensure that every client's unique needs are met, making each vacation truly special. I believe that a travel agent who listens is key to a worry-free vacation. Let me use my expertise and connections in the industry to help you get the most out of your travel experience!</p>
+      </div>
+    </div>
+    
+    <!-- Reviews Call-to-Action -->
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="https://www.weddingwire.com/reviews/the-vacation-chic-richmond/2be0a8b16d181206.html" target="_blank" class="cta-button">
+        Read Our Reviews
+      </a>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer>
+    <p>&copy; 2025 ParadisePortfolios</p>
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
+    </ul>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/navbar.js"></script>
+</body>
+</html>
