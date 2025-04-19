@@ -3,95 +3,649 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel Guides - Travel Website</title>
+  <title>Travel Guides - ParadisePortfolios</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Global Typography */
+    body {
+      font-family: 'Instrument Sans', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 600;
+      line-height: 100%;
+      letter-spacing: -0.02em;
+    }
+
+    /* Navbar styles */
+    .navbar {
+      background-color: #ffffff;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1300px;
+      padding: 0 20px;
+    }
+
+    .logo a {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #0056b3;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .hamburger .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      transition: right 0.3s ease-in-out;
+    }
+
+    .nav-item {
+      margin: 0 1.2rem;
+    }
+
+    .nav-links {
+      color: #333;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links:hover, .nav-links.active {
+      color: #0056b3;
+    }
+
+    .contact-info {
+      text-align: right;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-phone {
+      color: #333;
+      text-decoration: none;
+      margin-right: 1rem;
+    }
+
+    .social-icons a {
+      color: #333;
+      margin-left: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Blog specific styles */
+    .blog-content {
+      padding: 100px 2rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    #searchBar {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: 0 auto 2rem;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .category-title {
+      font-size: 2rem;
+      margin: 2rem 0 1rem;
+      text-align: left;
+      color: #0056b3;
+    }
+
+    .blog-posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .blog-post-card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .blog-post-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-post-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .blog-post-content {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .blog-post-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #333333;
+    }
+
+    .read-more {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #0056b3;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .read-more:hover {
+      background-color: #004080;
+    }
+
+    .interactive-map {
+      margin: 4rem auto;
+      padding: 0 2rem;
+      max-width: 1200px;
+    }
+
+    .interactive-map h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+    }
+
+    /* Hide old header */
+    .header {
+      display: none;
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .navbar-links {
+        position: fixed;
+        top: 70px;
+        right: -300px;
+        width: 250px;
+        height: 100vh;
+        background-color: #ffffff;
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 20px;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+      }
+
+      .navbar-links.active {
+        right: 0;
+      }
+
+      .nav-item {
+        margin: 10px 0;
+      }
+
+      .blog-content {
+        padding: 90px 1rem 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .blog-posts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-info {
+        display: none;
+      }
+
+      /* Hamburger animation */
+      .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      body.menu-open {
+        overflow: hidden;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="destination.html">Destinations</a></li>
-      <li><a href="trip-planner.html">Trip Planner</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="community.html">Community</a></li>
-    </ul>
+  <div id="bg1" class="bg"></div>
+  <div id="bg2" class="bg"></div>
+
+  <!-- New Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <a href="index.html">ParadisePortfolios</a>
+      </div>
+
+      <button class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="index.html" class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="destination.html" class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="explore.html" class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-links active">Blog</a></li>
+        <li class="nav-item"><a href="book.html" class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="contact-us.html" class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only">
+          <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        </li>
+      </ul>
+
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
   </nav>
+
+  <div class="overlay" id="overlay"></div>
 
   <!-- Blog Content -->
   <section class="blog-content">
     <h1 class="section-title">Travel Guides</h1>
     <!-- Search Bar -->
-    <input type="text" id="searchBar" placeholder="Search blog posts..." onkeyup="searchBlogPosts()" />
+    <input type="text" id="searchBar" placeholder="" onkeyup="searchBlogPosts()" />
 
-    <div class="blog-posts-grid" id="blogPostsContainer">
-      <!-- Example Blog Post Cards with Unique Locations -->
 
-      <div class="blog-post-card">
-        <img src="assets/images/daytona.jpg" alt="Daytona Beach">
+    <!-- ===== Caribbean ===== -->
+    <h2 class="category-title">Caribbean</h2>
+    <div class="blog-posts-grid">
+      <!-- Jamaica -->
+      <div class="blog-post-card" data-title="Jamaica">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/assets/images/jamaica.jpg?v=1741224005817" alt="Jamaica">
         <div class="blog-post-content">
-          <h3>Daytona Beach Adventures</h3>
-          <p>Explore the sandy shores and vibrant nightlife of Daytona Beach...</p>
-          <a href="src/daytona-beach.html" class="read-more">Read More</a>
+          <h3>Jamaica</h3>
+          <a href="blogs/jamaica.html" class="read-more">Read More</a>
         </div>
       </div>
-
-      <div class="blog-post-card">
-        <img src="assets/images/jamaica.jpg" alt="Jamaica">
+      <!-- Dominican Republic -->
+      <div class="blog-post-card" data-title="Dominican Republic">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/assets/images/dominican-republic.jpg?v=1741223988007" alt="Dominican Republic">
         <div class="blog-post-content">
-          <h3>Discover Jamaica</h3>
-          <p>From beaches to mountains, Jamaica offers a unique blend of culture and nature...</p>
-          <a href="src/jamaica.html" class="read-more">Read More</a>
+          <h3>Dominican Republic</h3>
+          <a href="blogs/dominican-republic.html" class="read-more">Read More</a>
         </div>
       </div>
-
-      <div class="blog-post-card">
-        <img src="assets/images/bahamas.jpg" alt="Bahamas">
+      <!-- Bahamas -->
+      <div class="blog-post-card" data-title="Bahamas">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/assets/images/bahamas.jpg?v=1741224565292" alt="Bahamas">
         <div class="blog-post-content">
-          <h3>The Beauty of the Bahamas</h3>
-          <p>Experience the turquoise waters and rich marine life of the Bahamas...</p>
-          <a href="src/bahamas.html" class="read-more">Read More</a>
+          <h3>Bahamas</h3>
+          <a href="blogs/bahamas.html" class="read-more">Read More</a>
         </div>
       </div>
-
-      <div class="blog-post-card">
-        <img src="assets/images/dominican-republic.jpg" alt="Dominican Republic">
+      <!-- Curaçao -->
+      <div class="blog-post-card" data-title="Curacao">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/assets/images/curacao.jpg?v=1741222355790" alt="Curacao">
         <div class="blog-post-content">
-          <h3>Dominican Republic Getaway</h3>
-          <p>Explore the vibrant culture, stunning beaches, and exciting nightlife...</p>
-          <a href="src/dominican-republic.html" class="read-more">Read More</a>
+          <h3>Curaçao</h3>
+          <a href="blogs/curacao.html" class="read-more">Read More</a>
         </div>
       </div>
-
-      <div class="blog-post-card">
-        <img src="assets/images/curacao.jpg" alt="Curacao">
+      <!-- Aruba -->
+      <div class="blog-post-card" data-title="Aruba">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/assets/images/aruba.jpg?v=1741224513287" alt="Aruba">
         <div class="blog-post-content">
-          <h3>Colorful Curacao</h3>
-          <p>With its colorful buildings and vibrant atmosphere, Curacao is a Caribbean gem...</p>
-          <a href="src/curacao.html" class="read-more">Read More</a>
+          <h3>Aruba</h3>
+          <a href="blogs/aruba.html" class="read-more">Read More</a>
         </div>
       </div>
-
-      <div class="blog-post-card">
-        <img src="assets/images/aruba.jpg" alt="Aruba">
+      <!-- Turks and Caicos -->
+      <div class="blog-post-card" data-title="Turks and Caicos">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/assets/images/turks-and-caicos.jpg?v=1741224030805" alt="Turks and Caicos">
         <div class="blog-post-content">
-          <h3>Aruba Adventures</h3>
-          <p>Known for its beautiful beaches and year-round sunshine, Aruba is a dream destination...</p>
-          <a href="src/aruba.html" class="read-more">Read More</a>
-        </div>
-      </div>
-
-      <div class="blog-post-card">
-        <img src="assets/images/turks-and-caicos.jpg" alt="Turks and Caicos">
-        <div class="blog-post-content">
-          <h3>Turks and Caicos Paradise</h3>
-          <p>Experience the luxury and tranquility of the Turks and Caicos Islands...</p>
-          <a href="src/turks-and-caicos.html" class="read-more">Read More</a>
+          <h3>Turks and Caicos</h3>
+          <a href="blogs/turks-and-caicos.html" class="read-more">Read More</a>
         </div>
       </div>
     </div>
+
+    <!-- ===== Mexico ===== -->
+    <h2 class="category-title">Mexico</h2>
+    <div class="blog-posts-grid">
+      <!-- Cancun -->
+      <div class="blog-post-card" data-title="Cancun">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/cancun.jpg?v=1744697577473" alt="Cancun">
+        <div class="blog-post-content">
+          <h3>Cancun</h3>
+          <a href="blogs/cancun.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Riviera Maya -->
+      <div class="blog-post-card" data-title="Riviera Maya">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/riviera.jpg?v=1744697737551" alt="Riviera Maya">
+        <div class="blog-post-content">
+          <h3>Riviera Maya</h3>
+          <a href="blogs/riviera-maya.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Yucatan Peninsula -->
+      <div class="blog-post-card" data-title="Yucatan Peninsula">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/yucatanP.jpg?v=1744757283887" alt="Yucatan Peninsula">
+        <div class="blog-post-content">
+          <h3>Yucatan Peninsula</h3>
+          <a href="blogs/yucatan-peninsula.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Puerto Vallarta -->
+      <div class="blog-post-card" data-title="Puerto Vallarta">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/puerto.jpeg?v=1744697861733" alt="Puerto Vallarta">
+        <div class="blog-post-content">
+          <h3>Puerto Vallarta</h3>
+          <a href="blogs/puerto-vallarta.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Cabo San Lucas -->
+      <div class="blog-post-card" data-title="Cabo San Lucas">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/cabo.webp?v=1744697947911" alt="Cabo San Lucas">
+        <div class="blog-post-content">
+          <h3>Cabo San Lucas</h3>
+          <a href="blogs/cabo-san-lucas.html" class="read-more">Read More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Hawaii ===== -->
+    <h2 class="category-title">Hawaii</h2>
+    <div class="blog-posts-grid">
+      <!-- Oahu -->
+      <div class="blog-post-card" data-title="Oahu">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/oahu.jpg?v=1744698032825" alt="Oahu">
+        <div class="blog-post-content">
+          <h3>Oahu</h3>
+          <a href="blogs/oahu.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Maui -->
+      <div class="blog-post-card" data-title="Maui">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/maui.jpg?v=1744698093799" alt="Maui">
+        <div class="blog-post-content">
+          <h3>Maui</h3>
+          <a href="blogs/maui.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Kauai -->
+      <div class="blog-post-card" data-title="Kauai">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/kauai.webp?v=1744698164312" alt="Kauai">
+        <div class="blog-post-content">
+          <h3>Kauai</h3>
+          <a href="blogs/kauai.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Big Island -->
+      <div class="blog-post-card" data-title="Big Island">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/big.jpg?v=1744698225071" alt="Big Island">
+        <div class="blog-post-content">
+          <h3>Big Island</h3>
+          <a href="blogs/big-island.html" class="read-more">Read More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Latin America ===== -->
+    <h2 class="category-title">Latin America</h2>
+    <div class="blog-posts-grid">
+      <!-- Belize -->
+      <div class="blog-post-card" data-title="Belize">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/belize.jpg?v=1744698301848" alt="Belize">
+        <div class="blog-post-content">
+          <h3>Belize</h3>
+          <a href="blogs/belize.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Costa Rica (Latin America repeat) -->
+      <div class="blog-post-card" data-title="Costa Rica">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/costa.jpg?v=1744698373965" alt="Costa Rica">
+        <div class="blog-post-content">
+          <h3>Costa Rica</h3>
+          <a href="blogs/costa-rica.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Panama -->
+      <div class="blog-post-card" data-title="Panama">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/panama.webp?v=1744698430213" alt="Panama">
+        <div class="blog-post-content">
+          <h3>Panama</h3>
+          <a href="blogs/panama.html" class="read-more">Read More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== United Kingdom ===== -->
+    <h2 class="category-title">United Kingdom</h2>
+    <div class="blog-posts-grid">
+      <!-- England -->
+      <div class="blog-post-card" data-title="England">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/england.jpg?v=1744698490872" alt="England">
+        <div class="blog-post-content">
+          <h3>England</h3>
+          <a href="blogs/england.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Ireland -->
+      <div class="blog-post-card" data-title="Ireland">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/ireland.jpg?v=1744698558406" alt="Ireland">
+        <div class="blog-post-content">
+          <h3>Ireland</h3>
+          <a href="blogs/ireland.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Scotland -->
+      <div class="blog-post-card" data-title="Scotland">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/scotland.jpg?v=1744698619556" alt="Scotland">
+        <div class="blog-post-content">
+          <h3>Scotland</h3>
+          <a href="blogs/scotland.html" class="read-more">Read More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Florida ===== -->
+    <h2 class="category-title">Florida</h2>
+    <div class="blog-posts-grid">
+      <!-- Florida Keys -->
+      <div class="blog-post-card" data-title="Florida Keys">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/florida-keys.jpg?v=1744696717053" alt="Florida Keys">
+        <div class="blog-post-content">
+          <h3>Florida Keys</h3>
+          <a href="blogs/florida-keys.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Tampa Bay Area -->
+      <div class="blog-post-card" data-title="Tampa Bay Area">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/tampa-bay-area.jpg?v=1744696579762" alt="Tampa Bay Area">
+        <div class="blog-post-content">
+          <h3>Tampa Bay Area</h3>
+          <a href="blogs/tampa-bay-area.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Destin -->
+      <div class="blog-post-card" data-title="Destin">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/destin.jpg?v=1744696799874" alt="Destin">
+        <div class="blog-post-content">
+          <h3>Destin</h3>
+          <a href="blogs/destin.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Daytona -->
+      <div class="blog-post-card" data-title="Daytona">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/daytona.jpg?v=1744696899735" alt="Daytona">
+        <div class="blog-post-content">
+          <h3>Daytona</h3>
+          <a href="blogs/daytona-beach.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Orlando -->
+      <div class="blog-post-card" data-title="Orlando">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/orlando.png?v=1744696990828" alt="Orlando">
+        <div class="blog-post-content">
+          <h3>Orlando</h3>
+          <a href="blogs/orlando.html" class="read-more">Read More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Greece ===== -->
+    <h2 class="category-title">Greece</h2>
+    <div class="blog-posts-grid">
+      <!-- Santorini -->
+      <div class="blog-post-card" data-title="Santorini">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/santorini.avif?v=1744697110096" alt="Santorini">
+        <div class="blog-post-content">
+          <h3>Santorini</h3>
+          <a href="blogs/santorini.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Mykonos -->
+      <div class="blog-post-card" data-title="Mykonos">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/mykonos.webp?v=1744697157832" alt="Mykonos">
+        <div class="blog-post-content">
+          <h3>Mykonos</h3>
+          <a href="blogs/mykonos.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Athens -->
+      <div class="blog-post-card" data-title="Athens">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/athens.webp?v=1744697209637" alt="Athens">
+        <div class="blog-post-content">
+          <h3>Athens</h3>
+          <a href="blogs/athens.html" class="read-more">Read More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Italy ===== -->
+    <h2 class="category-title">Italy</h2>
+    <div class="blog-posts-grid">
+      <!-- Amalfi Coast -->
+      <div class="blog-post-card" data-title="Amalfi Coast">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/amalfi.webp?v=1744697321058" alt="Amalfi Coast">
+        <div class="blog-post-content">
+          <h3>Amalfi Coast</h3>
+          <a href="blogs/amalfi-coast.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Venice -->
+      <div class="blog-post-card" data-title="Venice">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/venice.webp?v=1744697384985" alt="Venice">
+        <div class="blog-post-content">
+          <h3>Venice</h3>
+          <a href="blogs/venice.html" class="read-more">Read More</a>
+        </div>
+      </div>
+      <!-- Tuscany -->
+      <div class="blog-post-card" data-title="Tuscany">
+        <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/tuscany.jpg?v=1744697448235" alt="Tuscany">
+        <div class="blog-post-content">
+          <h3>Tuscany</h3>
+          <a href="blogs/tuscany.html" class="read-more">Read More</a>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- Interactive Map Section -->
@@ -102,18 +656,18 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2024 The Robert's Group</p>
+    <p>&copy; 2025 ParadisePortfolios</p>
     <ul>
       <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="terms.html">Terms and Conditions</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
     </ul>
   </footer>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/navbar.js"></script>
 
   <!-- Simple search functionality -->
   <script>
@@ -123,15 +677,89 @@
 
       blogPosts.forEach(post => {
         const title = post.querySelector('h3') ? post.querySelector('h3').textContent.toLowerCase() : '';
-        const snippet = post.querySelector('p') ? post.querySelector('p').textContent.toLowerCase() : '';
+        const dataTitle = post.getAttribute('data-title') ? post.getAttribute('data-title').toLowerCase() : '';
 
-        if (title.includes(input) || snippet.includes(input)) {
+        if (title.includes(input) || dataTitle.includes(input)) {
           post.style.display = '';
         } else {
           post.style.display = 'none';
         }
       });
     }
+
+    // Typing animation for search bar
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchBar = document.getElementById('searchBar');
+      const phrases = [
+        'Oahu',
+        'Costa Rica',
+        'Orlando',
+        'Venice',
+        'Bahamas',
+        'Puerto Vallarta',
+        'Cancun',
+        'Santorini',
+        'Aruba',
+        'Ireland'
+      ];
+
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let typingSpeed = 100;
+      let pauseEnd = 2000; // Pause at the end of phrase
+      let pauseEmpty = 500; // Pause when input is empty
+
+      function typeText() {
+        const currentPhrase = phrases[phraseIndex];
+
+        if (isDeleting) {
+          searchBar.placeholder = currentPhrase.substring(0, charIndex - 1);
+          charIndex--;
+          typingSpeed = 50;
+        } else {
+          searchBar.placeholder = currentPhrase.substring(0, charIndex + 1);
+          charIndex++;
+          typingSpeed = 100;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+          isDeleting = true;
+          typingSpeed = pauseEnd;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          typingSpeed = pauseEmpty;
+        }
+
+        setTimeout(typeText, typingSpeed);
+      }
+
+      setTimeout(typeText, 1000);
+    });
+
+    // Initialize map
+    document.addEventListener('DOMContentLoaded', function() {
+      const map = L.map('map').setView([20, 0], 2);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      // Add markers for select destinations (example subset)
+      const destinations = [
+        { name: 'Bahamas', coords: [25.0343, -77.3963] },
+        { name: 'Jamaica', coords: [18.1096, -77.2975] },
+        { name: 'Cancun', coords: [21.1619, -86.8515] },
+        { name: 'Santorini', coords: [36.3932, 25.4615] },
+        { name: 'Amalfi Coast', coords: [40.6333, 14.6029] }
+      ];
+
+      destinations.forEach(dest => {
+        L.marker(dest.coords).addTo(map)
+          .bindPopup(`<b>${dest.name}</b><br><a href="blogs/${dest.name.toLowerCase().replace(/ /g, '-')}.html">View guide</a>`);
+      });
+    });
   </script>
 </body>
 </html>
