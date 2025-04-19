@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploring Big Island - ParadisePortfolios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Global Typography */
+    .nav-links.active:after{
+      width:0 !important; /* don’t draw the bar */
+    }
+    .nav-links.active{
+      color:inherit !important;
+    }
+    body {
+      font-family: 'Instrument Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .dark-mode body {
+      background-color: #121212;
+      color: #f5f5f5;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+    }
+    /* Navbar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .dark-mode .navbar {
+      background-color: #1a1a1a;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      max-width: 1340px;
+      margin: 0 auto;
+      height: 70px;
+    }
+    .logo a {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: #0056b3;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .dark-mode .logo a {
+      color: #3a8bd8;
+    }
+    .navbar-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-item {
+      margin: 0 15px;
+    }
+    .nav-links {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-links:hover,
+    .nav-links.active {
+      color: #ffd700;
+    }
+    .dark-mode .nav-links {
+      color: #f5f5f5;
+    }
+    .dark-mode .nav-links:hover,
+    .dark-mode .nav-links.active {
+      color: #ffd700;
+    }
+    .nav-links.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #ffd700;
+    }
+    .contact-info {
+      display: flex;
+      align-items: center;
+    }
+    .contact-phone {
+      margin-right: 15px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .dark-mode .contact-phone {
+      color: #f5f5f5;
+    }
+    .social-icons {
+      display: flex;
+      margin-right: 15px;
+    }
+    .social-icons a {
+      margin: 0 5px;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+    .dark-mode .social-icons a {
+      color: #f5f5f5;
+    }
+    .social-icons a:hover {
+      color: #ffd700;
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease;
+    }
+    .dark-mode .theme-toggle {
+      color: #f5f5f5;
+    }
+    .theme-toggle:hover {
+      color: #ffd700;
+    }
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px 0;
+      background-color: #333;
+      transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    }
+    .dark-mode .bar {
+      background-color: #f5f5f5;
+    }
+    .mobile-only {display:none;}
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+    }
+    /* Blog Styles */
+    .blog-header {
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/big.jpg?v=1744698225071');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 150px 20px 80px;
+      margin-bottom: 40px;
+    }
+    .blog-header h1 {font-size:3rem;margin-bottom:1rem;}
+    .blog-header p {font-size:1.2rem;max-width:800px;margin:0 auto;}
+    .blog-content {
+      max-width:1340px;margin:0 auto 2rem;padding:20px;background-color:white;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,0.1);transition:background-color 0.3s ease,color 0.3s ease,box-shadow 0.3s ease;
+    }
+    .dark-mode .blog-content {background-color:#1a1a1a;color:#f5f5f5;box-shadow:0 4px 8px rgba(0,0,0,0.3);} 
+    .section-title {text-align:center;font-size:2.5rem;margin-bottom:2rem;margin-top:0;color:#0056b3;}
+    .dark-mode .section-title {color:#3a8bd8;}
+    .blog-image {width:100%;max-width:800px;height:auto;margin:1.5rem auto;display:block;border-radius:8px;}
+    .blog-post-content {padding:0 20px;text-align:justify;}
+    .activity-list,.dining-list,.tips-list,.accommodation-list,.cultural-list{padding-left:20px;}
+    .activity-list li,.dining-list li,.tips-list li,.accommodation-list li,.cultural-list li{margin-bottom:10px;}
+    /* Footer */
+    footer{background-color:#000;color:white;text-align:center;padding:20px;margin-top:40px;}
+    footer p{margin:0 0 10px;}
+    footer ul{list-style:none;padding:0;display:flex;justify-content:center;flex-wrap:wrap;}
+    footer li{margin:0 10px;}
+    footer a{color:white;text-decoration:none;}
+    footer a:hover{color:#ffd700;}
+    @media(max-width:768px){
+      .navbar-container{padding:0 15px;}
+      .logo a{font-size:20px;}
+      .navbar-links{position:fixed;top:70px;left:-100%;width:100%;height:calc(100% - 70px);background-color:white;flex-direction:column;align-items:center;padding:20px 0;transition:left 0.3s ease;z-index:1000;overflow-y:auto;}
+      .dark-mode .navbar-links{background-color:#1a1a1a;}
+      .navbar-links.active{left:0;}
+      .nav-item{margin:15px 0;}
+      .contact-info{display:none;}
+      .hamburger{display:block;z-index:1001;}
+      .hamburger.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg);} 
+      .hamburger.active .bar:nth-child(2){opacity:0;} 
+      .hamburger.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg);} 
+      .mobile-only{display:block;}
+      .blog-header h1{font-size:2.2rem;}
+      .blog-header p{font-size:1rem;}
+      .section-title{font-size:2rem;}
+      .blog-content{padding:15px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Global Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="../index.html">ParadisePortfolios</a></div>
+      <button class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="../index.html" class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="../destination.html" class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="../trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="../explore.html" class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="../blog.html" class="nav-links active">Blog</a></li>
+        <li class="nav-item"><a href="../book.html" class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="../contact-us.html" class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only"><button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+      </ul>
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="overlay" id="overlay"></div>
+  <!-- Blog Header -->
+  <header class="blog-header">
+    <h1>Exploring Big Island</h1>
+    <p>Witness fiery volcanoes, star‑filled skies, and lush valleys on the youngest Hawaiian isle</p>
+  </header>
+  <!-- Blog Content -->
+  <div class="blog-content">
+    <h2 class="section-title">Must‑Visit Destinations on the Big Island</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Hawai%CA%BBi%20Volcanoes%20National%20Park.avif?v=1744760161999" alt="Hawaiʻi Volcanoes National Park" class="blog-image">
+    <div class="blog-post-content">
+      <p>The Big Island is larger than all the other Hawaiian islands combined, offering diverse climates and adventures. Don’t miss these highlights:</p>
+      <ul class="activity-list">
+        <li><strong>Hawaiʻi Volcanoes National Park:</strong> Hike lava fields, peer into Kīlauea caldera, and (conditions permitting) view glowing lava after dark.</li>
+        <li><strong>Mauna Kea Summit & Stargazing:</strong> At 13,803 ft, it’s one of the world’s premier astronomical sites—sunset from the summit and stargazing at the Visitor Information Station are unforgettable.</li>
+        <li><strong>Kona Coffee Belt:</strong> Tour family farms along the slopes of Hualālai and sample world‑famous 100% Kona coffee.</li>
+        <li><strong>Waipiʻo Valley:</strong> Gaze over emerald cliffs and taro fields from the lookout or join a guided tour down to the black‑sand beach below.</li>
+        <li><strong>South Point & Papakōlea Green Sand Beach:</strong> Stand at the southernmost point of the USA, then trek to one of only four green‑sand beaches on Earth.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Island Flavors & Dining Experiences</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/poke%20bowl.jpg?v=1744760213697" alt="Hawaiian Poke Bowl" class="blog-image">
+    <div class="blog-post-content">
+      <p>From fresh‑caught poke to farm‑to‑table fare, the Big Island’s cuisine is a celebration of local bounty:</p>
+      <ul class="dining-list">
+        <li><strong>Poke:</strong> Grab ahi or tako (octopus) poke at Da Poke Shack in Kailua‑Kona—often ranked among the best in Hawaiʻi.</li>
+        <li><strong>Loco Moco:</strong> A hearty plate of rice, hamburger patty, fried egg, and gravy—try the classic at Cafe 100 in Hilo, birthplace of the dish.</li>
+        <li><strong>Huli‑Huli Chicken:</strong> Succulent chicken grilled over kiawe wood at roadside stands like the one near Punaluʻu Black Sand Beach on weekends.</li>
+        <li><strong>Farm‑to‑Fork:</strong> Merriman’s in Waimea pioneered Hawaiʻi Regional Cuisine, spotlighting island‑grown produce and ranch meats.</li>
+        <li><strong>Kona Brewing Co.:</strong> Sip Liquid Aloha at the original brewery pub paired with island‑inspired pizzas.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Travel Tips for the Big Island</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/map%20big.png?v=1744760265106" alt="Travel Tips Big Island" class="blog-image">
+    <div class="blog-post-content">
+      <p>Navigate the island’s vastness and microclimates with these savvy suggestions:</p>
+      <ul class="tips-list">
+        <li><strong>Best Time to Visit:</strong> The west (Kona) coast is sunny year‑round; whale season runs Dec–Apr; visit shoulder months Sept–Oct for fewer crowds and calm seas.</li>
+        <li><strong>Getting Around:</strong> A rental car is essential—Circle Island drives can exceed 300 miles. Four‑wheel drive recommended for Mauna Kea summit.</li>
+        <li><strong>Microclimates:</strong> Pack layers—temperatures can swing from tropical beaches to near‑freezing atop Mauna Kea in one day.</li>
+        <li><strong>Respecting Pele:</strong> Stay on marked trails and never take lava rocks home; it’s illegal and culturally disrespectful.</li>
+        <li><strong>Reef‑Safe Sunscreen:</strong> Hawaiʻi bans sunscreens with oxybenzone & octinoxate—choose mineral‑based formulas to protect coral reefs.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Accommodation Options</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Places%20to%20Stay%20Big%20Island.jpg?v=1744760311850" alt="Places to Stay Big Island" class="blog-image">
+    <div class="blog-post-content">
+      <p>Whether you crave resort luxury or off‑grid serenity, the Big Island has you covered:</p>
+      <ul class="accommodation-list">
+        <li><strong>Kohala Coast Resorts:</strong> Bask in year‑round sunshine at the Fairmont Orchid, Mauna Lani, or the legendary Mauna Kea Beach Hotel.</li>
+        <li><strong>Boutique B&Bs:</strong> Volcano Village offers cozy rainforest cottages minutes from the park entrance.</li>
+        <li><strong>Eco‑Lodges:</strong> Experience sustainable living at Hoʻokena Beach or Puakea Ranch with solar power and farm animals.</li>
+        <li><strong>Vacation Rentals:</strong> Oceanfront condos in Kailua‑Kona or cliffside homes near Hilo provide space for families and groups.</li>
+        <li><strong>Camping & Cabins:</strong> Reserve Nāmakanipaio cabins inside the national park for a night under starry skies.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Cultural Experiences & Events</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Merrie%20Monarch%20Festival%20Hilo.webp?v=1744760362550" alt="Merrie Monarch Festival Hilo" class="blog-image">
+    <div class="blog-post-content">
+      <p>Connect with Native Hawaiian traditions and island celebrations:</p>
+      <ul class="cultural-list">
+        <li><strong>Merrie Monarch Festival (Easter week):</strong> The world’s premier hula competition transforms Hilo into a cultural epicenter.</li>
+        <li><strong>Kona Coffee Cultural Festival (Nov):</strong> Parades, farm tours, and cupping contests honor 200 years of coffee heritage.</li>
+        <li><strong>Ironman World Championship (Oct):</strong> Cheer elite triathletes as they swim, bike, and run through Kailua‑Kona’s heat and wind.</li>
+        <li><strong>First Friday Hilo & Kailua Village Strolls:</strong> Monthly street fairs showcase local artisans, live music, and ʻono (delicious) eats.</li>
+        <li><strong>Lava Boat & Night Manta Ray Tours:</strong> When lava meets ocean (eruption dependent) or glide with gentle giants off Kona coast after sunset.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Footer -->
+
+  <!-- ---------- CTA ---------- -->
+  <a href="https://www.sandals.com/?referral=138577" target="_blank" class="cta-button">Plan Your Adventure Now!</a>
+
+  <footer>
+    <p>&copy; 2024 The Robert's Group</p>
+    <ul>
+      <li><a href="../about.html">About Us</a></li>
+      <li><a href="../contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
+    </ul>
+  </footer>
+  <script src="../assets/js/navbar.js"></script>
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploring Aruba - ParadisePortfolios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Global Typography */
+    .nav-links.active:after{
+    width:0 !important;          /* don’t draw the bar */
+    }
+  /* keep the text colour the same as the other, inactive tabs */
+    .nav-links.active{
+    color:inherit !important;
+    }
+    body {
+      font-family: 'Instrument Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .dark-mode body {
+      background-color: #121212;
+      color: #f5f5f5;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .dark-mode .navbar {
+      background-color: #1a1a1a;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      max-width: 1340px;
+      margin: 0 auto;
+      height: 70px;
+    }
+    
+    .logo a {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: #0056b3;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .dark-mode .logo a {
+      color: #3a8bd8;
+    }
+    
+    .navbar-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-item {
+      margin: 0 15px;
+    }
+    
+    .nav-links {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links:hover,
+    .nav-links.active {
+      color: #ffd700;
+    }
+    
+    .dark-mode .nav-links {
+      color: #f5f5f5;
+    }
+    
+    .dark-mode .nav-links:hover,
+    .dark-mode .nav-links.active {
+      color: #ffd700;
+    }
+    
+    .nav-links.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #ffd700;
+    }
+    
+    .contact-info {
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-phone {
+      margin-right: 15px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .dark-mode .contact-phone {
+      color: #f5f5f5;
+    }
+    
+    .social-icons {
+      display: flex;
+      margin-right: 15px;
+    }
+    
+    .social-icons a {
+      margin: 0 5px;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+    
+    .dark-mode .social-icons a {
+      color: #f5f5f5;
+    }
+    
+    .social-icons a:hover {
+      color: #ffd700;
+    }
+    
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease;
+    }
+    
+    .dark-mode .theme-toggle {
+      color: #f5f5f5;
+    }
+    
+    .theme-toggle:hover {
+      color: #ffd700;
+    }
+    
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+    
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px 0;
+      background-color: #333;
+      transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .dark-mode .bar {
+      background-color: #f5f5f5;
+    }
+    
+    .mobile-only {
+      display: none;
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+    }
+    
+    /* Blog Styles */
+    .blog-header {
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/assets%2Fimages%2Faruba.jpg?v=1741224513287');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 150px 20px 80px;
+      margin-bottom: 40px;
+    }
+    
+    .blog-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .blog-header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .blog-content {
+      max-width: 1340px;
+      margin: 0 auto 2rem;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .dark-mode .blog-content {
+      background-color: #1a1a1a;
+      color: #f5f5f5;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      margin-top: 0;
+      color: #0056b3;
+    }
+    
+    .dark-mode .section-title {
+      color: #3a8bd8;
+    }
+    
+    .blog-image {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      margin: 1.5rem auto;
+      display: block;
+      border-radius: 8px;
+    }
+    
+    .blog-post-content {
+      padding: 0 20px;
+      text-align: justify;
+    }
+    
+    .activity-list,
+    .dining-list,
+    .tips-list,
+    .accommodation-list,
+    .cultural-list {
+      padding-left: 20px;
+    }
+    
+    .activity-list li,
+    .dining-list li,
+    .tips-list li,
+    .accommodation-list li,
+    .cultural-list li {
+      margin-bottom: 10px;
+    }
+    
+    /* Footer Styles */
+    footer {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    
+    footer p {
+      margin: 0 0 10px;
+    }
+    
+    footer ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    footer li {
+      margin: 0 10px;
+    }
+    
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    footer a:hover {
+      color: #ffd700;
+    }
+    
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      .navbar-container {
+        padding: 0 15px;
+      }
+      
+      .logo a {
+        font-size: 20px;
+      }
+      
+      .navbar-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100% - 70px);
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+      
+      .dark-mode .navbar-links {
+        background-color: #1a1a1a;
+      }
+      
+      .navbar-links.active {
+        left: 0;
+      }
+      
+      .nav-item {
+        margin: 15px 0;
+      }
+      
+      .contact-info {
+        display: none;
+      }
+      
+      .hamburger {
+        display: block;
+        z-index: 1001;
+      }
+      
+      .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+      
+      .mobile-only {
+        display: block;
+      }
+      
+      .blog-header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .blog-header p {
+        font-size: 1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .blog-content {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Global Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <a href="../index.html">ParadisePortfolios</a>
+      </div>
+      
+      <button class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item">
+          <a href="../index.html" class="nav-links">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="../destination.html" class="nav-links">Destinations</a>
+        </li>
+        <li class="nav-item">
+          <a href="../trip-planner.html" class="nav-links">Trip Planner</a>
+        </li>
+        <li class="nav-item">
+          <a href="../explore.html" class="nav-links">Explore</a>
+        </li>
+        <li class="nav-item">
+          <a href="../blog.html" class="nav-links active">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a href="../book.html" class="nav-links">Book</a>
+        </li>
+        <li class="nav-item">
+          <a href="../contact-us.html" class="nav-links">Contact Us</a>
+        </li>
+        <li class="nav-item mobile-only">
+          <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+      
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Blog Header -->
+  <header class="blog-header">
+    <h1>Exploring Aruba</h1>
+    <p>Discover the sun‑kissed beaches, vibrant culture, and natural wonders of Aruba</p>
+  </header>
+
+  <!-- Blog Content -->
+  <div class="blog-content">
+    <h2 class="section-title">Must-Visit Destinations in Aruba</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Flamingo%20Beach.jpg?v=1744779560166" alt="Flamingo Beach, Aruba" class="blog-image">
+    <div class="blog-post-content">
+      <p>Aruba may be a small island, but it is packed with breathtaking beaches, unique landscapes, and colorful towns. Here are some unmissable spots to add to your itinerary:</p>
+      <ul class="activity-list">
+        <li><strong>Oranjestad:</strong> Stroll the capital’s pastel‑hued Dutch‑Caribbean architecture, visit Fort Zoutman, and shop at Renaissance Mall.</li>
+        <li><strong>Eagle Beach:</strong> Consistently ranked among the world’s best beaches, its soft white sand and iconic fofoti trees create a postcard‑perfect scene.</li>
+        <li><strong>Arikok National Park:</strong> Explore desert landscapes, cacti‑studded hills, limestone caves with Arawak drawings, and the natural pool “Conchi.”</li>
+        <li><strong>Palm Beach:</strong> A two‑mile stretch lined with high‑rise resorts, lively beach bars, and calm waters ideal for paddleboarding.</li>
+        <li><strong>Baby Beach & San Nicolas:</strong> Relax in shallow turquoise water at Baby Beach, then admire vibrant street art in Aruba’s emerging cultural hub, San Nicolas.</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">Aruban Cuisine and Dining Experiences</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Aruban%20Cuisine.jpg?v=1744779616302" alt="Aruban Cuisine" class="blog-image">
+    <div class="blog-post-content">
+      <p>Aruba’s food scene blends Dutch, Caribbean, Latin, and international influences. Don’t leave without tasting these local favorites:</p>
+      <ul class="dining-list">
+        <li><strong>Keshi Yena:</strong> A savory dish of spiced meat, olives, and raisins baked inside a hollowed‑out Edam cheese rind.</li>
+        <li><strong>Pastechi:</strong> Deep‑fried pastries stuffed with cheese, chicken, or beef—Aruba’s go‑to breakfast on the run.</li>
+        <li><strong>Zeerovers:</strong> Head to this fishermen’s wharf in Savaneta for ultra‑fresh snapper and shrimp sold by weight and fried to order.</li>
+        <li><strong>Dutch Treats:</strong> Snack on bitterballen (crispy beef croquettes) or indulge in fluffy Dutch pancakes at local cafés.</li>
+        <li><strong>Food Truck Scene:</strong> After sunset, join locals lining up at trucks like <em>Kuchinate</em> or <em>Frita Dushi</em> for loaded burgers and Caribbean BBQ.</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">Travel Tips for Aruba</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/map%20aruba.jpg?v=1744779687335" alt="Travel Tips for Aruba" class="blog-image">
+    <div class="blog-post-content">
+      <p>Make the most of your One Happy Island getaway with these practical pointers:</p>
+      <ul class="tips-list">
+        <li><strong>Best Time to Visit:</strong> Aruba sits south of the hurricane belt, so it enjoys year‑round sunshine. Peak season is mid‑December–March; visit April–August for lower rates and fewer crowds.</li>
+        <li><strong>Currency:</strong> The Aruban Florin (Afl.) is official, but US dollars are accepted almost everywhere and ATMs dispense both.</li>
+        <li><strong>Languages:</strong> Papiamento and Dutch are official, while English and Spanish are widely spoken.</li>
+        <li><strong>Transportation:</strong> Renting a car offers maximum freedom; otherwise, the reliable Arubus system connects major areas for under US$3 per ride.</li>
+        <li><strong>Sun & Water Safety:</strong> The tap water is some of the purest in the world, and trade winds keep temps pleasant—just pack reef‑safe sunscreen to protect Aruba’s marine life.</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">Accommodation Options</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Places%20to%20Stay%20in%20Aruba.webp?v=1744779730091" alt="Places to Stay in Aruba" class="blog-image">
+    <div class="blog-post-content">
+      <p>From luxury resorts to eco‑friendly retreats, Aruba has lodging for every style and budget:</p>
+      <ul class="accommodation-list">
+        <li><strong>Beachfront Resorts:</strong> High‑rise hotels on Palm Beach like the Hilton and Hyatt Regency offer full amenities steps from the sand.</li>
+        <li><strong>All‑Inclusive Escapes:</strong> Relax knowing meals and activities are covered at properties such as Barcelo Aruba or Divi Aruba.</li>
+        <li><strong>Boutique Gems:</strong> Stay at chic spots like Boardwalk Boutique Hotel or Wonders Boutique for a more intimate vibe.</li>
+        <li><strong>Vacation Rentals:</strong> Opt for condos or villas—great for families or longer stays—particularly around Eagle Beach and Malmok.</li>
+        <li><strong>Eco‑Lodges:</strong> Experience Aruba’s rugged side at sustainable hideaways near Arikok, featuring solar power and rainwater systems.</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">Cultural Experiences & Events</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Carnival%20in%20Aruba.jpeg?v=1744779798682" alt="Carnival in Aruba" class="blog-image">
+    <div class="blog-post-content">
+      <p>Immerse yourself in Aruba’s lively culture through these annual festivities and local traditions:</p>
+      <ul class="cultural-list">
+        <li><strong>Carnival (Jan–Feb):</strong> A six‑week explosion of parades, glittering costumes, and steel‑pan music culminating in the Grand Parade.</li>
+        <li><strong>Bon Bini Festival:</strong> Every Tuesday evening at Fort Zoutman, enjoy folkloric dance, live music, and local crafts welcoming visitors to the island.</li>
+        <li><strong>Dande Festival:</strong> Between Christmas and New Year’s, traveling musicians serenade homes with songs of goodwill for the coming year.</li>
+        <li><strong>Aruba Hi‑Winds:</strong> World‑class windsurfing and kitesurfing races harness the trade winds each June/July at Fisherman’s Huts.</li>
+        <li><strong>Soul Beach Music Festival:</strong> Memorial Day weekend brings international R&B artists, comedy shows, and beach parties to Palm Beach.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+
+  <!-- ---------- CTA ---------- -->
+  <a href="https://www.sandals.com/?referral=138577" target="_blank" class="cta-button">Plan Your Adventure Now!</a>
+
+  <footer>
+    <p>&copy; 2024 The Robert's Group</p>
+    <ul>
+      <li><a href="../about.html">About Us</a></li>
+      <li><a href="../contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
+    </ul>
+  </footer>
+
+  <script src="../assets/js/navbar.js"></script>
+</body>
+</html>

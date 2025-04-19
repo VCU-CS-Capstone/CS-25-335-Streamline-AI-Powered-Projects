@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploring Maui - ParadisePortfolios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Global Typography */
+    .nav-links.active:after{width:0!important;}
+    .nav-links.active{color:inherit!important;}
+    body{font-family:'Instrument Sans',sans-serif;margin:0;padding:0;transition:background-color .3s ease,color .3s ease;}
+    .dark-mode body{background-color:#121212;color:#f5f5f5;}
+    h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;}
+    /* Navbar */
+    .navbar{position:fixed;top:0;left:0;width:100%;background-color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000;transition:background-color .3s ease,box-shadow .3s ease;}
+    .dark-mode .navbar{background-color:#1a1a1a;box-shadow:0 2px 10px rgba(0,0,0,.3);} 
+    .navbar-container{display:flex;justify-content:space-between;align-items:center;padding:0 20px;max-width:1340px;margin:0 auto;height:70px;}
+    .logo a{font-family:'Playfair Display',serif;font-size:24px;font-weight:bold;color:#0056b3;text-decoration:none;transition:color .3s ease;}
+    .dark-mode .logo a{color:#3a8bd8;}
+    .navbar-links{display:flex;list-style:none;margin:0;padding:0;}
+    .nav-item{margin:0 15px;}
+    .nav-links{text-decoration:none;color:#333;font-weight:500;position:relative;transition:color .3s ease;}
+    .nav-links:hover,.nav-links.active{color:#ffd700;}
+    .dark-mode .nav-links{color:#f5f5f5;}
+    .dark-mode .nav-links:hover,.dark-mode .nav-links.active{color:#ffd700;}
+    .nav-links.active::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:2px;background-color:#ffd700;}
+    .contact-info{display:flex;align-items:center;}
+    .contact-phone{margin-right:15px;color:#333;text-decoration:none;font-weight:500;transition:color .3s ease;}
+    .dark-mode .contact-phone{color:#f5f5f5;}
+    .social-icons{display:flex;margin-right:15px;}
+    .social-icons a{margin:0 5px;color:#333;transition:color .3s ease;}
+    .dark-mode .social-icons a{color:#f5f5f5;}
+    .social-icons a:hover{color:#ffd700;}
+    .theme-toggle{background:none;border:none;cursor:pointer;color:#333;font-size:18px;display:flex;align-items:center;justify-content:center;transition:color .3s ease;}
+    .dark-mode .theme-toggle{color:#f5f5f5;}
+    .theme-toggle:hover{color:#ffd700;}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:10px;}
+    .bar{display:block;width:25px;height:3px;margin:5px 0;background-color:#333;transition:transform .3s ease,opacity .3s ease,background-color .3s ease;}
+    .dark-mode .bar{background-color:#f5f5f5;}
+    .mobile-only{display:none;}
+    .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);z-index:999;display:none;}
+    /* Blog */
+    .blog-header {
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/maui.jpg?v=1744698093799');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 150px 20px 80px;
+      margin-bottom: 40px;
+    }
+    .blog-content{max-width:1340px;margin:0 auto 2rem;padding:20px;background-color:#fff;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);transition:background-color .3s ease,color .3s ease,box-shadow .3s ease;}
+    .dark-mode .blog-content{background-color:#1a1a1a;color:#f5f5f5;box-shadow:0 4px 8px rgba(0,0,0,.3);} 
+    .section-title{text-align:center;font-size:2.5rem;margin-bottom:2rem;margin-top:0;color:#0056b3;}
+    .dark-mode .section-title{color:#3a8bd8;}
+    .blog-image{width:100%;max-width:800px;height:auto;margin:1.5rem auto;display:block;border-radius:8px;}
+    .blog-post-content{padding:0 20px;text-align:justify;}
+    .activity-list,.dining-list,.tips-list,.accommodation-list,.cultural-list{padding-left:20px;}
+    .activity-list li,.dining-list li,.tips-list li,.accommodation-list li,.cultural-list li{margin-bottom:10px;}
+    /* Footer */
+    footer{background-color:#000;color:#fff;text-align:center;padding:20px;margin-top:40px;}
+    footer p{margin:0 0 10px;}
+    footer ul{list-style:none;padding:0;display:flex;justify-content:center;flex-wrap:wrap;}
+    footer li{margin:0 10px;}
+    footer a{color:#fff;text-decoration:none;}
+    footer a:hover{color:#ffd700;}
+    /* Responsive */
+    @media(max-width:768px){
+      .navbar-container{padding:0 15px;}
+      .logo a{font-size:20px;}
+      .navbar-links{position:fixed;top:70px;left:-100%;width:100%;height:calc(100% - 70px);background-color:#fff;flex-direction:column;align-items:center;padding:20px 0;transition:left .3s ease;z-index:1000;overflow-y:auto;}
+      .dark-mode .navbar-links{background-color:#1a1a1a;}
+      .navbar-links.active{left:0;}
+      .nav-item{margin:15px 0;}
+      .contact-info{display:none;}
+      .hamburger{display:block;z-index:1001;}
+      .hamburger.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg);} 
+      .hamburger.active .bar:nth-child(2){opacity:0;} 
+      .hamburger.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg);} 
+      .mobile-only{display:block;}
+      .blog-header h1{font-size:2.2rem;}
+      .blog-header p{font-size:1rem;}
+      .section-title{font-size:2rem;}
+      .blog-content{padding:15px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="../index.html">ParadisePortfolios</a></div>
+      <button class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="../index.html" class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="../destination.html" class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="../trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="../explore.html" class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="../blog.html" class="nav-links active">Blog</a></li>
+        <li class="nav-item"><a href="../book.html" class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="../contact-us.html" class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only"><button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+      </ul>
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="overlay" id="overlay"></div>
+  <!-- Header -->
+  <header class="blog-header">
+    <h1>Exploring Maui</h1>
+    <p>Surf legendary beaches, chase waterfalls on the Road to Hāna, and watch sunrise above the clouds on the Valley Isle</p>
+  </header>
+  <!-- Content -->
+  <div class="blog-content">
+    <h2 class="section-title">Must‑Visit Destinations in Maui</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Haleakal%C4%81%20Crater%20at%20sunrise.jpg?v=1744759387795" alt="Haleakalā Crater at sunrise" class="blog-image">
+    <div class="blog-post-content">
+      <p>Maui blends dramatic volcanic peaks, lush rainforests, and world‑class beaches. Add these spots to your Valley Isle itinerary:</p>
+      <ul class="activity-list">
+        <li><strong>Haleakalā National Park:</strong> Reserve a permit to witness sunrise from 10,023 ft, then hike into the Mars‑like crater or explore the Kipahulu coastal district.</li>
+        <li><strong>Road to Hāna:</strong> Navigate 600+ curves and 50+ one‑lane bridges to discover waterfalls, black‑sand Waiʻānapanapa Beach, and bamboo forests.</li>
+        <li><strong>Kāʻanapali & Lāhainā:</strong> Snorkel at Puʻu Kekaʻa (Black Rock) and stroll historic Front Street—mindful of 2023 wildfire recovery efforts.</li>
+        <li><strong>ʻĪao Valley State Monument:</strong> View the verdant ʻĪao Needle and learn about the 1790 Battle of Kepaniwai in this sacred valley.</li>
+        <li><strong>Molokini Crater:</strong> Take a morning boat to this crescent‑shaped marine reserve for 150‑ft visibility snorkeling with reef sharks and rays.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Maui Cuisine & Dining Experiences</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Shave%20ice%20in%20Maui.jpg?v=1744759444000" alt="Shave ice in Maui" class="blog-image">
+    <div class="blog-post-content">
+      <p>Farm‑fresh and ocean‑to‑table define Maui’s food scene. Sample these island favorites:</p>
+      <ul class="dining-list">
+        <li><strong>Ululani’s Shave Ice:</strong> Ultra‑fine ice drizzled with house‑made syrups—opt for li hing mui and coconut cream cap.</li>
+        <li><strong>Mama’s Fish House:</strong> Iconic Paia restaurant posting the name of the fisherman and catch date on every menu item.</li>
+        <li><strong>O’o Farm Brunch Tour:</strong> Harvest your own greens in Upcountry Kula before a wood‑fired feast overlooking Central Maui.</li>
+        <li><strong>Malasadas at T. Komoda Store:</strong> Since 1916, this Makawao bakery has served fluffy Portuguese doughnuts and stick doughnuts.</li>
+        <li><strong>Kihei Food Trucks:</strong> Hit South Maui Gardens for garlic shrimp plates, poke bowls, and vegan tacos under twinkling lights.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Travel Tips for Maui</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/maui%20map.png?v=1744759514534" alt="Travel tips Maui" class="blog-image">
+    <div class="blog-post-content">
+      <p>Make your Maui adventure seamless with these insights:</p>
+      <ul class="tips-list">
+        <li><strong>Best Time to Visit:</strong> April–May and Sept–Nov balance pleasant weather and lighter crowds; humpback whales visit Dec–Apr.</li>
+        <li><strong>Car Rental:</strong> Essential for exploring beyond resort areas—book early, especially holidays.</li>
+        <li><strong>Reservations:</strong> Sunrise at Haleakalā, Waiʻānapanapa State Park, and some popular restaurants require advance bookings.</li>
+        <li><strong>Reef‑Safe Sunscreen:</strong> Hawaiʻi law bans certain chemicals—choose mineral SPF and avoid stepping on coral.</li>
+        <li><strong>Respect ʻĀina & Culture:</strong> Heed no‑trespassing signs, pack out trash, and learn a few Hawaiian words like mahalo (thank you).</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Accommodation Options</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Resort%20in%20Wailea%2C%20Maui.jpg?v=1744759585684" alt="Resort in Wailea, Maui" class="blog-image">
+    <div class="blog-post-content">
+      <p>Maui lodging ranges from luxe resorts to rustic cabins:</p>
+      <ul class="accommodation-list">
+        <li><strong>Wailea Resorts:</strong> Treat yourself at Four Seasons, Andaz, or Grand Wailea with championship golf and sunset infinity pools.</li>
+        <li><strong>West Maui Hotels:</strong> Kāʻanapali Beach Hotel and Hyatt Regency offer family‑friendly vibes near snorkeling and shopping.</li>
+        <li><strong>Boutique Inns:</strong> Paia Inn steps from surf town cafés, or Hotel Wailea—Hawaiʻi’s only Relais & Châteaux property—for adults‑only serenity.</li>
+        <li><strong>Hāna Hideaways:</strong> Slow down at Hāna‑Maui Resort or oceanfront vacation rentals amid East Maui’s rainforests.</li>
+        <li><strong>Cabins & Camping:</strong> Reserve wilderness cabins in Haleakalā crater or camp at Hosmer Grove under star‑studded skies.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Cultural Experiences & Events</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Luau.jpg?v=1744759628409" alt="Luau in Maui" class="blog-image">
+    <div class="blog-post-content">
+      <p>Immerse yourself in Maui’s vibrant traditions and annual gatherings:</p>
+      <ul class="cultural-list">
+        <li><strong>Maui Whale Festival (Feb):</strong> Celebrate humpback conservation with parades, oceanfront concerts, and educational talks in Kihei.</li>
+        <li><strong>Maui Film Festival (June):</strong> Stargaze on the Celestial Cinema lawn in Wailea while watching indie premieres.</li>
+        <li><strong>Friday Town Parties:</strong> Rotating monthly block parties (Wailuku, Makawao, Lahaina*, Kihei) spotlight local artisans and live music (*returning post‑recovery).</li>
+        <li><strong>Feast at Lele or Old Lāhainā Lūʻau:</strong> Savor imu‑roasted kālua pig and Polynesian dances at Maui’s most authentic lūʻaus.</li>
+        <li><strong>Maui ʻUkulele Festival (Oct):</strong> Free concerts at the Maui Arts & Cultural Center showcase Hawaii’s beloved instrument.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Footer -->
+
+  <!-- ---------- CTA ---------- -->
+  <a href="https://www.sandals.com/?referral=138577" target="_blank" class="cta-button">Plan Your Adventure Now!</a>
+
+  <footer>
+    <p>&copy; 2024 The Robert's Group</p>
+    <ul>
+      <li><a href="../about.html">About Us</a></li>
+      <li><a href="../contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
+    </ul>
+  </footer>
+  <script src="../assets/js/navbar.js"></script>
+</body>
+</html>

@@ -3,203 +3,240 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dominican Republic Getaway - Travel Blog</title>
+  <title>Dominican Republic - ParadisePortfolios</title>
+
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
   <style>
-    /* General Styling */
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      background-color: #f8f9fa;
-      color: #333;
-    }
-    h1, h2 {
-      font-family: 'Playfair Display', serif;
-      color: #0056b3;
-    }
+    /* ---------- Global Typography ---------- */
+    .nav-links.active:after{width:0!important;}
+    .nav-links.active{color:inherit!important;}
 
-    /* Navigation Styling */
-    nav {
-      background-color: #333;
-      padding: 1rem;
-      text-align: center;
+    body{
+      font-family:'Instrument Sans',sans-serif;
+      margin:0;padding:0;
+      transition:background-color .3s ease,color .3s ease;
     }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    nav ul li a {
-      color: #f8f9fa;
-      text-decoration: none;
-      font-weight: 500;
-    }
+    .dark-mode body{background:#121212;color:#f5f5f5;}
+    h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;}
 
-    /* Header Styling */
-    .blog-header {
-      position: relative;
-      text-align: center;
-      color: white;
-    }
-    .blog-header img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      filter: brightness(0.7);
-    }
-    .blog-header h1 {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 2.5em;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 10px 20px;
-      border-radius: 5px;
-    }
+    /* ---------- Navbar ---------- */
+    .navbar{position:fixed;top:0;left:0;width:100%;background:#fff;
+      box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000;
+      transition:background-color .3s ease,box-shadow .3s ease;}
+    .dark-mode .navbar{background:#1a1a1a;box-shadow:0 2px 10px rgba(0,0,0,.3);}  
+    .navbar-container{display:flex;justify-content:space-between;align-items:center;
+      padding:0 20px;max-width:1340px;margin:0 auto;height:70px;}
+    .logo a{font-family:'Playfair Display',serif;font-size:24px;font-weight:bold;
+      color:#0056b3;text-decoration:none;transition:color .3s ease;}
+    .dark-mode .logo a{color:#3a8bd8;}
 
-    /* Main Content Styling */
-    .blog-content {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 20px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .section h2 {
-      font-size: 1.8em;
-      margin-bottom: 0.5rem;
-      border-bottom: 2px solid #0056b3;
-      padding-bottom: 5px;
-    }
-    .section img {
-      width: 100%;
-      height: auto;
-      margin: 15px 0;
-      border-radius: 8px;
-    }
-    .cta-button {
-      display: block;
-      width: fit-content;
-      margin: 20px auto;
-      padding: 12px 24px;
-      font-size: 1em;
-      background-color: #0056b3;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      text-align: center;
-      transition: background-color 0.3s ease;
-    }
-    .cta-button:hover {
-      background-color: #004080;
-    }
+    .navbar-links{display:flex;list-style:none;margin:0;padding:0;}
+    .nav-item{margin:0 15px;}
+    .nav-links{text-decoration:none;color:#333;font-weight:500;position:relative;transition:color .3s ease;}
+    .nav-links:hover,.nav-links.active{color:#ffd700;}
+    .dark-mode .nav-links{color:#f5f5f5;}
+    .dark-mode .nav-links:hover,.dark-mode .nav-links.active{color:#ffd700;}
+    .nav-links.active::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:2px;background:#ffd700;}
 
-    /* Footer Styling */
-    footer {
-      background-color: #333;
-      color: #f8f9fa;
-      padding: 1.5rem;
-      text-align: center;
-      margin-top: 2rem;
+    .contact-info{display:flex;align-items:center;}
+    .contact-phone{margin-right:15px;color:#333;text-decoration:none;font-weight:500;transition:color .3s ease;}
+    .dark-mode .contact-phone{color:#f5f5f5;}
+
+    .social-icons{display:flex;margin-right:15px;}
+    .social-icons a{margin:0 5px;color:#333;transition:color .3s ease;}
+    .dark-mode .social-icons a{color:#f5f5f5;}
+    .social-icons a:hover{color:#ffd700;}
+
+    .theme-toggle{background:none;border:none;cursor:pointer;color:#333;font-size:18px;
+      display:flex;align-items:center;justify-content:center;transition:color .3s ease;}
+    .dark-mode .theme-toggle{color:#f5f5f5;}
+    .theme-toggle:hover{color:#ffd700;}
+
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:10px;}
+    .bar{display:block;width:25px;height:3px;margin:5px 0;background:#333;transition:transform .3s ease,opacity .3s ease,background-color .3s ease;}
+    .dark-mode .bar{background:#f5f5f5;}
+    .mobile-only{display:none;}
+
+    .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:999;display:none;}
+
+    /* ---------- Blog Header ---------- */
+    .blog-header{
+      text-align:center;
+      background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+        url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/assets/images/dominican-republic.jpg?v=1741223988007');
+      background-size:cover;background-position:center;
+      color:#fff;padding:150px 20px 80px;margin-bottom:40px;
     }
-    footer ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    footer ul li a {
-      color: #f8f9fa;
-      text-decoration: none;
+    .blog-header h1{font-size:3rem;margin-bottom:1rem;}
+    .blog-header p{font-size:1.2rem;max-width:800px;margin:0 auto;}
+
+    /* ---------- Blog Content ---------- */
+    .blog-content{max-width:1340px;margin:0 auto 2rem;padding:20px;background:#fff;
+      border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);
+      transition:background-color .3s ease,color .3s ease,box-shadow .3s ease;}
+    .dark-mode .blog-content{background:#1a1a1a;color:#f5f5f5;box-shadow:0 4px 8px rgba(0,0,0,.3);}  
+
+    .section-title{text-align:center;font-size:2.5rem;margin:0 0 2rem;color:#0056b3;}
+    .dark-mode .section-title{color:#3a8bd8;}
+
+    .blog-image{width:100%;max-width:800px;height:auto;margin:1.5rem auto;display:block;border-radius:8px;}
+
+    .blog-post-content{padding:0 20px;text-align:justify;}
+
+    .activity-list,.dining-list,.tips-list,.accommodation-list,.cultural-list{padding-left:20px;}
+    .activity-list li,.dining-list li,.tips-list li,.accommodation-list li,.cultural-list li{margin-bottom:10px;}
+
+    /* ---------- Footer ---------- */
+    footer{background:#000;color:#fff;text-align:center;padding:20px;margin-top:40px;}
+    footer p{margin:0 0 10px;}
+    footer ul{list-style:none;padding:0;display:flex;justify-content:center;flex-wrap:wrap;}
+    footer li{margin:0 10px;}
+    footer a{color:#fff;text-decoration:none;}
+    footer a:hover{color:#ffd700;}
+
+    /* ---------- Mobile ---------- */
+    @media(max-width:768px){
+      .navbar-container{padding:0 15px;}
+      .logo a{font-size:20px;}
+
+      .navbar-links{position:fixed;top:70px;left:-100%;width:100%;height:calc(100% - 70px);
+        background:#fff;flex-direction:column;align-items:center;padding:20px 0;
+        transition:left .3s ease;z-index:1000;overflow-y:auto;}
+      .dark-mode .navbar-links{background:#1a1a1a;}
+      .navbar-links.active{left:0;}
+
+      .nav-item{margin:15px 0;}
+      .contact-info{display:none;}
+      .hamburger{display:block;z-index:1001;}
+      .hamburger.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg);}  
+      .hamburger.active .bar:nth-child(2){opacity:0;}
+      .hamburger.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg);}  
+      .mobile-only{display:block;}
+
+      .blog-header h1{font-size:2.2rem;}
+      .blog-header p{font-size:1rem;}
+      .section-title{font-size:2rem;}
+      .blog-content{padding:15px;}
     }
   </style>
 </head>
+
 <body>
+  <!-- ---------- Navbar ---------- -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="../index.html">ParadisePortfolios</a></div>
 
-  <!-- Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="destination.html">Destinations</a></li>
-      <li><a href="trip-planner.html">Trip Planner</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="community.html">Community</a></li>
-    </ul>
+      <button class="hamburger" id="hamburger">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="../index.html"        class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="../destination.html"  class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="../trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="../explore.html"      class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="../blog.html"         class="nav-links active">Blog</a></li>
+        <li class="nav-item"><a href="../book.html"         class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="../contact-us.html"   class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only"><button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+      </ul>
+
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
   </nav>
+  <div class="overlay" id="overlay"></div>
 
-  <!-- Blog Header -->
+  <!-- ---------- Header ---------- -->
   <header class="blog-header">
-    <img src="../assets/images/dominican-republic.jpg" alt="Dominican Republic">
-    <h1>Dominican Republic Getaway</h1>
+    <h1>Discovering the Dominican Republic</h1>
+    <p>Discover the perfect blend of adventure, relaxation, and rich culture</p>
   </header>
 
-  <!-- Blog Content Section -->
-  <main class="blog-content">
-    <section class="section">
-      <h2>Top Attractions in the Dominican Republic</h2>
-      <img src="../assets/images/dominican-activities.jpg" alt="Dominican Republic Activities">
-      <p>The Dominican Republic is a treasure trove of natural beauty and exciting activities. Here are top must-dos.</p>
-      <ul>
-        <li><strong>Punta Cana Beaches:</strong> Relax on pristine beaches and enjoy crystal-clear waters at this popular tourist spot.</li>
-        <li><strong>Altos de Chavón:</strong> Explore this replica of a 16th-century Mediterranean village perched above the Chavón River.</li>
-        <li><strong>Santo Domingo Colonial Zone:</strong> Discover the rich history of the nation's capital with colonial-era architecture and cultural landmarks.</li>
-        <li><strong>Divers Paradise at Bayahibe:</strong> Experience world-class diving and snorkeling in vibrant coral reefs.</li>
+  <!-- ---------- Blog Content ---------- -->
+  <div class="blog-content">
+    <h2 class="section-title">Top Activities in the Dominican Republic</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Dominican%20Republic%20Activities.jpg?v=1744779943971" alt="Dominican Republic Activities" class="blog-image">
+    <div class="blog-post-content">
+      <p>The Dominican Republic offers an incredible variety of activities for travelers of all interests, from beach relaxation to thrilling adventures and cultural immersion.</p>
+      <ul class="activity-list">
+        <li><strong>Visit Saona Island</strong> – Take a catamaran excursion to this stunning protected nature reserve with pristine beaches and crystal‑clear waters.</li>
+        <li><strong>Explore Santo Domingo's Colonial Zone</strong> – Wander through the oldest European settlement in the Americas, a UNESCO World Heritage site with historic buildings dating back to the 16th century.</li>
+        <li><strong>Damajagua Waterfalls</strong> – Embark on an exhilarating adventure climbing and jumping down a series of 27 waterfalls near Puerto Plata.</li>
+        <li><strong>Visit Altos de Chavón</strong> – Explore this remarkable recreation of a 16th‑century Mediterranean village overlooking the Chavón River.</li>
+        <li><strong>Kiteboarding in Cabarete</strong> – Try your hand at kiteboarding or windsurfing in one of the world's premier destinations for these water sports.</li>
+        <li><strong>Whale Watching in Samaná</strong> – Witness the majestic humpback whales during their annual migration between January and March.</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Dining in the Dominican Republic</h2>
-      <img src="../assets/images/dominican-dining.jpg" alt="Dominican Republic Dining">
-      <p>Indulge in Dominican cuisine, from fresh seafood to hearty stews. Here are some delicious spots to try.</p>
-      <ul>
-        <li><strong>La Ysabela:</strong> Savor traditional Dominican dishes like sancocho and mangu in a rustic, beachfront setting.</li>
-        <li><strong>Boca Chica Beach Restaurants:</strong> Relish seafood dishes at local beachfront restaurants with stunning views.</li>
-        <li><strong>El Conuco:</strong> A cultural dining experience with live music and authentic Dominican food.</li>
-        <li><strong>La Parrillada de Don Juan:</strong> Enjoy a variety of grilled meats and local specialties in a family-friendly atmosphere.</li>
+    <h2 class="section-title">Where to Dine</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Dominican%20Republic%20Dining.webp?v=1744779989412" alt="Dominican Republic Dining" class="blog-image">
+    <div class="blog-post-content">
+      <p>Dominican cuisine is a delightful fusion of Spanish, African, and Taíno influences, with an emphasis on fresh seafood, tropical fruits, and flavorful stews.</p>
+      <ul class="dining-list">
+        <li><strong>La Yola Restaurant</strong> – Dine in a boat‑shaped restaurant over the water in Punta Cana, enjoying fresh seafood with spectacular views.</li>
+        <li><strong>Pat'e Palo</strong> – Experience European‑inspired cuisine in the oldest tavern in the Americas, located in Santo Domingo's Colonial Zone.</li>
+        <li><strong>Mesón de la Cava</strong> – Enjoy an unforgettable meal in a natural limestone cave in Santo Domingo, featuring international cuisine with Dominican touches.</li>
+        <li><strong>Restaurante El Conuco</strong> – Savor authentic Dominican food while enjoying traditional music and dance performances.</li>
+        <li><strong>Jalao</strong> – Taste modern interpretations of classic Dominican dishes in a lively atmosphere in Santo Domingo.</li>
+        <li><strong>Beachside Seafood Shacks</strong> – Don't miss the humble beachside eateries serving fresh‑caught fish, frequently found in Bayahibe, Las Terrenas, and other coastal areas.</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Travel Tips for Dominican Republic Visitors</h2>
-      <img src="../assets/images/dominican-tips.jpg" alt="Travel Tips for Dominican Republic">
-      <p>Maximize your experience with these insider tips for exploring the Dominican Republic.</p>
-      <ul>
-        <li><strong>Best Time to Visit:</strong> Visit during the dry season (December to April) for pleasant weather and fewer crowds.</li>
-        <li><strong>Currency:</strong> The Dominican Peso (DOP) is the official currency, though U.S. dollars are widely accepted.</li>
-        <li><strong>Stay Safe:</strong> Stick to well-populated tourist areas and avoid venturing out late at night in unfamiliar neighborhoods.</li>
-        <li><strong>Transportation:</strong> Hire local taxis or use rideshare services for easier travel within cities.</li>
+    <h2 class="section-title">Local Tips for Travelers</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/map%20dominican.jpg?v=1744780047890" alt="Dominican Republic Tips" class="blog-image">
+    <div class="blog-post-content">
+      <p>Make the most of your Dominican Republic experience with these insider tips from locals and seasoned travelers.</p>
+      <ul class="tips-list">
+        <li><strong>Best Time to Visit</strong> – The ideal time to visit is during the dry season from November to March. Avoid September and October, which are the peak of hurricane season.</li>
+        <li><strong>Moving Around</strong> – For short distances within towns, consider using motoconchos (motorcycle taxis), but negotiate the price before getting on. For longer journeys, guaguas (public minibuses) are inexpensive but often crowded.</li>
+        <li><strong>Resort Alternatives</strong> – While all‑inclusive resorts are popular, consider staying in boutique hotels in Las Terrenas, Cabarete, or Las Galeras for a more authentic experience.</li>
+        <li><strong>Language Barrier</strong> – Spanish is the official language; learning a few basic phrases will enrich your experience and is appreciated by locals.</li>
+        <li><strong>Currency Usage</strong> – The Dominican peso is official, but tourist areas accept USD. You'll generally get better value using pesos away from resorts.</li>
+        <li><strong>Beach Safety</strong> – Always check for flags indicating sea conditions before swimming; some beaches have strong currents.</li>
       </ul>
-    </section>
+      <p>The Dominican Republic offers far more than just beautiful beaches and all‑inclusive resorts. Venture beyond tourist zones to discover a country rich in history, culture, and natural beauty, with some of the warmest and most welcoming people in the Caribbean.</p>
+    </div>
+  </div>
 
-    <section class="section">
-      <h2>Where to Stay in the Dominican Republic</h2>
-      <img src="../assets/images/dominican-stay.jpg" alt="Dominican Republic Accommodations">
-      <p>The Dominican Republic offers diverse accommodations ranging from luxury resorts to charming boutique hotels.</p>
-      <ul>
-        <li><strong>Punta Cana Resort & Club:</strong> A luxury resort offering all-inclusive packages, golf, and upscale dining.</li>
-        <li><strong>Casa de Campo Resort:</strong> Known for its gorgeous golf course, luxury villas, and exclusive beaches.</li>
-        <li><strong>Hard Rock Hotel & Casino:</strong> An all-inclusive resort with a lively atmosphere, entertainment, and a world-class casino.</li>
-        <li><strong>Hotel Nacional:</strong> A historic hotel in Santo Domingo with beautiful gardens and a range of amenities.</li>
-      </ul>
-    </section>
-  </main>
 
-  <!-- Call to Action -->
-  <a href="trip-planner.html" class="cta-button">Plan Your Dominican Republic Adventure Now!</a>
 
-  <!-- Footer -->
+  <!-- ---------- Footer ---------- -->
+
+  <!-- ---------- CTA ---------- -->
+  <a href="https://www.sandals.com/?referral=138577" target="_blank" class="cta-button">Plan Your Adventure Now!</a>
+
   <footer>
     <p>&copy; 2024 The Robert's Group</p>
     <ul>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="terms.html">Terms and Conditions</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="../about.html">About Us</a></li>
+      <li><a href="../contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
     </ul>
   </footer>
+
+  <!-- ---------- Scripts ---------- -->
+  <script src="../assets/js/navbar.js"></script>
 </body>
 </html>

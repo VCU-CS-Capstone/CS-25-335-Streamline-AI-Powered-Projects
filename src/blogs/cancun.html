@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploring Cancún - ParadisePortfolios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Global Typography */
+    .nav-links.active:after{
+      width:0 !important;          /* don’t draw the bar */
+    }
+    /* keep the text colour the same as the other, inactive tabs */
+    .nav-links.active{
+      color:inherit !important;
+    }
+    body {
+      font-family: 'Instrument Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .dark-mode body {
+      background-color: #121212;
+      color: #f5f5f5;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+    }
+    /* Navbar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .dark-mode .navbar {
+      background-color: #1a1a1a;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      max-width: 1340px;
+      margin: 0 auto;
+      height: 70px;
+    }
+    .logo a {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: #0056b3;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .dark-mode .logo a {
+      color: #3a8bd8;
+    }
+    .navbar-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-item {
+      margin: 0 15px;
+    }
+    .nav-links {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-links:hover,
+    .nav-links.active {
+      color: #ffd700;
+    }
+    .dark-mode .nav-links {
+      color: #f5f5f5;
+    }
+    .dark-mode .nav-links:hover,
+    .dark-mode .nav-links.active {
+      color: #ffd700;
+    }
+    .nav-links.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #ffd700;
+    }
+    .contact-info {
+      display: flex;
+      align-items: center;
+    }
+    .contact-phone {
+      margin-right: 15px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .dark-mode .contact-phone {
+      color: #f5f5f5;
+    }
+    .social-icons {
+      display: flex;
+      margin-right: 15px;
+    }
+    .social-icons a {
+      margin: 0 5px;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+    .dark-mode .social-icons a {
+      color: #f5f5f5;
+    }
+    .social-icons a:hover {
+      color: #ffd700;
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease;
+    }
+    .dark-mode .theme-toggle {
+      color: #f5f5f5;
+    }
+    .theme-toggle:hover {
+      color: #ffd700;
+    }
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px 0;
+      background-color: #333;
+      transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    }
+    .dark-mode .bar {
+      background-color: #f5f5f5;
+    }
+    .mobile-only {
+      display: none;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+    }
+    /* Blog Styles */
+    .blog-header {
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/cancun.jpg?v=1744697577473');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 150px 20px 80px;
+      margin-bottom: 40px;
+    }
+    .blog-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .blog-header {
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/cancun.jpg?v=1744697577473');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 150px 20px 80px;
+      margin-bottom: 40px;
+    }
+    .blog-content {
+      max-width: 1340px;
+      margin: 0 auto 2rem;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .dark-mode .blog-content {
+      background-color: #1a1a1a;
+      color: #f5f5f5;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      margin-top: 0;
+      color: #0056b3;
+    }
+    .dark-mode .section-title {
+      color: #3a8bd8;
+    }
+    .blog-image {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      margin: 1.5rem auto;
+      display: block;
+      border-radius: 8px;
+    }
+    .blog-post-content {
+      padding: 0 20px;
+      text-align: justify;
+    }
+    .activity-list,
+    .dining-list,
+    .tips-list,
+    .accommodation-list,
+    .cultural-list {
+      padding-left: 20px;
+    }
+    .activity-list li,
+    .dining-list li,
+    .tips-list li,
+    .accommodation-list li,
+    .cultural-list li {
+      margin-bottom: 10px;
+    }
+    /* Footer Styles */
+    footer {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    footer p {
+      margin: 0 0 10px;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    footer li {
+      margin: 0 10px;
+    }
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #ffd700;
+    }
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      .navbar-container {
+        padding: 0 15px;
+      }
+      .logo a {
+        font-size: 20px;
+      }
+      .navbar-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100% - 70px);
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+      .dark-mode .navbar-links {
+        background-color: #1a1a1a;
+      }
+      .navbar-links.active {
+        left: 0;
+      }
+      .nav-item {
+        margin: 15px 0;
+      }
+      .contact-info {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+        z-index: 1001;
+      }
+      .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+      .mobile-only {
+        display: block;
+      }
+      .blog-header h1 {
+        font-size: 2.2rem;
+      }
+      .blog-header p {
+        font-size: 1rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .blog-content {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Global Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <a href="../index.html">ParadisePortfolios</a>
+      </div>
+      <button class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="../index.html" class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="../destination.html" class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="../trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="../explore.html" class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="../blog.html" class="nav-links active">Blog</a></li>
+        <li class="nav-item"><a href="../book.html" class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="../contact-us.html" class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only"><button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+      </ul>
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="overlay" id="overlay"></div>
+  <!-- Blog Header -->
+  <header class="blog-header">
+    <h1>Exploring Cancún</h1>
+    <p>Uncover turquoise waters, ancient ruins, and vibrant nightlife on Mexico’s Caribbean coast</p>
+  </header>
+  <!-- Blog Content -->
+  <div class="blog-content">
+    <h2 class="section-title">Must-Visit Destinations in Cancún</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/cancun%20hotel%20zone.png?v=1744755597896" alt="Cancún Hotel Zone" class="blog-image">
+    <div class="blog-post-content">
+      <p>Cancún is more than its famous Hotel Zone—day‑trip gems and cultural sites abound. Add these highlights to your bucket list:</p>
+      <ul class="activity-list">
+        <li><strong>Hotel Zone (Zona Hotelera):</strong> Fourteen miles of powder‑white sand, luxe resorts, and legendary nightlife along Boulevard Kukulcán.</li>
+        <li><strong>Isla Mujeres:</strong> A 20‑minute ferry ride reveals laid‑back vibes, Playa Norte’s calm shallows, and the colorful Punta Sur cliffs.</li>
+        <li><strong>Chichén Itzá:</strong> One of the New Seven Wonders of the World—rise early for a guided tour of El Castillo before crowds and heat.</li>
+        <li><strong>Cenotes:</strong> Swim or snorkel in crystalline sinkholes like Cenote Ik Kil or the jungle‑shrouded Cenote Dos Ojos.</li>
+        <li><strong>Downtown Cancún:</strong> Browse handicrafts at Mercado 28, sample street tacos on Avenida Tulum, and mingle with locals in Parque de las Palapas.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Yucatán Cuisine and Dining Experiences</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/yucatan%20cuisine.jpg?v=1744755521132" alt="Yucatán Cuisine" class="blog-image">
+    <div class="blog-post-content">
+      <p>From beachfront cevicherías to fine‑dining fusion, Cancún’s food scene celebrates fresh seafood and Mayan flavors:</p>
+      <ul class="dining-list">
+        <li><strong>Cochinita Pibil:</strong> Pork marinated in achiote and sour orange, slow‑roasted in banana leaves—try it at El Pocito.</li>
+        <li><strong>Tikin Xic Fish:</strong> Local grouper slathered in annatto, wrapped in banana leaves, and grilled—best savored on Isla Mujeres.</li>
+        <li><strong>Marquesitas:</strong> Crispy crêpe‑like rolls filled with Edam cheese and Nutella—find carts in Parque de las Palapas after dusk.</li>
+        <li><strong>La Habichuela:</strong> An iconic downtown restaurant serving Mayan‑inspired dishes amid a tropical garden since 1977.</li>
+        <li><strong>Taco Trucks:</strong> Feast on al pastor tacos carved off a trompo at El Ñero or Los Chachalacos for a late‑night bite.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Travel Tips for Cancún</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/travel%20tips%20for%20cancun.webp?v=1744755445298" alt="Travel Tips for Cancún" class="blog-image">
+    <div class="blog-post-content">
+      <p>Plan like a pro with these insider insights:</p>
+      <ul class="tips-list">
+        <li><strong>Best Time to Visit:</strong> December–April offers sunny, dry weather. Shoulder months May and November bring deals before/after hurricane season (June–Nov).</li>
+        <li><strong>Currency:</strong> The Mexican Peso (MXN) is official. Many businesses accept USD, but you’ll get better rates paying in pesos.</li>
+        <li><strong>Language:</strong> Spanish is predominant; English is widely understood in tourist areas.</li>
+        <li><strong>Transportation:</strong> Inexpensive R‑1/R‑2 buses run the Hotel Zone 24/7 (~15 MXN). ADO buses connect to Playa del Carmen, Tulum, and the airport.</li>
+        <li><strong>Safety:</strong> Stick to licensed taxis, avoid isolated beaches at night, and use reef‑safe sunscreen to protect Mesoamerican Reef marine life.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Accommodation Options</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/places%20to%20stay%20in%20cancun.jpg?v=1744755380451" alt="Places to Stay in Cancún" class="blog-image">
+    <div class="blog-post-content">
+      <p>Whether you crave all‑inclusive ease or boutique charm, Cancún delivers:</p>
+      <ul class="accommodation-list">
+        <li><strong>All‑Inclusive Resorts:</strong> Indulge at Grand Fiesta Americana Coral Beach or Hyatt Ziva with unlimited dining and activities.</li>
+        <li><strong>Adults‑Only Luxury:</strong> Secrets The Vine and Le Blanc Spa Resort cater to couples with gourmet cuisine and serene spas.</li>
+        <li><strong>Boutique Hotels:</strong> Stay downtown at Casa Blanca Boutique or jungle‑chic Nizuc Resort for personalized service.</li>
+        <li><strong>Eco‑Friendly Stays:</strong> Nearby Isla Holbox offers solar‑powered lodges and barefoot luxury two hours from Cancún.</li>
+        <li><strong>Vacation Rentals:</strong> Families and groups score spacious condos in Puerto Cancún or beachfront villas in Playa Mujeres.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Cultural Experiences & Events</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/cultural%20events%20in%20cancun.jpg?v=1744755310168" alt="Cultural Events in Cancún" class="blog-image">
+    <div class="blog-post-content">
+      <p>Connect with Quintana Roo’s heritage and natural wonders:</p>
+      <ul class="cultural-list">
+        <li><strong>Spring & Fall Equinox at Chichén Itzá:</strong> Watch the shadow of the feathered serpent slither down El Castillo pyramid.</li>
+        <li><strong>Día de los Muertos (Nov 1‑2):</strong> Colorful altars, face‑painting, and parades celebrate ancestors across downtown Cancún.</li>
+        <li><strong>Cancún Jazz Festival (late May):</strong> World‑class musicians perform ocean‑side at Moon Palace resort.</li>
+        <li><strong>MUSA Underwater Museum:</strong> Dive or snorkel among 500+ submerged sculptures fostering coral growth between Cancún and Isla Mujeres.</li>
+        <li><strong>Whale Shark Season (June–Sept):</strong> Swim respectfully alongside the planet’s largest fish on guided tours from Punta Sam.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Footer -->
+
+  <!-- ---------- CTA ---------- -->
+  <a href="https://www.sandals.com/?referral=138577" target="_blank" class="cta-button">Plan Your Adventure Now!</a>
+
+  <footer>
+    <p>&copy; 2024 The Robert's Group</p>
+    <ul>
+      <li><a href="../about.html">About Us</a></li>
+      <li><a href="../contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
+    </ul>
+  </footer>
+  <script src="../assets/js/navbar.js"></script>
+</body>
+</html>

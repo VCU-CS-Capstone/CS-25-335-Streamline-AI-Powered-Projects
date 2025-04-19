@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploring Panamá - ParadisePortfolios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .nav-links.active:after{width:0!important;}
+    .nav-links.active{color:inherit!important;}
+    body{font-family:'Instrument Sans',sans-serif;margin:0;padding:0;transition:background-color .3s ease,color .3s ease;}
+    .dark-mode body{background-color:#121212;color:#f5f5f5;}
+    h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;}
+    /* Navbar */
+    .navbar{position:fixed;top:0;left:0;width:100%;background-color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000;transition:background-color .3s ease,box-shadow .3s ease;}
+    .dark-mode .navbar{background-color:#1a1a1a;box-shadow:0 2px 10px rgba(0,0,0,.3);} 
+    .navbar-container{display:flex;justify-content:space-between;align-items:center;padding:0 20px;max-width:1340px;margin:0 auto;height:70px;}
+    .logo a{font-family:'Playfair Display',serif;font-size:24px;font-weight:bold;color:#0056b3;text-decoration:none;transition:color .3s ease;}
+    .dark-mode .logo a{color:#3a8bd8;}
+    .navbar-links{display:flex;list-style:none;margin:0;padding:0;}
+    .nav-item{margin:0 15px;}
+    .nav-links{text-decoration:none;color:#333;font-weight:500;position:relative;transition:color .3s ease;}
+    .nav-links:hover,.nav-links.active{color:#ffd700;}
+    .dark-mode .nav-links{color:#f5f5f5;}
+    .dark-mode .nav-links:hover,.dark-mode .nav-links.active{color:#ffd700;}
+    .nav-links.active::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:2px;background-color:#ffd700;}
+    .contact-info{display:flex;align-items:center;}
+    .contact-phone{margin-right:15px;color:#333;text-decoration:none;font-weight:500;transition:color .3s ease;}
+    .dark-mode .contact-phone{color:#f5f5f5;}
+    .social-icons{display:flex;margin-right:15px;}
+    .social-icons a{margin:0 5px;color:#333;transition:color .3s ease;}
+    .dark-mode .social-icons a{color:#f5f5f5;}
+    .social-icons a:hover{color:#ffd700;}
+    .theme-toggle{background:none;border:none;cursor:pointer;color:#333;font-size:18px;display:flex;align-items:center;justify-content:center;transition:color .3s ease;}
+    .dark-mode .theme-toggle{color:#f5f5f5;}
+    .theme-toggle:hover{color:#ffd700;}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:10px;}
+    .bar{display:block;width:25px;height:3px;margin:5px 0;background-color:#333;transition:transform .3s ease,opacity .3s ease,background-color .3s ease;}
+    .dark-mode .bar{background-color:#f5f5f5;}
+    .mobile-only{display:none;}
+    .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);z-index:999;display:none;}
+    /* Blog */
+    .blog-header {
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/panama.webp?v=1744698430213');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 150px 20px 80px;
+      margin-bottom: 40px;
+    }
+    .blog-content{max-width:1340px;margin:0 auto 2rem;padding:20px;background-color:#fff;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);transition:background-color .3s ease,color .3s ease,box-shadow .3s ease;}
+    .dark-mode .blog-content{background-color:#1a1a1a;color:#f5f5f5;box-shadow:0 4px 8px rgba(0,0,0,.3);} 
+    .section-title{text-align:center;font-size:2.5rem;margin-bottom:2rem;margin-top:0;color:#0056b3;}
+    .dark-mode .section-title{color:#3a8bd8;}
+    .blog-image{width:100%;max-width:800px;height:auto;margin:1.5rem auto;display:block;border-radius:8px;}
+    .blog-post-content{padding:0 20px;text-align:justify;}
+    .activity-list,.dining-list,.tips-list,.accommodation-list,.cultural-list{padding-left:20px;}
+    .activity-list li,.dining-list li,.tips-list li,.accommodation-list li,.cultural-list li{margin-bottom:10px;}
+    /* Footer */
+    footer{background-color:#000;color:#fff;text-align:center;padding:20px;margin-top:40px;}
+    footer p{margin:0 0 10px;}
+    footer ul{list-style:none;padding:0;display:flex;justify-content:center;flex-wrap:wrap;}
+    footer li{margin:0 10px;}
+    footer a{color:#fff;text-decoration:none;}
+    footer a:hover{color:#ffd700;}
+    /* Responsive */
+    @media(max-width:768px){
+      .navbar-container{padding:0 15px;}
+      .logo a{font-size:20px;}
+      .navbar-links{position:fixed;top:70px;left:-100%;width:100%;height:calc(100% - 70px);background-color:#fff;flex-direction:column;align-items:center;padding:20px 0;transition:left .3s ease;z-index:1000;overflow-y:auto;}
+      .dark-mode .navbar-links{background-color:#1a1a1a;}
+      .navbar-links.active{left:0;}
+      .nav-item{margin:15px 0;}
+      .contact-info{display:none;}
+      .hamburger{display:block;z-index:1001;}
+      .hamburger.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg);} 
+      .hamburger.active .bar:nth-child(2){opacity:0;} 
+      .hamburger.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg);} 
+      .mobile-only{display:block;}
+      .blog-header h1{font-size:2.2rem;}
+      .blog-header p{font-size:1rem;}
+      .section-title{font-size:2rem;}
+      .blog-content{padding:15px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="../index.html">ParadisePortfolios</a></div>
+      <button class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="../index.html" class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="../destination.html" class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="../trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="../explore.html" class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="../blog.html" class="nav-links active">Blog</a></li>
+        <li class="nav-item"><a href="../book.html" class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="../contact-us.html" class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only"><button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+      </ul>
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="overlay" id="overlay"></div>
+  <!-- Header -->
+  <header class="blog-header">
+    <h1>Exploring Panamá</h1>
+    <p>Canal marvels, Caribbean isles, cloud‑forest coffee, and Afro‑Latino rhythms in the land of two oceans</p>
+  </header>
+  <!-- Content -->
+  <div class="blog-content">
+    <h2 class="section-title">Must‑Visit Destinations</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Panama%20Canal%20Miraflores%20Locks.webp?v=1744761459537" alt="Panama Canal Miraflores Locks" class="blog-image">
+    <div class="blog-post-content">
+      <p>Panamá bridges continents and seas—here are essential stops:</p>
+      <ul class="activity-list">
+        <li><strong>Panama Canal &amp; Casco Viejo:</strong> Watch mega‑ships transit Miraflores Locks, then wander colonial plazas and rooftop bars in the UNESCO old quarter.</li>
+        <li><strong>San Blas (Guna Yala) Islands:</strong> Sail turquoise waters and sleep in palm‑fringed cabañas managed by the indigenous Guna people.</li>
+        <li><strong>Bocas del Toro:</strong> Caribbean surf, bioluminescent bays, and over‑water hostels—cycle Isla Colón or snorkel Starfish Beach.</li>
+        <li><strong>Boquete &amp; Volcán Barú:</strong> Sip Geisha coffee on cloud‑forest farms and summit Panama’s highest peak for sunrise views of both oceans.</li>
+        <li><strong>Parque Nacional Coiba:</strong> Dive UNESCO‑listed waters teeming with whale sharks, manta rays, and coral reefs dubbed the “Galápagos of Central America.”</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Panamanian Flavors</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Ceviche%20Panama.jpg?v=1744761496518" alt="Ceviche Panama" class="blog-image">
+    <div class="blog-post-content">
+      <p>A fusion of Afro‑Caribbean, Indigenous, and Spanish influences:</p>
+      <ul class="dining-list">
+        <li><strong>Ceviche de Corvina:</strong> Grab a cup at Panama City’s Mercado de Mariscos drizzled with tangy chombo pepper sauce.</li>
+        <li><strong>Sancocho:</strong> Hearty chicken‑yucca soup spiced with culantro—Panamá’s national comfort food.</li>
+        <li><strong>Raspao:</strong> Shaved‑ice street treat topped with fruit syrup and condensed milk—perfect for Canal‑side heat.</li>
+        <li><strong>Carimañolas &amp; Hojaldres:</strong> Yuca fritters stuffed with beef and fluffy fry‑bread for breakfast in the Interior.</li>
+        <li><strong>Seco Herrerano &amp; Ron Abuelo:</strong> Sample sugar‑cane spirits in cocktails like chicheme colao or straight up with lime.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Travel Tips</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/San%20Blas%20sailing.jpg?v=1744761530603" alt="San Blas sailing" class="blog-image">
+    <div class="blog-post-content">
+      <p>Make the most of your isthmus adventure:</p>
+      <ul class="tips-list">
+        <li><strong>Season:</strong> Dry mid‑Dec–April; green season May–Nov (Caribbean side sees showers year‑round).</li>
+        <li><strong>Currency:</strong> Balboa (PAB) pegged 1:1 to USD; US dollars circulate—coins unique, bills same.</li>
+        <li><strong>Transport:</strong> Domestic Air Panamá flights shorten jungle journeys; Metro &amp; Metrobus ease city traffic; 4×4 required for San Blas road.</li>
+        <li><strong>Entry:</strong> Proof of onward travel and 3‑month passport validity required for most visitors.</li>
+        <li><strong>Eco‑Respect:</strong> Reef‑safe sunscreen, no single‑use plastics in Guna Yala, and leave no trace on cloud‑forest trails.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Where to Stay</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Eco%20lodge%20Panama.jpg?v=1744761569995" alt="Eco lodge Panama" class="blog-image">
+    <div class="blog-post-content">
+      <p>From skyscraper suites to over‑water huts:</p>
+      <ul class="accommodation-list">
+        <li><strong>Panama City Skyline:</strong> JW Marriott’s sail‑shaped tower and W Panama’s art‑filled rooms overlook the Pacific entrance.</li>
+        <li><strong>Casco Viejo Boutiques:</strong> American Trade Hotel and La Concordia blend colonial charm with jazz bars and rooftop pools.</li>
+        <li><strong>Over‑Water Bungalows:</strong> Isla Palenque in the Gulf of Chiriquí and Azul Paradise in Bocas deliver barefoot luxury.</li>
+        <li><strong>Coffee‑Farm Stays:</strong> Finca Lerida and The Haven Spa in Boquete offer cool‑climate retreats among orchids and quetzals.</li>
+        <li><strong>Dive Lodges:</strong> Coiba Dive Center’s Santa Catalina cabins or Kalu Yala’s jungle eco‑village for off‑grid vibes.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Cultural Experiences &amp; Events</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Panama%20Carnival.jpg?v=1744761606276" alt="Panama Carnival" class="blog-image">
+    <div class="blog-post-content">
+      <p>Feel the rhythm of Panamá:</p>
+      <ul class="cultural-list">
+        <li><strong>Carnaval (4 days before Ash Wednesday):</strong> Las Tablas erupts with pollera gowns, culeco water trucks, and tamborito beats.</li>
+        <li><strong>Festival de la Mejorana (Sept):</strong> Guararé celebrates folkloric dances, devil masks, and mejorana guitar contests.</li>
+        <li><strong>Sea Turtle Season (July–Nov):</strong> Volunteer night patrols at Playa La Marte or Isla Cañas on the Azuero Peninsula.</li>
+        <li><strong>Panama Jazz Festival (Jan):</strong> Danilo Pérez hosts global musicians for week‑long concerts and clinics in the capital.</li>
+        <li><strong>Emberá Village Visits:</strong> Journey up the Chagres River for traditional dances, tagua carvings, and rainforest medicine walks.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Footer -->
+
+  <!-- ---------- CTA ---------- -->
+  <a href="https://www.sandals.com/?referral=138577" target="_blank" class="cta-button">Plan Your Adventure Now!</a>
+
+  <footer>
+    <p>&copy; 2024 The Robert's Group</p>
+    <ul>
+      <li><a href="../about.html">About Us</a></li>
+      <li><a href="../contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
+    </ul>
+  </footer>
+  <script src="../assets/js/navbar.js"></script>
+</body>
+</html>

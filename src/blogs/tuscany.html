@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploring Tuscany, Italy - ParadisePortfolios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .nav-links.active:after{width:0!important;}
+    .nav-links.active{color:inherit!important;}
+    body{font-family:'Instrument Sans',sans-serif;margin:0;padding:0;transition:background-color .3s ease,color .3s ease;}
+    .dark-mode body{background-color:#121212;color:#f5f5f5;}
+    h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;}
+    /* Navbar */
+    .navbar{position:fixed;top:0;left:0;width:100%;background-color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000;transition:background-color .3s ease,box-shadow .3s ease;}
+    .dark-mode .navbar{background-color:#1a1a1a;box-shadow:0 2px 10px rgba(0,0,0,.3);} 
+    .navbar-container{display:flex;justify-content:space-between;align-items:center;padding:0 20px;max-width:1340px;margin:0 auto;height:70px;}
+    .logo a{font-family:'Playfair Display',serif;font-size:24px;font-weight:bold;color:#0056b3;text-decoration:none;transition:color .3s ease;}
+    .dark-mode .logo a{color:#3a8bd8;}
+    .navbar-links{display:flex;list-style:none;margin:0;padding:0;}
+    .nav-item{margin:0 15px;}
+    .nav-links{text-decoration:none;color:#333;font-weight:500;position:relative;transition:color .3s ease;}
+    .nav-links:hover,.nav-links.active{color:#ffd700;}
+    .dark-mode .nav-links{color:#f5f5f5;}
+    .dark-mode .nav-links:hover,.dark-mode .nav-links.active{color:#ffd700;}
+    .nav-links.active::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:2px;background-color:#ffd700;}
+    .contact-info{display:flex;align-items:center;}
+    .contact-phone{margin-right:15px;color:#333;text-decoration:none;font-weight:500;transition:color .3s ease;}
+    .dark-mode .contact-phone{color:#f5f5f5;}
+    .social-icons{display:flex;margin-right:15px;}
+    .social-icons a{margin:0 5px;color:#333;transition:color .3s ease;}
+    .dark-mode .social-icons a{color:#f5f5f5;}
+    .social-icons a:hover{color:#ffd700;}
+    .theme-toggle{background:none;border:none;cursor:pointer;color:#333;font-size:18px;display:flex;align-items:center;justify-content:center;transition:color .3s ease;}
+    .dark-mode .theme-toggle{color:#f5f5f5;}
+    .theme-toggle:hover{color:#ffd700;}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:10px;}
+    .bar{display:block;width:25px;height:3px;margin:5px 0;background-color:#333;transition:transform .3s ease,opacity .3s ease,background-color .3s ease;}
+    .dark-mode .bar{background-color:#f5f5f5;}
+    .mobile-only{display:none;}
+    .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);z-index:999;display:none;}
+    /* Blog */
+    .blog-header {
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/tuscany.jpg?v=1744697448235');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 150px 20px 80px;
+      margin-bottom: 40px;
+    }
+    .blog-content{max-width:1340px;margin:0 auto 2rem;padding:20px;background-color:#fff;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);transition:background-color .3s ease,color .3s ease,box-shadow .3s ease;}
+    .dark-mode .blog-content{background-color:#1a1a1a;color:#f5f5f5;box-shadow:0 4px 8px rgba(0,0,0,.3);} 
+    .section-title{text-align:center;font-size:2.5rem;margin-bottom:2rem;margin-top:0;color:#0056b3;}
+    .dark-mode .section-title{color:#3a8bd8;}
+    .blog-image{width:100%;max-width:800px;height:auto;margin:1.5rem auto;display:block;border-radius:8px;}
+    .blog-post-content{padding:0 20px;text-align:justify;}
+    .activity-list,.dining-list,.tips-list,.accommodation-list,.cultural-list{padding-left:20px;}
+    .activity-list li,.dining-list li,.tips-list li,.accommodation-list li,.cultural-list li{margin-bottom:10px;}
+    /* Footer */
+    footer{background-color:#000;color:#fff;text-align:center;padding:20px;margin-top:40px;}
+    footer p{margin:0 0 10px;}
+    footer ul{list-style:none;padding:0;display:flex;justify-content:center;flex-wrap:wrap;}
+    footer li{margin:0 10px;}
+    footer a{color:#fff;text-decoration:none;}
+    footer a:hover{color:#ffd700;}
+    /* Responsive */
+    @media(max-width:768px){
+      .navbar-container{padding:0 15px;}
+      .logo a{font-size:20px;}
+      .navbar-links{position:fixed;top:70px;left:-100%;width:100%;height:calc(100% - 70px);background-color:#fff;flex-direction:column;align-items:center;padding:20px 0;transition:left .3s ease;z-index:1000;overflow-y:auto;}
+      .dark-mode .navbar-links{background-color:#1a1a1a;}
+      .navbar-links.active{left:0;}
+      .nav-item{margin:15px 0;}
+      .contact-info{display:none;}
+      .hamburger{display:block;z-index:1001;}
+      .hamburger.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg);} 
+      .hamburger.active .bar:nth-child(2){opacity:0;} 
+      .hamburger.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg);} 
+      .mobile-only{display:block;}
+      .blog-header h1{font-size:2.2rem;}
+      .blog-header p{font-size:1rem;}
+      .section-title{font-size:2rem;}
+      .blog-content{padding:15px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="../index.html">ParadisePortfolios</a></div>
+      <button class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="../index.html" class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="../destination.html" class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="../trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="../explore.html" class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="../blog.html" class="nav-links active">Blog</a></li>
+        <li class="nav-item"><a href="../book.html" class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="../contact-us.html" class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only"><button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+      </ul>
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="overlay" id="overlay"></div>
+  <!-- Header -->
+  <header class="blog-header">
+    <h1>Exploring Tuscany, Italy</h1>
+    <p>Cypress‑lined hills, Renaissance art, and Chianti sips across Italy’s rolling heartland</p>
+  </header>
+  <!-- Content -->
+  <div class="blog-content">
+    <h2 class="section-title">Must‑Visit Destinations</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Val%20d'Orcia%20Tuscany.png?v=1744777681796" alt="Val d'Orcia Tuscany" class="blog-image">
+    <div class="blog-post-content">
+      <p>From medieval hill towns to art‑packed cities, Tuscany offers postcard moments at every turn:</p>
+      <ul class="activity-list">
+        <li><strong>Florence:</strong> Gaze at Michelangelo’s David in the Accademia, climb Brunelleschi’s Duomo, and shop leather in San Lorenzo.</li>
+        <li><strong>Siena:</strong> Wander fan‑shaped Piazza del Campo and trace Palio horse‑race rivalries in contrada museums.</li>
+        <li><strong>Chianti Wine Road:</strong> Drive SR222 between Greve and Radda, tasting sangiovese at family vineyards.</li>
+        <li><strong>Val d’Orcia:</strong> Snap the cypress road to Agriturismo Poggio Covili, soak in Bagno Vignoni hot springs, and explore Pienza’s pecorino shops.</li>
+        <li><strong>Pisa &amp; Lucca:</strong> Climb the Leaning Tower early, then cycle Lucca’s Renaissance walls at golden hour.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Tuscan Flavors</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Tuscan%20food.jpg?v=1744777936419" alt="Tuscan food" class="blog-image">
+    <div class="blog-post-content">
+      <p>Simple, seasonal, and steeped in tradition:</p>
+      <ul class="dining-list">
+        <li><strong>Bistecca alla Fiorentina:</strong> 1‑kg T‑bone grilled rare over olive‑wood embers at Trattoria da Burde.</li>
+        <li><strong>Ribollita:</strong> Hearty bean‑kale bread soup perfect for autumn evenings.</li>
+        <li><strong>Pappardelle al Cinghiale:</strong> Wide noodles coated in slow‑braised wild boar ragù in Montalcino.</li>
+        <li><strong>Gelato Origins:</strong> Taste inventive flavors at Gelateria Dondoli in San Gimignano, Gelato World Champion.</li>
+        <li><strong>Chianti Classico &amp; Brunello:</strong> Book cellar tours at Castello di Brolio and Banfi for sangiovese masterclasses.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Travel Tips</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Tuscan%20road.jpg?v=1744778218510" alt="Tuscan road" class="blog-image">
+    <div class="blog-post-content">
+      <p>Roam the region like a local:</p>
+      <ul class="tips-list">
+        <li><strong>Best Time:</strong> May–June &amp; Sept–Oct for vineyard colors and mild temps; July–Aug brings sunflower fields and heat.</li>
+        <li><strong>Car Rental:</strong> Essential for countryside—watch ZTL restricted zones in historic centers.</li>
+        <li><strong>Trains:</strong> Florence–Pisa–Lucca &amp; Florence–Siena routes are frequent; buy regionale tickets and validate before boarding.</li>
+        <li><strong>Agriturismo Stays:</strong> Farmhouse lodgings include breakfast of local honey, olive oil tastings, and cooking classes.</li>
+        <li><strong>Market Days:</strong> Stock up on pecorino, truffles, and cantucci at Greve’s Saturday mercato.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Where to Stay</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/thumb_28118_1920_0_0_0_auto.jpg?v=1744778251328" alt="Tuscan villa" class="blog-image">
+    <div class="blog-post-content">
+      <p>Wake up to rolling‑hill vistas or Renaissance rooftops:</p>
+      <ul class="accommodation-list">
+        <li><strong>Luxury Villas:</strong> Rosewood Castiglion del Bosco offers vineyard suites and a Brunello winery.</li>
+        <li><strong>Historic City Hotels:</strong> Florence’s Hotel Lungarno frames Ponte Vecchio views; Siena’s Palazzo Ravizza exudes 18th‑century charm.</li>
+        <li><strong>Agriturismi:</strong> Fattoria Poggio Alloro near San Gimignano lets you dine overlooking towers and vines.</li>
+        <li><strong>Wine Resorts:</strong> Castello di Velona’s thermal pools sit amid Brunello vines.</li>
+        <li><strong>Budget Hostels:</strong> Ostello Bello Firenze hosts rooftop aperitivo with Duomo skyline.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Cultural Experiences &amp; Events</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Palio%20di%20Siena.webp?v=1744778462768" alt="Palio di Siena" class="blog-image">
+    <div class="blog-post-content">
+      <p>Live la dolce vita, Tuscan‑style:</p>
+      <ul class="cultural-list">
+        <li><strong>Palio di Siena (2 July &amp; 16 Aug):</strong> Bareback horse race thunders around Piazza del Campo.</li>
+        <li><strong>Calcio Storico (June):</strong> Medieval football‑meets‑rugby battles in Florence’s Piazza Santa Croce.</li>
+        <li><strong>Wine Harvest (Sept):</strong> Join grape‑picking and stomping festivals in Chianti and Montalcino.</li>
+        <li><strong>Lucca Summer Festival (July):</strong> International rock &amp; pop acts perform within Renaissance walls.</li>
+        <li><strong>Truffle Fairs (Oct–Nov):</strong> Hunt white truffles in San Miniato and sample aromatic dishes.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Footer -->
+
+  <!-- ---------- CTA ---------- -->
+  <a href="https://www.sandals.com/?referral=138577" target="_blank" class="cta-button">Plan Your Adventure Now!</a>
+
+  <footer>
+    <p>&copy; 2024 The Robert's Group</p>
+    <ul>
+      <li><a href="../about.html">About Us</a></li>
+      <li><a href="../contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
+    </ul>
+  </footer>
+  <script src="../assets/js/navbar.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploring Costa Rica - ParadisePortfolios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .nav-links.active:after{width:0!important;}
+    .nav-links.active{color:inherit!important;}
+    body{font-family:'Instrument Sans',sans-serif;margin:0;padding:0;transition:background-color .3s ease,color .3s ease;}
+    .dark-mode body{background-color:#121212;color:#f5f5f5;}
+    h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;}
+    /* Navbar */
+    .navbar{position:fixed;top:0;left:0;width:100%;background-color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000;transition:background-color .3s ease,box-shadow .3s ease;}
+    .dark-mode .navbar{background-color:#1a1a1a;box-shadow:0 2px 10px rgba(0,0,0,.3);} 
+    .navbar-container{display:flex;justify-content:space-between;align-items:center;padding:0 20px;max-width:1340px;margin:0 auto;height:70px;}
+    .logo a{font-family:'Playfair Display',serif;font-size:24px;font-weight:bold;color:#0056b3;text-decoration:none;transition:color .3s ease;}
+    .dark-mode .logo a{color:#3a8bd8;}
+    .navbar-links{display:flex;list-style:none;margin:0;padding:0;}
+    .nav-item{margin:0 15px;}
+    .nav-links{text-decoration:none;color:#333;font-weight:500;position:relative;transition:color .3s ease;}
+    .nav-links:hover,.nav-links.active{color:#ffd700;}
+    .dark-mode .nav-links{color:#f5f5f5;}
+    .dark-mode .nav-links:hover,.dark-mode .nav-links.active{color:#ffd700;}
+    .nav-links.active::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:2px;background-color:#ffd700;}
+    .contact-info{display:flex;align-items:center;}
+    .contact-phone{margin-right:15px;color:#333;text-decoration:none;font-weight:500;transition:color .3s ease;}
+    .dark-mode .contact-phone{color:#f5f5f5;}
+    .social-icons{display:flex;margin-right:15px;}
+    .social-icons a{margin:0 5px;color:#333;transition:color .3s ease;}
+    .dark-mode .social-icons a{color:#f5f5f5;}
+    .social-icons a:hover{color:#ffd700;}
+    .theme-toggle{background:none;border:none;cursor:pointer;color:#333;font-size:18px;display:flex;align-items:center;justify-content:center;transition:color .3s ease;}
+    .dark-mode .theme-toggle{color:#f5f5f5;}
+    .theme-toggle:hover{color:#ffd700;}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:10px;}
+    .bar{display:block;width:25px;height:3px;margin:5px 0;background-color:#333;transition:transform .3s ease,opacity .3s ease,background-color .3s ease;}
+    .dark-mode .bar{background-color:#f5f5f5;}
+    .mobile-only{display:none;}
+    .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);z-index:999;display:none;}
+    /* Blog */
+    .blog-header {
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/costa.jpg?v=1744698373965');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 150px 20px 80px;
+      margin-bottom: 40px;
+    }
+    .blog-content{max-width:1340px;margin:0 auto 2rem;padding:20px;background-color:#fff;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);transition:background-color .3s ease,color .3s ease,box-shadow .3s ease;}
+    .dark-mode .blog-content{background-color:#1a1a1a;color:#f5f5f5;box-shadow:0 4px 8px rgba(0,0,0,.3);} 
+    .section-title{text-align:center;font-size:2.5rem;margin-bottom:2rem;margin-top:0;color:#0056b3;}
+    .dark-mode .section-title{color:#3a8bd8;}
+    .blog-image{width:100%;max-width:800px;height:auto;margin:1.5rem auto;display:block;border-radius:8px;}
+    .blog-post-content{padding:0 20px;text-align:justify;}
+    .activity-list,.dining-list,.tips-list,.accommodation-list,.cultural-list{padding-left:20px;}
+    .activity-list li,.dining-list li,.tips-list li,.accommodation-list li,.cultural-list li{margin-bottom:10px;}
+    /* Footer */
+    footer{background-color:#000;color:#fff;text-align:center;padding:20px;margin-top:40px;}
+    footer p{margin:0 0 10px;}
+    footer ul{list-style:none;padding:0;display:flex;justify-content:center;flex-wrap:wrap;}
+    footer li{margin:0 10px;}
+    footer a{color:#fff;text-decoration:none;}
+    footer a:hover{color:#ffd700;}
+    /* Responsive */
+    @media(max-width:768px){
+      .navbar-container{padding:0 15px;}
+      .logo a{font-size:20px;}
+      .navbar-links{position:fixed;top:70px;left:-100%;width:100%;height:calc(100% - 70px);background-color:#fff;flex-direction:column;align-items:center;padding:20px 0;transition:left .3s ease;z-index:1000;overflow-y:auto;}
+      .dark-mode .navbar-links{background-color:#1a1a1a;}
+      .navbar-links.active{left:0;}
+      .nav-item{margin:15px 0;}
+      .contact-info{display:none;}
+      .hamburger{display:block;z-index:1001;}
+      .hamburger.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg);} 
+      .hamburger.active .bar:nth-child(2){opacity:0;} 
+      .hamburger.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg);} 
+      .mobile-only{display:block;}
+      .blog-header h1{font-size:2.2rem;}
+      .blog-header p{font-size:1rem;}
+      .section-title{font-size:2rem;}
+      .blog-content{padding:15px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="../index.html">ParadisePortfolios</a></div>
+      <button class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="../index.html" class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="../destination.html" class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="../trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="../explore.html" class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="../blog.html" class="nav-links active">Blog</a></li>
+        <li class="nav-item"><a href="../book.html" class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="../contact-us.html" class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only"><button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+      </ul>
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="overlay" id="overlay"></div>
+  <!-- Header -->
+  <header class="blog-header">
+    <h1>Exploring Costa Rica</h1>
+    <p>Pura vida vibes: volcano treks, cloud‑forest zip‑lines, and surf‑washed beaches</p>
+  </header>
+  <!-- Content -->
+  <div class="blog-content">
+    <h2 class="section-title">Must‑Visit Destinations</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Arenal%20Volcano.jpg?v=1744761097445" alt="Arenal Volcano" class="blog-image">
+    <div class="blog-post-content">
+      <p>Costa Rica packs 5% of the planet’s biodiversity into a country smaller than West Virginia. Don’t miss these highlights:</p>
+      <ul class="activity-list">
+        <li><strong>Arenal Volcano &amp; La Fortuna:</strong> Hike lava fields, soak in hot springs, and rappel waterfalls in this adventure hub.</li>
+        <li><strong>Monteverde Cloud Forest:</strong> Walk hanging bridges above mist‑shrouded treetops listening for resplendent quetzals.</li>
+        <li><strong>Manuel Antonio National Park:</strong> White‑sand coves, capuchin monkeys, and sloths within the country’s most popular park.</li>
+        <li><strong>Tortuguero:</strong> Glide canals spotting caimans and witness green sea turtles nesting (July–Oct) on Caribbean shores.</li>
+        <li><strong>Guanacaste Beaches:</strong> Surf breaks at Tamarindo, sunset sails from Playas del Coco, and luxe resorts on the Papagayo Peninsula.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Costa Rican Cuisine</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Gallo%20pinto%20breakfast.jpg?v=1744761162340" alt="Gallo pinto breakfast" class="blog-image">
+    <div class="blog-post-content">
+      <p>Simple, fresh, and comforting—Tico food fuels eco‑adventures:</p>
+      <ul class="dining-list">
+        <li><strong>Gallo Pinto:</strong> Rice &amp; beans sautéed with cilantro and onions, served with eggs and plantains for breakfast.</li>
+        <li><strong>Casado:</strong> Lunch plate of protein (fish, chicken, or beef) plus rice, beans, salad, and fried sweet plantain.</li>
+        <li><strong>Ceviche Tico:</strong> Corvina cured in lime with cilantro and peppers—pair with an icy Imperial beer.</li>
+        <li><strong>Chifrijo:</strong> Bar‑snack bowl of rice, beans, fried pork, pico de gallo, and tortilla chips.</li>
+        <li><strong>Café Britt &amp; Tarrazú Coffee:</strong> Tour plantations in the Central Valley and sample world‑class arabica.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Travel Tips</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Best-Costa-Rica-Zipline-and-Canopy-Tours-1.jpg?v=1744761209347" alt="Zip‑line in Costa Rica" class="blog-image">
+    <div class="blog-post-content">
+      <p>Plan like a pro with these pura vida pointers:</p>
+      <ul class="tips-list">
+        <li><strong>Season:</strong> Dry Dec–April; green season May–Nov (best for fewer crowds and lush landscapes); Caribbean coast differs.</li>
+        <li><strong>Currency:</strong> Costa Rican Colón (CRC); USD widely accepted—carry small bills for sodas (local diners) and buses.</li>
+        <li><strong>Transportation:</strong> Shuttle vans and 4×4 rentals navigate winding roads; domestic Sansa flights save time.</li>
+        <li><strong>Wildlife Etiquette:</strong> Keep 3‑meter distance, never feed animals, and use red filters for turtle nesting.</li>
+        <li><strong>Safety:</strong> Tap water safe in most areas; petty theft can occur—use hotel safes and avoid leaving items in cars.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Where to Stay</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/la-tortuga-2800-scaled.jpg?v=1744761272549" alt="Eco lodge Costa Rica" class="blog-image">
+    <div class="blog-post-content">
+      <p>From canopy‑level eco‑lodges to beachfront bungalows:</p>
+      <ul class="accommodation-list">
+        <li><strong>Eco‑Lodges:</strong> Nayara Gardens (Arenal) and Lapa Rios (Osa) set the standard for sustainability and wildlife immersion.</li>
+        <li><strong>Surf Hostels:</strong> Selina in Tamarindo or Santa Teresa offers coworking and wave‑chasing camaraderie.</li>
+        <li><strong>Luxury Resorts:</strong> Four Seasons Papagayo and Andaz Peninsula Papagayo overlook turquoise bays.</li>
+        <li><strong>Boutique Hotels:</strong> Hotel Belmar’s alpine‑style charm in Monteverde or El Mangroove’s chic suites in Guanacaste.</li>
+        <li><strong>Glamping:</strong> Sleep in transparent domes at Arenal’s Chachagua Rainforest or jungle treehouses in Puerto Viejo.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Cultural Experiences &amp; Events</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Fiestas%20Palmares.jpg?v=1744761314485" alt="Fiestas Palmares" class="blog-image">
+    <div class="blog-post-content">
+      <p>Celebrate pura vida spirit year‑round:</p>
+      <ul class="cultural-list">
+        <li><strong>Fiestas Palmares (Jan):</strong> Two‑week carnival with concerts, bull rides (non‑lethal), and horse parades.</li>
+        <li><strong>Envision Festival (late Feb):</strong> Music, yoga, and art gathering on Uvita’s rainforest‑meets‑beach setting.</li>
+        <li><strong>Día de la Independencia (Sept 15):</strong> Torch relays, lantern parades, and folk dances across towns.</li>
+        <li><strong>Tope Nacional de Caballos (Dec 26):</strong> San José streets fill with beautifully groomed horses and riders.</li>
+        <li><strong>Turtle Nesting Walks:</strong> Join guided patrols at Ostional (olive ridley arribadas) or Tortuguero (green turtles).</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Footer -->
+
+  <!-- ---------- CTA ---------- -->
+  <a href="https://www.sandals.com/?referral=138577" target="_blank" class="cta-button">Plan Your Adventure Now!</a>
+
+  <footer>
+    <p>&copy; 2024 The Robert's Group</p>
+    <ul>
+      <li><a href="../about.html">About Us</a></li>
+      <li><a href="../contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
+    </ul>
+  </footer>
+  <script src="../assets/js/navbar.js"></script>
+</body>
+</html>

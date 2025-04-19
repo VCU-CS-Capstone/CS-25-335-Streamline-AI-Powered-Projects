@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploring Turks &amp; Caicos - ParadisePortfolios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Global Typography */
+    .nav-links.active:after{width:0!important;}
+    .nav-links.active{color:inherit!important;}
+    body{font-family:'Instrument Sans',sans-serif;margin:0;padding:0;transition:background-color .3s ease,color .3s ease;}
+    .dark-mode body{background-color:#121212;color:#f5f5f5;}
+    h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;}
+    /* Navbar */
+    .navbar{position:fixed;top:0;left:0;width:100%;background-color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000;transition:background-color .3s ease,box-shadow .3s ease;}
+    .dark-mode .navbar{background-color:#1a1a1a;box-shadow:0 2px 10px rgba(0,0,0,.3);} 
+    .navbar-container{display:flex;justify-content:space-between;align-items:center;padding:0 20px;max-width:1340px;margin:0 auto;height:70px;}
+    .logo a{font-family:'Playfair Display',serif;font-size:24px;font-weight:bold;color:#0056b3;text-decoration:none;transition:color .3s ease;}
+    .dark-mode .logo a{color:#3a8bd8;}
+    .navbar-links{display:flex;list-style:none;margin:0;padding:0;}
+    .nav-item{margin:0 15px;}
+    .nav-links{text-decoration:none;color:#333;font-weight:500;position:relative;transition:color .3s ease;}
+    .nav-links:hover,.nav-links.active{color:#ffd700;}
+    .dark-mode .nav-links{color:#f5f5f5;}
+    .dark-mode .nav-links:hover,.dark-mode .nav-links.active{color:#ffd700;}
+    .nav-links.active::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:2px;background-color:#ffd700;}
+    .contact-info{display:flex;align-items:center;}
+    .contact-phone{margin-right:15px;color:#333;text-decoration:none;font-weight:500;transition:color .3s ease;}
+    .dark-mode .contact-phone{color:#f5f5f5;}
+    .social-icons{display:flex;margin-right:15px;}
+    .social-icons a{margin:0 5px;color:#333;transition:color .3s ease;}
+    .dark-mode .social-icons a{color:#f5f5f5;}
+    .social-icons a:hover{color:#ffd700;}
+    .theme-toggle{background:none;border:none;cursor:pointer;color:#333;font-size:18px;display:flex;align-items:center;justify-content:center;transition:color .3s ease;}
+    .dark-mode .theme-toggle{color:#f5f5f5;}
+    .theme-toggle:hover{color:#ffd700;}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:10px;}
+    .bar{display:block;width:25px;height:3px;margin:5px 0;background-color:#333;transition:transform .3s ease,opacity .3s ease,background-color .3s ease;}
+    .dark-mode .bar{background-color:#f5f5f5;}
+    .mobile-only{display:none;}
+    .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);z-index:999;display:none;}
+    /* Blog */
+    .blog-header {
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/assets%2Fimages%2Fturks-and-caicos.jpg?v=1741224030805');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 150px 20px 80px;
+      margin-bottom: 40px;
+    }
+    .blog-content{max-width:1340px;margin:0 auto 2rem;padding:20px;background-color:#fff;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);transition:background-color .3s ease,color .3s ease,box-shadow .3s ease;}
+    .dark-mode .blog-content{background-color:#1a1a1a;color:#f5f5f5;box-shadow:0 4px 8px rgba(0,0,0,.3);} 
+    .section-title{text-align:center;font-size:2.5rem;margin-bottom:2rem;margin-top:0;color:#0056b3;}
+    .dark-mode .section-title{color:#3a8bd8;}
+    .blog-image{width:100%;max-width:800px;height:auto;margin:1.5rem auto;display:block;border-radius:8px;}
+    .blog-post-content{padding:0 20px;text-align:justify;}
+    .activity-list,.dining-list,.tips-list,.accommodation-list,.cultural-list{padding-left:20px;}
+    .activity-list li,.dining-list li,.tips-list li,.accommodation-list li,.cultural-list li{margin-bottom:10px;}
+    /* Footer */
+    footer{background-color:#000;color:#fff;text-align:center;padding:20px;margin-top:40px;}
+    footer p{margin:0 0 10px;}
+    footer ul{list-style:none;padding:0;display:flex;justify-content:center;flex-wrap:wrap;}
+    footer li{margin:0 10px;}
+    footer a{color:#fff;text-decoration:none;}
+    footer a:hover{color:#ffd700;}
+    /* Responsive */
+    @media(max-width:768px){
+      .navbar-container{padding:0 15px;}
+      .logo a{font-size:20px;}
+      .navbar-links{position:fixed;top:70px;left:-100%;width:100%;height:calc(100% - 70px);background-color:#fff;flex-direction:column;align-items:center;padding:20px 0;transition:left .3s ease;z-index:1000;overflow-y:auto;}
+      .dark-mode .navbar-links{background-color:#1a1a1a;}
+      .navbar-links.active{left:0;}
+      .nav-item{margin:15px 0;}
+      .contact-info{display:none;}
+      .hamburger{display:block;z-index:1001;}
+      .hamburger.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg);} 
+      .hamburger.active .bar:nth-child(2){opacity:0;} 
+      .hamburger.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg);} 
+      .mobile-only{display:block;}
+      .blog-header h1{font-size:2.2rem;}
+      .blog-header p{font-size:1rem;}
+      .section-title{font-size:2rem;}
+      .blog-content{padding:15px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="../index.html">ParadisePortfolios</a></div>
+      <button class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="../index.html" class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="../destination.html" class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="../trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="../explore.html" class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="../blog.html" class="nav-links active">Blog</a></li>
+        <li class="nav-item"><a href="../book.html" class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="../contact-us.html" class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only"><button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+      </ul>
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="overlay" id="overlay"></div>
+  <!-- Header -->
+  <header class="blog-header">
+    <h1>Exploring Turks &amp; Caicos</h1>
+    <p>Sink your toes into powder‑soft sand and swim in some of the clearest water on the planet</p>
+  </header>
+  <!-- Content -->
+  <div class="blog-content">
+    <h2 class="section-title">Must‑Visit Destinations in Turks &amp; Caicos</h2>
+    <img src="https://images.unsplash.com/photo-1504626835342-6b01071d182e?auto=format&fit=crop&w=1050&q=80" alt="Grace Bay Beach, Providenciales" class="blog-image">
+    <div class="blog-post-content">
+      <p>Comprised of 40 low‑lying coral islands, Turks &amp; Caicos (TCI) dazzles with turquoise shallows and vibrant reefs. Put these hotspots on your radar:</p>
+      <ul class="activity-list">
+        <li><strong>Grace Bay Beach (Providenciales):</strong> Frequently voted the world’s best beach—12 miles of sugar‑white sand and gin‑clear water.</li>
+        <li><strong>Chalk Sound National Park:</strong> Paddle a kayak or SUP across this electric‑blue lagoon dotted with tiny limestone islets.</li>
+        <li><strong>Smith’s Reef &amp; Bight Reef:</strong> Snorkel straight from shore to spot sea turtles, rays, and colorful coral just off Grace Bay.</li>
+        <li><strong>Mudjin Harbour (Middle Caicos):</strong> Dramatic limestone cliffs, hidden caves, and a photogenic sand spit into the Atlantic.</li>
+        <li><strong>Grand Turk:</strong> Wander Cockburn Town’s colonial Bermudian architecture and dive the 7,000‑ft Grand Turk Wall.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Cuisine &amp; Dining Experiences</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Conch%20salad%20Turks%20and%20Caicos.jpg?v=1744778634827" alt="Conch salad Turks and Caicos" class="blog-image">
+    <div class="blog-post-content">
+      <p>Sea‑to‑table freshness and Caribbean spices define TCI fare—come hungry for conch in every form:</p>
+      <ul class="dining-list">
+        <li><strong>Conch Fritters &amp; Cracked Conch:</strong> Crispy bites served island‑wide—try them at Da Conch Shack, toes‑in‑the‑sand on Provo.</li>
+        <li><strong>Conch Salad:</strong> Ceviche‑style raw conch with lime, peppers, and onion—order it fresh at the Thursday Fish Fry.</li>
+        <li><strong>Island Fish Fry:</strong> Every Thursday evening at Bight Park features live rake‑n‑scrape music, craft stalls, and local eats.</li>
+        <li><strong>Bambarra Rum:</strong> Sample TCI’s homegrown spirit neat or in a tropical rum punch.</li>
+        <li><strong>Sweet Treats:</strong> Don’t miss guava duff or sweet potato bread from local bakeries.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Travel Tips for Turks &amp; Caicos</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/map%20tac.png?v=1744778956711" alt="Travel tips Turks and Caicos" class="blog-image">
+    <div class="blog-post-content">
+      <p>Smooth out the details with these handy pointers:</p>
+      <ul class="tips-list">
+        <li><strong>Best Time to Visit:</strong> Dry, sunny weather prevails Nov–April; shoulder months May &amp; June see fewer crowds. Hurricane season runs June–Nov.</li>
+        <li><strong>Currency:</strong> The US Dollar (USD) is official; most places accept credit cards, but small cash bills help with taxis and tips.</li>
+        <li><strong>Transportation:</strong> Renting a car on Providenciales offers flexibility—remember to drive on the left. Taxis are unmetered and pricey.</li>
+        <li><strong>Diving &amp; Snorkeling:</strong> Visibility often exceeds 100 ft—book trips to West Caicos Marine National Park or French Cay for reef sharks.</li>
+        <li><strong>Sun Protection:</strong> Bring reef‑safe sunscreen; coral‑damaging chemicals are discouraged, and island sun is intense year‑round.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Accommodation Options</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Luxury%20resort%20Turks%20and%20Caicos.jpg?v=1744778994751" alt="Luxury resort Turks and Caicos" class="blog-image">
+    <div class="blog-post-content">
+      <p>Whether you crave five‑star pampering or secluded villas, TCI delivers:</p>
+      <ul class="accommodation-list">
+        <li><strong>Grace Bay Luxury:</strong> Indulge at Seven Stars Resort, The Palms, or Grace Bay Club—all boast beachfront pools and gourmet dining.</li>
+        <li><strong>All‑Inclusive Ease:</strong> Club Med Turkoise (adults‑only) and Alexandra Resort include non‑motorized water sports and meals.</li>
+        <li><strong>Boutique Escapes:</strong> Sailrock Resort on South Caicos and Ambergris Cay’s private‑island villas offer barefoot luxury.</li>
+        <li><strong>Villa Rentals:</strong> Multimillion‑dollar homes with infinity pools line Long Bay and Turtle Tail—ideal for groups.</li>
+        <li><strong>Dive Liveaboards:</strong> Spend a week aboard vessels like Turks &amp; Caicos Explorer II for maximum underwater time.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Cultural Experiences &amp; Events</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Conch%20Festival%20Turks%20and%20Caicos.webp?v=1744779088714" alt="Conch Festival Turks and Caicos" class="blog-image">
+    <div class="blog-post-content">
+      <p>Connect with TCI heritage and festivities beyond the beach:</p>
+      <ul class="cultural-list">
+        <li><strong>Turks &amp; Caicos Conch Festival (Nov):</strong> Restaurants compete for best conch dish in Blue Hills, Providenciales.</li>
+        <li><strong>Junkanoo Jump‑Up (Dec 31 &amp; Jan 1):</strong> Costumed dancers parade to cowbells and goatskin drums welcoming the New Year.</li>
+        <li><strong>South Caicos Regatta (May):</strong> Boat races, seafood feasts, and music honor Queen Elizabeth II’s 1966 visit.</li>
+        <li><strong>Weekly Fish Fry:</strong> Thursday night gathering with live music, craft vendors, and local food in The Bight.</li>
+        <li><strong>National Museum (Grand Turk):</strong> Discover the Molasses Reef Shipwreck—oldest European shipwreck in the Americas—and Lucayan artifacts.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Footer -->
+
+  <!-- ---------- CTA ---------- -->
+  <a href="https://www.sandals.com/?referral=138577" target="_blank" class="cta-button">Plan Your Adventure Now!</a>
+
+  <footer>
+    <p>&copy; 2024 The Robert's Group</p>
+    <ul>
+      <li><a href="../about.html">About Us</a></li>
+      <li><a href="../contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
+    </ul>
+  </footer>
+  <script src="../assets/js/navbar.js"></script>
+</body>
+</html>

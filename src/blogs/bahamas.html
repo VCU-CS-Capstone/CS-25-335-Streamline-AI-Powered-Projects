@@ -3,203 +3,255 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Beauty of the Bahamas - Travel Blog</title>
+  <title>The Beauty of the Bahamas - ParadisePortfolios</title>
+
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
   <style>
-    /* General Styling */
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      background-color: #f8f9fa;
-      color: #333;
-    }
-    h1, h2 {
-      font-family: 'Playfair Display', serif;
-      color: #0056b3;
-    }
+    /* ---------- Global Typography ---------- */
+    .nav-links.active:after{width:0!important;}
+    .nav-links.active{color:inherit!important;}
 
-    /* Navigation Styling */
-    nav {
-      background-color: #333;
-      padding: 1rem;
-      text-align: center;
+    body{
+      font-family:'Instrument Sans',sans-serif;
+      margin:0;padding:0;
+      transition:background-color .3s ease,color .3s ease;
     }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    nav ul li a {
-      color: #f8f9fa;
-      text-decoration: none;
-      font-weight: 500;
-    }
+    .dark-mode body{background:#121212;color:#f5f5f5;}
+    h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;}
 
-    /* Header Styling */
-    .blog-header {
-      position: relative;
-      text-align: center;
-      color: white;
-    }
-    .blog-header img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      filter: brightness(0.7);
-    }
-    .blog-header h1 {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 2.5em;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 10px 20px;
-      border-radius: 5px;
-    }
+    /* ---------- Navbar ---------- */
+    .navbar{position:fixed;top:0;left:0;width:100%;background:#fff;
+      box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000;
+      transition:background-color .3s ease,box-shadow .3s ease;}
+    .dark-mode .navbar{background:#1a1a1a;box-shadow:0 2px 10px rgba(0,0,0,.3);}  
+    .navbar-container{display:flex;justify-content:space-between;align-items:center;
+      padding:0 20px;max-width:1340px;margin:0 auto;height:70px;}
+    .logo a{font-family:'Playfair Display',serif;font-size:24px;font-weight:bold;
+      color:#0056b3;text-decoration:none;transition:color .3s ease;}
+    .dark-mode .logo a{color:#3a8bd8;}
 
-    /* Main Content Styling */
-    .blog-content {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 20px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .section h2 {
-      font-size: 1.8em;
-      margin-bottom: 0.5rem;
-      border-bottom: 2px solid #0056b3;
-      padding-bottom: 5px;
-    }
-    .section img {
-      width: 100%;
-      height: auto;
-      margin: 15px 0;
-      border-radius: 8px;
-    }
-    .cta-button {
-      display: block;
-      width: fit-content;
-      margin: 20px auto;
-      padding: 12px 24px;
-      font-size: 1em;
-      background-color: #0056b3;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      text-align: center;
-      transition: background-color 0.3s ease;
-    }
-    .cta-button:hover {
-      background-color: #004080;
-    }
+    .navbar-links{display:flex;list-style:none;margin:0;padding:0;}
+    .nav-item{margin:0 15px;}
+    .nav-links{text-decoration:none;color:#333;font-weight:500;position:relative;transition:color .3s ease;}
+    .nav-links:hover,.nav-links.active{color:#ffd700;}
+    .dark-mode .nav-links{color:#f5f5f5;}
+    .dark-mode .nav-links:hover,.dark-mode .nav-links.active{color:#ffd700;}
+    .nav-links.active::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:2px;background:#ffd700;}
 
-    /* Footer Styling */
-    footer {
-      background-color: #333;
-      color: #f8f9fa;
-      padding: 1.5rem;
-      text-align: center;
-      margin-top: 2rem;
+    .contact-info{display:flex;align-items:center;}
+    .contact-phone{margin-right:15px;color:#333;text-decoration:none;font-weight:500;transition:color .3s ease;}
+    .dark-mode .contact-phone{color:#f5f5f5;}
+
+    .social-icons{display:flex;margin-right:15px;}
+    .social-icons a{margin:0 5px;color:#333;transition:color .3s ease;}
+    .dark-mode .social-icons a{color:#f5f5f5;}
+    .social-icons a:hover{color:#ffd700;}
+
+    .theme-toggle{background:none;border:none;cursor:pointer;color:#333;font-size:18px;
+      display:flex;align-items:center;justify-content:center;transition:color .3s ease;}
+    .dark-mode .theme-toggle{color:#f5f5f5;}
+    .theme-toggle:hover{color:#ffd700;}
+
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:10px;}
+    .bar{display:block;width:25px;height:3px;margin:5px 0;background:#333;
+      transition:transform .3s ease,opacity .3s ease,background-color .3s ease;}
+    .dark-mode .bar{background:#f5f5f5;}
+    .mobile-only{display:none;}
+
+    .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:999;display:none;}
+
+    /* ---------- Blog Header ---------- */
+    .blog-header{
+      text-align:center;
+      background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+        url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/assets/images/bahamas.jpg?v=1741224565292');
+      background-size:cover;background-position:center;
+      color:#fff;padding:150px 20px 80px;margin-bottom:40px;
     }
-    footer ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    footer ul li a {
-      color: #f8f9fa;
-      text-decoration: none;
+    .blog-header h1{font-size:3rem;margin-bottom:1rem;}
+    .blog-header p{font-size:1.2rem;max-width:800px;margin:0 auto;}
+
+    /* ---------- Blog Content ---------- */
+    .blog-content{max-width:1340px;margin:0 auto 2rem;padding:20px;background:#fff;
+      border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);
+      transition:background-color .3s ease,color .3s ease,box-shadow .3s ease;}
+    .dark-mode .blog-content{background:#1a1a1a;color:#f5f5f5;box-shadow:0 4px 8px rgba(0,0,0,.3);}  
+
+    .section-title{text-align:center;font-size:2.5rem;margin:0 0 2rem;color:#0056b3;}
+    .dark-mode .section-title{color:#3a8bd8;}
+
+    .blog-image{width:100%;max-width:800px;height:auto;margin:1.5rem auto;display:block;border-radius:8px;}
+
+    .blog-post-content{padding:0 20px;text-align:justify;}
+
+    .activity-list,.dining-list,.tips-list,.accommodation-list{padding-left:20px;}
+    .activity-list li,.dining-list li,.tips-list li,.accommodation-list li{margin-bottom:10px;}
+
+    /* ---------- CTA ---------- */
+    .cta-button{display:block;width:max-content;margin:20px auto;padding:12px 24px;font-size:1em;
+      background:#0056b3;color:#ffd700;text-decoration:none;border-radius:5px;transition:background-color .3s ease;}
+    .cta-button:hover{background:#004080;}
+    .dark-mode .cta-button{background:#3a8bd8;color:#ffd700;}
+    .dark-mode .cta-button:hover{background:#2a6fb8;}
+
+    /* ---------- Footer ---------- */
+    footer{background:#000;color:#fff;text-align:center;padding:20px;margin-top:40px;}
+    footer p{margin:0 0 10px;}
+    footer ul{list-style:none;padding:0;display:flex;justify-content:center;flex-wrap:wrap;}
+    footer li{margin:0 10px;}
+    footer a{color:#fff;text-decoration:none;}
+    footer a:hover{color:#ffd700;}
+
+    /* ---------- Mobile ---------- */
+    @media(max-width:768px){
+      .navbar-container{padding:0 15px;}
+      .logo a{font-size:20px;}
+
+      .navbar-links{position:fixed;top:70px;left:-100%;width:100%;height:calc(100% - 70px);
+        background:#fff;flex-direction:column;align-items:center;padding:20px 0;
+        transition:left .3s ease;z-index:1000;overflow-y:auto;}
+      .dark-mode .navbar-links{background:#1a1a1a;}
+      .navbar-links.active{left:0;}
+
+      .nav-item{margin:15px 0;}
+      .contact-info{display:none;}
+      .hamburger{display:block;z-index:1001;}
+      .hamburger.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg);}  
+      .hamburger.active .bar:nth-child(2){opacity:0;}
+      .hamburger.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg);}  
+      .mobile-only{display:block;}
+
+      .blog-header h1{font-size:2.2rem;}
+      .section-title{font-size:2rem;}
+      .blog-content{padding:15px;}
     }
   </style>
 </head>
+
 <body>
+  <!-- ---------- Navbar ---------- -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="../index.html">ParadisePortfolios</a></div>
 
-  <!-- Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="destination.html">Destinations</a></li>
-      <li><a href="trip-planner.html">Trip Planner</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="community.html">Community</a></li>
-    </ul>
+      <button class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="../index.html"        class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="../destination.html"  class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="../trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="../explore.html"      class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="../blog.html"         class="nav-links active">Blog</a></li>
+        <li class="nav-item"><a href="../book.html"         class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="../contact-us.html"   class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only"><button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+      </ul>
+
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
   </nav>
+  <div class="overlay" id="overlay"></div>
 
-  <!-- Blog Header -->
+  <!-- ---------- Header ---------- -->
   <header class="blog-header">
-    <img src="../assets/images/bahamas.jpg" alt="Bahamas">
     <h1>The Beauty of the Bahamas</h1>
+    <p>Turquoise shallows, pink‑sand beaches, and island‑hopping adventures await</p>
   </header>
 
-  <!-- Blog Content Section -->
-  <main class="blog-content">
-    <section class="section">
-      <h2>Top Activities in the Bahamas</h2>
-      <img src="../assets/images/bahamas-activities.jpg" alt="Top Activities in the Bahamas">
-      <p>The Bahamas is a playground for water sports, beach relaxation, and natural wonders. Here are must-see experiences.</p>
-      <ul>
-        <li><strong>Exuma Cays Land and Sea Park:</strong> Snorkel in the first marine protected area in the Bahamas, teeming with wildlife.</li>
-        <li><strong>Swim with Pigs at Pig Beach:</strong> A unique and famous experience where visitors can swim with wild pigs on Big Major Cay.</li>
-        <li><strong>Blue Hole Diving:</strong> Discover the Bahamas’ blue holes, including Dean’s Blue Hole, one of the deepest in the world.</li>
-        <li><strong>Atlantis Paradise Island:</strong> A luxurious resort with a water park, casino, and a marine habitat.</li>
+  <!-- ---------- Blog Content ---------- -->
+  <div class="blog-content">
+
+    <!-- Activities -->
+    <h2 class="section-title">Top Activities in the Bahamas</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Top%20Activities%20in%20the%20Bahamas.jpg?v=1744781009444" alt="Top Activities in the Bahamas" class="blog-image">
+    <div class="blog-post-content">
+      <p>The Bahamas is a playground for water sports, beach relaxation, and natural wonders:</p>
+      <ul class="activity-list">
+        <li><strong>Exuma Cays Land &amp; Sea Park:</strong> Snorkel vibrant reefs inside the country’s first marine reserve.</li>
+        <li><strong>Pig Beach:</strong> Splash alongside the famous swimming pigs on Big Major Cay.</li>
+        <li><strong>Dean’s Blue Hole:</strong> Free‑dive—or simply marvel at—the world’s second‑deepest blue hole.</li>
+        <li><strong>Atlantis Paradise Island:</strong> Tackle Aquaventure water slides, explore marine lagoons, or try your luck at the casino.</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Dining in the Bahamas</h2>
-      <img src="../assets/images/bahamas-dining.jpg" alt="Dining in the Bahamas">
-      <p>Enjoy Bahamian cuisine, known for fresh seafood, conch, and island flavors. Here are top places to dine.</p>
-      <ul>
-        <li><strong>Fish Fry at Arawak Cay:</strong> A popular spot for authentic Bahamian cuisine, including conch salad, fried fish, and more.</li>
-        <li><strong>Graycliff Restaurant:</strong> Known for its fine dining, historical ambiance, and extensive wine cellar.</li>
-        <li><strong>The Poop Deck:</strong> A casual dining spot with fresh seafood and harbor views in Nassau.</li>
-        <li><strong>Sunset Grill:</strong> A relaxed beachside restaurant with fresh conch dishes and stunning sunset views.</li>
+    <!-- Dining -->
+    <h2 class="section-title">Dining in the Bahamas</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/dining.webp?v=1744781061034" alt="Dining in the Bahamas" class="blog-image">
+    <div class="blog-post-content">
+      <p>Fresh conch, rock lobster, and tropical flavors headline Bahamian menus:</p>
+      <ul class="dining-list">
+        <li><strong>Fish Fry at Arawak Cay:</strong> Join locals for cracked conch, sky‑juice cocktails, and Junkanoo beats.</li>
+        <li><strong>Graycliff Restaurant:</strong> Dine in an 18th‑century mansion boasting one of the Caribbean’s largest wine cellars.</li>
+        <li><strong>The Poop Deck:</strong> Casual harbor‑view spot serving grilled snapper and Kalik beer.</li>
+        <li><strong>Sunset Grill, Nassau:</strong> Savor conch fritters while watching the sun dip behind Paradise Island.</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Local Tips for Travelers</h2>
-      <img src="../assets/images/bahamas-tips.jpg" alt="Travel Tips for the Bahamas">
-      <p>Make the most of your Bahamas trip with these travel tips:</p>
-      <ul>
-        <li><strong>Best Time to Visit:</strong> The Bahamas is great year-round, but the peak season is from December to April, with mild temperatures and low rainfall.</li>
-        <li><strong>Currency:</strong> The Bahamian dollar (BSD) is pegged to the U.S. dollar, so U.S. dollars are widely accepted.</li>
-        <li><strong>Respect Marine Life:</strong> The Bahamas is known for its vibrant marine life, so remember to respect coral reefs and local regulations while snorkeling or diving.</li>
-        <li><strong>Transportation:</strong> Consider renting a car on larger islands, or take ferries between islands to explore more remote spots.</li>
+    <!-- Tips -->
+    <h2 class="section-title">Local Tips for Travelers</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/map%20bahamas.gif?v=1744781122368" alt="Travel Tips for the Bahamas" class="blog-image">
+    <div class="blog-post-content">
+      <ul class="tips-list">
+        <li><strong>Best Season:</strong> December–April offers dry, breezy weather; June–Nov is wetter with hurricane risk but fewer crowds.</li>
+        <li><strong>Currency:</strong> Bahamian Dollar (BSD) pegged 1:1 to USD—both accepted interchangeably.</li>
+        <li><strong>Island Hopping:</strong> Ferries and small planes link 700 islands; plan extra time for weather delays.</li>
+        <li><strong>Reef Etiquette:</strong> Wear reef‑safe sunscreen and never stand on coral.</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Where to Stay</h2>
-      <img src="../assets/images/bahamas-stay.jpg" alt="Places to Stay in the Bahamas">
-      <p>The Bahamas offers a range of accommodations, from luxury resorts to secluded beach cottages.</p>
-      <ul>
-        <li><strong>Atlantis Paradise Island:</strong> A sprawling resort with casinos, water parks, and world-class dining options.</li>
-        <li><strong>SLS Baha Mar:</strong> An upscale resort with a lively atmosphere, chic decor, and beachfront access.</li>
-        <li><strong>The Ocean Club:</strong> An exclusive Four Seasons Resort with a serene environment, tropical gardens, and luxury amenities.</li>
-        <li><strong>Pink Sands Resort:</strong> Located on Harbour Island, known for its beautiful pink-sand beaches and tranquil atmosphere.</li>
+    <!-- Accommodation -->
+    <h2 class="section-title">Where to Stay</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/best-place-to-stay-in-bahamas-exuma-optimized.webp?v=1744781174816" alt="Places to Stay in the Bahamas" class="blog-image">
+    <div class="blog-post-content">
+      <ul class="accommodation-list">
+        <li><strong>Atlantis Paradise Island:</strong> Iconic mega‑resort with 141‑acre water park and marine habitat.</li>
+        <li><strong>SLS Baha Mar:</strong> Stylish retreat within Nassau’s Baha Mar complex.</li>
+        <li><strong>The Ocean Club, A Four Seasons Resort:</strong> James Bond‑famous luxury amid Versailles‑inspired gardens.</li>
+        <li><strong>Pink Sands Resort:</strong> Boutique cottages fronting Harbour Island’s rosy shoreline.</li>
       </ul>
-    </section>
-  </main>
+    </div>
 
-  <!-- Call to Action -->
-  <a href="trip-planner.html" class="cta-button">Plan Your Bahamas Adventure Now!</a>
+  </div>
 
-  <!-- Footer -->
+
+
+
+  <!-- ---------- Footer ---------- -->
+
+  <!-- ---------- CTA ---------- -->
+  <a href="https://www.sandals.com/?referral=138577" target="_blank" class="cta-button">Plan Your Adventure Now!</a>
+
   <footer>
     <p>&copy; 2024 The Robert's Group</p>
     <ul>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="terms.html">Terms and Conditions</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="../about.html">About Us</a></li>
+      <li><a href="../contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
     </ul>
   </footer>
+
+  <!-- ---------- Scripts ---------- -->
+  <script src="../assets/js/navbar.js"></script>
 </body>
 </html>

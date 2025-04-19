@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploring Athens, Greece - ParadisePortfolios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .nav-links.active:after{width:0!important;}
+    .nav-links.active{color:inherit!important;}
+    body{font-family:'Instrument Sans',sans-serif;margin:0;padding:0;transition:background-color .3s ease,color .3s ease;}
+    .dark-mode body{background-color:#121212;color:#f5f5f5;}
+    h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;}
+    /* Navbar */
+    .navbar{position:fixed;top:0;left:0;width:100%;background-color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000;transition:background-color .3s ease,box-shadow .3s ease;}
+    .dark-mode .navbar{background-color:#1a1a1a;box-shadow:0 2px 10px rgba(0,0,0,.3);} 
+    .navbar-container{display:flex;justify-content:space-between;align-items:center;padding:0 20px;max-width:1340px;margin:0 auto;height:70px;}
+    .logo a{font-family:'Playfair Display',serif;font-size:24px;font-weight:bold;color:#0056b3;text-decoration:none;transition:color .3s ease;}
+    .dark-mode .logo a{color:#3a8bd8;}
+    .navbar-links{display:flex;list-style:none;margin:0;padding:0;}
+    .nav-item{margin:0 15px;}
+    .nav-links{text-decoration:none;color:#333;font-weight:500;position:relative;transition:color .3s ease;}
+    .nav-links:hover,.nav-links.active{color:#ffd700;}
+    .dark-mode .nav-links{color:#f5f5f5;}
+    .dark-mode .nav-links:hover,.dark-mode .nav-links.active{color:#ffd700;}
+    .nav-links.active::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:2px;background-color:#ffd700;}
+    .contact-info{display:flex;align-items:center;}
+    .contact-phone{margin-right:15px;color:#333;text-decoration:none;font-weight:500;transition:color .3s ease;}
+    .dark-mode .contact-phone{color:#f5f5f5;}
+    .social-icons{display:flex;margin-right:15px;}
+    .social-icons a{margin:0 5px;color:#333;transition:color .3s ease;}
+    .dark-mode .social-icons a{color:#f5f5f5;}
+    .social-icons a:hover{color:#ffd700;}
+    .theme-toggle{background:none;border:none;cursor:pointer;color:#333;font-size:18px;display:flex;align-items:center;justify-content:center;transition:color .3s ease;}
+    .dark-mode .theme-toggle{color:#f5f5f5;}
+    .theme-toggle:hover{color:#ffd700;}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:10px;}
+    .bar{display:block;width:25px;height:3px;margin:5px 0;background-color:#333;transition:transform .3s ease,opacity .3s ease,background-color .3s ease;}
+    .dark-mode .bar{background-color:#f5f5f5;}
+    .mobile-only{display:none;}
+    .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);z-index:999;display:none;}
+    /* Blog */
+    .blog-header {
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/athens.webp?v=1744697209637');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 150px 20px 80px;
+      margin-bottom: 40px;
+    }
+    .blog-content{max-width:1340px;margin:0 auto 2rem;padding:20px;background-color:#fff;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);transition:background-color .3s ease,color .3s ease,box-shadow .3s ease;}
+    .dark-mode .blog-content{background-color:#1a1a1a;color:#f5f5f5;box-shadow:0 4px 8px rgba(0,0,0,.3);} 
+    .section-title{text-align:center;font-size:2.5rem;margin-bottom:2rem;margin-top:0;color:#0056b3;}
+    .dark-mode .section-title{color:#3a8bd8;}
+    .blog-image{width:100%;max-width:800px;height:auto;margin:1.5rem auto;display:block;border-radius:8px;}
+    .blog-post-content{padding:0 20px;text-align:justify;}
+    .activity-list,.dining-list,.tips-list,.accommodation-list,.cultural-list{padding-left:20px;}
+    .activity-list li,.dining-list li,.tips-list li,.accommodation-list li,.cultural-list li{margin-bottom:10px;}
+    /* Footer */
+    footer{background-color:#000;color:#fff;text-align:center;padding:20px;margin-top:40px;}
+    footer p{margin:0 0 10px;}
+    footer ul{list-style:none;padding:0;display:flex;justify-content:center;flex-wrap:wrap;}
+    footer li{margin:0 10px;}
+    footer a{color:#fff;text-decoration:none;}
+    footer a:hover{color:#ffd700;}
+    /* Responsive */
+    @media(max-width:768px){
+      .navbar-container{padding:0 15px;}
+      .logo a{font-size:20px;}
+      .navbar-links{position:fixed;top:70px;left:-100%;width:100%;height:calc(100% - 70px);background-color:#fff;flex-direction:column;align-items:center;padding:20px 0;transition:left .3s ease;z-index:1000;overflow-y:auto;}
+      .dark-mode .navbar-links{background-color:#1a1a1a;}
+      .navbar-links.active{left:0;}
+      .nav-item{margin:15px 0;}
+      .contact-info{display:none;}
+      .hamburger{display:block;z-index:1001;}
+      .hamburger.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg);} 
+      .hamburger.active .bar:nth-child(2){opacity:0;} 
+      .hamburger.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg);} 
+      .mobile-only{display:block;}
+      .blog-header h1{font-size:2.2rem;}
+      .blog-header p{font-size:1rem;}
+      .section-title{font-size:2rem;}
+      .blog-content{padding:15px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="../index.html">ParadisePortfolios</a></div>
+      <button class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="../index.html" class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="../destination.html" class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="../trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="../explore.html" class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="../blog.html" class="nav-links active">Blog</a></li>
+        <li class="nav-item"><a href="../book.html" class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="../contact-us.html" class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only"><button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+      </ul>
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="overlay" id="overlay"></div>
+  <!-- Header -->
+  <header class="blog-header">
+    <h1>Exploring Athens, Greece</h1>
+    <p>Ancient wonders, vibrant neighborhoods, and rooftop sunsets in the cradle of Western civilization</p>
+  </header>
+  <!-- Content -->
+  <div class="blog-content">
+    <h2 class="section-title">Must‑Visit Destinations</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Acropolis%20of%20Athens.webp?v=1744776481877" alt="Acropolis of Athens" class="blog-image">
+    <div class="blog-post-content">
+      <p>Layer millennia of history with modern creativity:</p>
+      <ul class="activity-list">
+        <li><strong>Acropolis &amp; Parthenon:</strong> Arrive at opening (8 AM) to beat crowds, then explore the Acropolis Museum’s glass floors over excavations.</li>
+        <li><strong>Plaka &amp; Anafiotika:</strong> Stroll neoclassical lanes, discover hidden Cycladic‑style houses beneath the rock.</li>
+        <li><strong>Syntagma Square:</strong> Watch the evzones’ ceremonial guard change at the Hellenic Parliament every hour.</li>
+        <li><strong>Monastiraki Flea Market:</strong> Hunt vintage treasures and sip Greek coffee with Acropolis views from A for Athens rooftop.</li>
+        <li><strong>National Archaeological Museum:</strong> Marvel at the Antikythera Mechanism and golden Mask of Agamemnon.</li>
+        <li><strong>Mount Lycabettus:</strong> Hike or take the funicular for 360° sunset over Attica and the Saronic Gulf.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Athenian Flavors</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Souvlaki%20Athens.jpeg?v=1744776576849" alt="Souvlaki Athens" class="blog-image">
+    <div class="blog-post-content">
+      <p>Eat your way through centuries‑old culinary culture:</p>
+      <ul class="dining-list">
+        <li><strong>Souvlaki &amp; Gyro:</strong> Savvas and Kostas serve iconic pita wraps loaded with tzatziki and fries.</li>
+        <li><strong>Moussaka:</strong> Layered eggplant comfort at traditional taverna Oinomageireio Epirus inside Varvakios Market.</li>
+        <li><strong>Koulouri &amp; Bougatsa:</strong> Grab sesame rings and custard‑filled pastry for breakfast on the go.</li>
+        <li><strong>Rooftop Cocktails:</strong> Enjoy an "Acropolis Spritz" at Couleur Locale or a craft brew at Athens Beer Project.</li>
+        <li><strong>Fine‑Dining Stars:</strong> Michelin‑listed Funky Gourmet (experimental Greek) and Spondi (French‑inspired) elevate the scene.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Travel Tips</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/map%20athens.jpg?v=1744776733515" alt="Athens metro" class="blog-image">
+    <div class="blog-post-content">
+      <p>Navigate like a local philosopher:</p>
+      <ul class="tips-list">
+        <li><strong>Best Time:</strong> April–June &amp; Sept–Oct offer mild weather; July–Aug sees 35 °C heat—plan siestas.</li>
+        <li><strong>Transport:</strong> Metro Line 3 links airport to city; tap ATH.ENA card on buses &amp; trams; many sights walkable.</li>
+        <li><strong>Museum Combo Ticket:</strong> €30 pass grants five days entry to Acropolis, Agora, Temple of Olympian Zeus, and more.</li>
+        <li><strong>Water:</strong> Public fountains are potable—refill reusable bottles and stay hydrated.</li>
+        <li><strong>Pickpocket Awareness:</strong> Keep valuables secure in crowded metros and markets.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Where to Stay</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Athens%20rooftop%20hotel.jpg?v=1744776833563" alt="Athens rooftop hotel" class="blog-image">
+    <div class="blog-post-content">
+      <p>Choose your base by vibe:</p>
+      <ul class="accommodation-list">
+        <li><strong>Plaka Boutique:</strong> Electra Palace’s rooftop pool frames the Parthenon.</li>
+        <li><strong>Hip Psiri:</strong> The Artist Athens blends industrial chic with street‑art views.</li>
+        <li><strong>Luxury Kolonaki:</strong> Hotel Grande Bretagne offers butler‑served terraces overlooking the Acropolis.</li>
+        <li><strong>Budget Koukaki:</strong> City Circus hostel features mural‑filled dorms near the Acropolis Museum.</li>
+        <li><strong>Riviera Escape:</strong> Four Seasons Astir Palace in Vouliagmeni pairs city access with beach club glamour.</li>
+      </ul>
+    </div>
+    <h2 class="section-title">Cultural Experiences &amp; Events</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Herodes%20Atticus%20Odeon.jpg?v=1744776879718" alt="Herodes Atticus Odeon" class="blog-image">
+    <div class="blog-post-content">
+      <p>Immerse in timeless tradition:</p>
+      <ul class="cultural-list">
+        <li><strong>Athens &amp; Epidaurus Festival (June–Aug):</strong> Open‑air theater, opera, and dance at the Odeon of Herodes Atticus.</li>
+        <li><strong>Ochi Day Parade (28 Oct):</strong> Military procession and folk dances celebrate WWII resistance.</li>
+        <li><strong>Marathon Race (Nov):</strong> Run the original 42 km route from Marathon to Panathenaic Stadium.</li>
+        <li><strong>Greek Easter:</strong> Midnight candlelit processions and fireworks at hundreds of churches.</li>
+        <li><strong>Open‑House Athens (April):</strong> Free tours grant access to architectural gems usually closed to public.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Footer -->
+
+  <!-- ---------- CTA ---------- -->
+  <a href="https://www.sandals.com/?referral=138577" target="_blank" class="cta-button">Plan Your Adventure Now!</a>
+
+ <footer>
+    <p>&copy; 2024 The Robert's Group</p>
+    <ul>
+      <li><a href="../about.html">About Us</a></li>
+      <li><a href="../contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
+    </ul>
+  </footer>
+  <script src="../assets/js/navbar.js"></script>
+</body>
+</html>

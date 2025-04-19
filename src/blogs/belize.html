@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Colorful Curaçao - ParadisePortfolios</title>
+  <title>Exploring Belize - ParadisePortfolios</title>
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -21,14 +21,16 @@
       margin:0;padding:0;
       transition:background-color .3s ease,color .3s ease;
     }
-    .dark-mode body{background:#121212;color:#f5f5f5;}
+    .dark-mode body{background-color:#121212;color:#f5f5f5;}
     h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;}
 
     /* ---------- Navbar ---------- */
-    .navbar{position:fixed;top:0;left:0;width:100%;background:#fff;
+    .navbar{
+      position:fixed;top:0;left:0;width:100%;background:#fff;
       box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000;
-      transition:background-color .3s ease,box-shadow .3s ease;}
-    .dark-mode .navbar{background:#1a1a1a;box-shadow:0 2px 10px rgba(0,0,0,.3);}  
+      transition:background-color .3s ease,box-shadow .3s ease;
+    }
+    .dark-mode .navbar{background:#1a1a1a;box-shadow:0 2px 10px rgba(0,0,0,.3);}
     .navbar-container{display:flex;justify-content:space-between;align-items:center;
       padding:0 20px;max-width:1340px;margin:0 auto;height:70px;}
     .logo a{font-family:'Playfair Display',serif;font-size:24px;font-weight:bold;
@@ -69,27 +71,31 @@
     .blog-header{
       text-align:center;
       background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
-        url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/assets/images/curacao.jpg?v=1741222355790');
+                 url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/belize.jpg?v=1744698301848');
       background-size:cover;background-position:center;
       color:#fff;padding:150px 20px 80px;margin-bottom:40px;
     }
     .blog-header h1{font-size:3rem;margin-bottom:1rem;}
 
     /* ---------- Blog Content ---------- */
-    .blog-content{max-width:1340px;margin:0 auto 2rem;padding:20px;background:#fff;
-      border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);
-      transition:background-color .3s ease,color .3s ease,box-shadow .3s ease;}
-    .dark-mode .blog-content{background:#1a1a1a;color:#f5f5f5;box-shadow:0 4px 8px rgba(0,0,0,.3);}  
+    .blog-content{
+      max-width:1340px;margin:0 auto 2rem;padding:20px;
+      background:#fff;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);
+      transition:background-color .3s ease,color .3s ease,box-shadow .3s ease;
+    }
+    .dark-mode .blog-content{background:#1a1a1a;color:#f5f5f5;box-shadow:0 4px 8px rgba(0,0,0,.3);}
 
-    .section-title{text-align:center;font-size:2.5rem;margin:0 0 2rem;color:#0056b3;}
+    .section-title{
+      text-align:center;font-size:2.5rem;margin-bottom:2rem;margin-top:0;color:#0056b3;
+    }
     .dark-mode .section-title{color:#3a8bd8;}
 
     .blog-image{width:100%;max-width:800px;height:auto;margin:1.5rem auto;display:block;border-radius:8px;}
 
     .blog-post-content{padding:0 20px;text-align:justify;}
 
-    .activity-list,.dining-list,.tips-list,.accommodation-list{padding-left:20px;}
-    .activity-list li,.dining-list li,.tips-list li,.accommodation-list li{margin-bottom:10px;}
+    .activity-list,.dining-list,.tips-list,.accommodation-list,.cultural-list{padding-left:20px;}
+    .activity-list li,.dining-list li,.tips-list li,.accommodation-list li,.cultural-list li{margin-bottom:10px;}
 
     /* ---------- Footer ---------- */
     footer{background:#000;color:#fff;text-align:center;padding:20px;margin-top:40px;}
@@ -104,48 +110,26 @@
       .navbar-container{padding:0 15px;}
       .logo a{font-size:20px;}
 
-      .navbar-links{position:fixed;top:70px;left:-100%;width:100%;height:calc(100% - 70px);
+      .navbar-links{
+        position:fixed;top:70px;left:-100%;width:100%;height:calc(100% - 70px);
         background:#fff;flex-direction:column;align-items:center;padding:20px 0;
-        transition:left .3s ease;z-index:1000;overflow-y:auto;}
+        transition:left .3s ease;z-index:1000;overflow-y:auto;
+      }
       .dark-mode .navbar-links{background:#1a1a1a;}
       .navbar-links.active{left:0;}
 
       .nav-item{margin:15px 0;}
       .contact-info{display:none;}
       .hamburger{display:block;z-index:1001;}
-      .hamburger.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg);}  
+      .hamburger.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg);}
       .hamburger.active .bar:nth-child(2){opacity:0;}
-      .hamburger.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg);}  
+      .hamburger.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
       .mobile-only{display:block;}
 
       .blog-header h1{font-size:2.2rem;}
+      .blog-header p{font-size:1rem;}
       .section-title{font-size:2rem;}
       .blog-content{padding:15px;}
-    }
-    /* CTA button styling */
-    .cta-button {
-      display: block;
-      width: fit-content;
-      margin: 20px auto;
-      padding: 12px 24px;
-      font-size: 1em;
-      background: #0056b3;
-      color: #ffd700;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-      font-family: 'Playfair Display', serif;
-      text-align: center;
-    }
-    .cta-button:hover {
-      background: #004080;
-    }
-    .dark-mode .cta-button {
-      background: #3a8bd8;
-      color: #ffd700;
-    }
-    .dark-mode .cta-button:hover {
-      background: #2a6fb8;
     }
   </style>
 </head>
@@ -168,7 +152,9 @@
         <li class="nav-item"><a href="../blog.html"         class="nav-links active">Blog</a></li>
         <li class="nav-item"><a href="../book.html"         class="nav-links">Book</a></li>
         <li class="nav-item"><a href="../contact-us.html"   class="nav-links">Contact Us</a></li>
-        <li class="nav-item mobile-only"><button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+        <li class="nav-item mobile-only">
+          <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        </li>
       </ul>
 
       <div class="contact-info">
@@ -194,65 +180,84 @@
 
   <!-- ---------- Header ---------- -->
   <header class="blog-header">
-    <h1>Colorful Curaçao</h1>
-    <p>Pastel‑painted Willemstad, hidden coves, and a laid‑back Dutch‑Caribbean vibe</p>
+    <h1>Exploring Belize</h1>
+    <p>Barrier‑reef diving, jungle temples, and laid‑back island vibes in English‑speaking Central America</p>
   </header>
 
   <!-- ---------- Blog Content ---------- -->
   <div class="blog-content">
 
     <!-- Destinations -->
-    <h2 class="section-title">Must‑See Spots on the Island</h2>
-    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Curacao%20Beauty.jpg?v=1744780506914" alt="Curacao Beauty" class="blog-image">
+    <h2 class="section-title">Must‑Visit Destinations in Belize</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Great_Blue_Hole.jpg?v=1744760469161" alt="Great Blue Hole" class="blog-image">
     <div class="blog-post-content">
-      <p>From UNESCO‑listed architecture to wave‑crashing coves, Curaçao offers a kaleidoscope of sights:</p>
+      <p>Small but mighty, Belize packs reef, rainforest, and rich culture into one passport stamp:</p>
       <ul class="activity-list">
-        <li><strong>Willemstad:</strong> Stroll the Handelskade waterfront, cross the Queen Emma pontoon bridge, and snap photos of candy‑colored Dutch façades.</li>
-        <li><strong>Shete Boka National Park:</strong> Watch blowholes erupt and sea turtles nest along Curaçao’s rugged north coast.</li>
-        <li><strong>Blue Bay &amp; Cas Abao:</strong> Sink into powder sand and snorkel reefs teeming with parrotfish in electric‑blue water.</li>
-        <li><strong>Hato Caves:</strong> Wander limestone chambers filled with stalactites, then meet island bats at dusk.</li>
+        <li><strong>Great Blue Hole:</strong> Scuba or fly over this 1,043‑ft‑wide sinkhole made famous by Jacques Cousteau.</li>
+        <li><strong>Ambergris Caye &amp; San Pedro:</strong> Golf‑cart around beach bars, snorkel Hol Chan Marine Reserve, and meet friendly nurse sharks at Shark Ray Alley.</li>
+        <li><strong>Caye Caulker:</strong> Embrace “Go Slow” mantra—sip rum at The Split and kayak mangrove shallows spotting seahorses.</li>
+        <li><strong>ATM Cave:</strong> Wade through crystal water to view Mayan skeletons and pottery frozen in time deep underground.</li>
+        <li><strong>Caracol &amp; Mountain Pine Ridge:</strong> Climb Caana pyramid, then cool off at Rio On Pools amid granite cascades.</li>
       </ul>
     </div>
 
     <!-- Dining -->
-    <h2 class="section-title">Taste of Curaçao</h2>
-    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Curacao%20Dining.jpg?v=1744780615580" alt="Curacao Dining" class="blog-image">
+    <h2 class="section-title">Belizean Cuisine &amp; Dining</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Belizean%20rice%20and%20beans.webp?v=1744760516932" alt="Belizean rice and beans" class="blog-image">
     <div class="blog-post-content">
-      <p>Island kitchens fuse Dutch, Afro‑Caribbean, and Latin flavors:</p>
+      <p>Creole, Garifuna, Mestizo, and Maya flavors collide on the plate:</p>
       <ul class="dining-list">
-        <li><strong>Plasa Bieu:</strong> Grab a plastic chair and savor goat stew (kabritu stobá) and funchi at this beloved market hall.</li>
-        <li><strong>Gouverneur de Rouville:</strong> Sip tamarind cocktails while overlooking the harbor at sunset.</li>
-        <li><strong>Landhuis Dokterstuin:</strong> Sample cactus soup and iguana at a restored 18th‑century plantation house.</li>
-        <li><strong>Beach BBQ Shacks:</strong> Head to Playa Lagun on weekends for freshly grilled snapper straight off the boat.</li>
+        <li><strong>Rice &amp; Beans with Stew Chicken:</strong> Sunday staple slow‑cooked in coconut milk—find it at roadside comedores.</li>
+        <li><strong>Fry Jacks:</strong> Puffy breakfast dough pockets served with jam or refried beans.</li>
+        <li><strong>Hudut:</strong> Garifuna coconut fish stew with mashed plantain dumplings—best in Hopkins Village.</li>
+        <li><strong>Lobster Festivals:</strong> June–July celebrations in San Pedro, Caye Caulker, and Placencia dish out grilled tails and lobster sliders.</li>
+        <li><strong>Marie Sharp’s:</strong> Belize’s iconic habanero hot sauce—tour the factory near Dangriga.</li>
       </ul>
     </div>
 
     <!-- Tips -->
-    <h2 class="section-title">Travel Tips</h2>
-    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/curacao%20map.jpg?v=1744780681570" alt="Curacao Travel Tips" class="blog-image">
+    <h2 class="section-title">Travel Tips for Belize</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/map%20belize.jpg?v=1744760580929" alt="Belize travel tips" class="blog-image">
     <div class="blog-post-content">
+      <p>Handy intel for smooth sailing:</p>
       <ul class="tips-list">
-        <li><strong>Best Time:</strong> Curaçao sits outside the hurricane belt—expect sun year‑round; Carnival peaks Jan–Feb.</li>
-        <li><strong>Currency:</strong> Netherlands Antillean Guilder (ANG); USD widely accepted.</li>
-        <li><strong>Transport:</strong> Rent a car for beaches; minibus "Konvoi" routes cover main roads cheaply.</li>
-        <li><strong>Diving:</strong> Shore‑entry sites like Tugboat and Playa Kalki make world‑class reefs accessible to beginners.</li>
+        <li><strong>Language:</strong> English is official; Kriol, Spanish, and Garifuna are widely spoken.</li>
+        <li><strong>Currency:</strong> Belize Dollar (BZD) is pegged 2:1 to USD; US cash accepted almost everywhere.</li>
+        <li><strong>Getting Around:</strong> Water taxis link cayes; Maya Island Air &amp; Tropic Air hop to jungle airstrips; buses are cheap but slow on mainland.</li>
+        <li><strong>Season:</strong> Dry season Nov–Apr; whale sharks visit Gladden Spit Apr–Jun; hurricane risk peaks Aug–Oct.</li>
+        <li><strong>Reef Protection:</strong> Reef‑safe sunscreen and no‑touch policies help preserve the UNESCO‑listed barrier reef.</li>
       </ul>
     </div>
 
     <!-- Accommodation -->
     <h2 class="section-title">Where to Stay</h2>
-    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Curacao%20Accommodations.jpg?v=1744780726072" alt="Curacao Accommodations" class="blog-image">
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/resort%20belize.jpg?v=1744760629418" alt="Belize resort" class="blog-image">
     <div class="blog-post-content">
+      <p>Lodging options span barefoot chic to jungle luxe:</p>
       <ul class="accommodation-list">
-        <li><strong>Renaissance Wind Creek:</strong> Infinity‑pool city hotel with its own man‑made beach.</li>
-        <li><strong>Avila Beach Hotel:</strong> Historic yet modern resort steps from Punda’s nightlife.</li>
-        <li><strong>Santa Barbara Beach &amp; Golf:</strong> Secluded luxury on Spanish Water Bay.</li>
-        <li><strong>Scuba Lodge:</strong> Colorful boutique stay offering house‑reef dives right out front.</li>
+        <li><strong>Over‑Water Cabanas:</strong> Thatch Caye and Coco Plum Islands offer private‑island serenity.</li>
+        <li><strong>Ambergris Resorts:</strong> Victoria House and Alaia Belize blend dive‑shop convenience with infinity‑pool relaxation.</li>
+        <li><strong>Placencia Boutique:</strong> Naia Resort’s beach houses and Itz’ana’s villa suites face calm Caribbean waters.</li>
+        <li><strong>Jungle Lodges:</strong> The Lodge at Chaa Creek and Blancaneaux (Coppola) feature riverside cottages and birding trails.</li>
+        <li><strong>Budget Guesthouses:</strong> Caye Caulker’s Iguana Reef Inn and Bella’s Backpackers keep vibes social and wallets happy.</li>
+      </ul>
+    </div>
+
+    <!-- Culture -->
+    <h2 class="section-title">Cultural Experiences &amp; Events</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Belize%20Carnival.jpg?v=1744760695788" alt="Belize Carnival" class="blog-image">
+    <div class="blog-post-content">
+      <p>Dive into Belize’s melting‑pot heritage:</p>
+      <ul class="cultural-list">
+        <li><strong>September Celebrations:</strong> St. George’s Caye Day (Sept 10) &amp; Independence Day (Sept 21) ignite parades and concerts nationwide.</li>
+        <li><strong>Garifuna Settlement Day (Nov 19):</strong> Drumming, dancing, and re‑enactments of 1802 arrival in Dangriga &amp; Hopkins.</li>
+        <li><strong>Belize Carnival (early Sept):</strong> Feathered costumes and soca beats flood Belize City streets.</li>
+        <li><strong>Costa Maya Festival (Aug):</strong> San Pedro hosts regional pageants, concerts, and food fairs.</li>
+        <li><strong>Chocolate Festival (May):</strong> Punta Gorda celebrates ancient Maya cacao with tastings and farm tours.</li>
       </ul>
     </div>
 
   </div>
-
 
 
 
@@ -270,7 +275,7 @@
     </ul>
   </footer>
 
-  <!-- ---------- Scripts ---------- -->
+  <!-- ---------- Script ---------- -->
   <script src="../assets/js/navbar.js"></script>
 </body>
 </html>

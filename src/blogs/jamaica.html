@@ -3,203 +3,259 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discover Jamaica - Travel Blog</title>
+  <title>The Vibrance of Jamaica - ParadisePortfolios</title>
+
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
   <style>
-    /* General Styling */
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      background-color: #f8f9fa;
-      color: #333;
-    }
-    h1, h2 {
-      font-family: 'Playfair Display', serif;
-      color: #0056b3;
-    }
+    /* ---------- Global Typography ---------- */
+    .nav-links.active:after{width:0!important;}
+    .nav-links.active{color:inherit!important;}
 
-    /* Navigation Styling */
-    nav {
-      background-color: #333;
-      padding: 1rem;
-      text-align: center;
+    body{
+      font-family:'Instrument Sans',sans-serif;
+      margin:0;padding:0;
+      transition:background-color .3s ease,color .3s ease;
     }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    nav ul li a {
-      color: #f8f9fa;
-      text-decoration: none;
-      font-weight: 500;
-    }
+    .dark-mode body{background:#121212;color:#f5f5f5;}
+    h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;}
 
-    /* Header Styling */
-    .blog-header {
-      position: relative;
-      text-align: center;
-      color: white;
-    }
-    .blog-header img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      filter: brightness(0.7);
-    }
-    .blog-header h1 {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 2.5em;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 10px 20px;
-      border-radius: 5px;
-    }
+    /* ---------- Navbar ---------- */
+    .navbar{position:fixed;top:0;left:0;width:100%;background:#fff;
+      box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000;
+      transition:background-color .3s ease,box-shadow .3s ease;}
+    .dark-mode .navbar{background:#1a1a1a;box-shadow:0 2px 10px rgba(0,0,0,.3);}  
+    .navbar-container{display:flex;justify-content:space-between;align-items:center;
+      padding:0 20px;max-width:1340px;margin:0 auto;height:70px;}
+    .logo a{font-family:'Playfair Display',serif;font-size:24px;font-weight:bold;
+      color:#0056b3;text-decoration:none;transition:color .3s ease;}
+    .dark-mode .logo a{color:#3a8bd8;}
 
-    /* Main Content Styling */
-    .blog-content {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 20px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .section h2 {
-      font-size: 1.8em;
-      margin-bottom: 0.5rem;
-      border-bottom: 2px solid #0056b3;
-      padding-bottom: 5px;
-    }
-    .section img {
-      width: 100%;
-      height: auto;
-      margin: 15px 0;
-      border-radius: 8px;
-    }
-    .cta-button {
-      display: block;
-      width: fit-content;
-      margin: 20px auto;
-      padding: 12px 24px;
-      font-size: 1em;
-      background-color: #0056b3;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      text-align: center;
-      transition: background-color 0.3s ease;
-    }
-    .cta-button:hover {
-      background-color: #004080;
-    }
+    .navbar-links{display:flex;list-style:none;margin:0;padding:0;}
+    .nav-item{margin:0 15px;}
+    .nav-links{text-decoration:none;color:#333;font-weight:500;position:relative;transition:color .3s ease;}
+    .nav-links:hover,.nav-links.active{color:#ffd700;}
+    .dark-mode .nav-links{color:#f5f5f5;}
+    .dark-mode .nav-links:hover,.dark-mode .nav-links.active{color:#ffd700;}
+    .nav-links.active::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:2px;background:#ffd700;}
 
-    /* Footer Styling */
-    footer {
-      background-color: #333;
-      color: #f8f9fa;
-      padding: 1.5rem;
-      text-align: center;
-      margin-top: 2rem;
+    .contact-info{display:flex;align-items:center;}
+    .contact-phone{margin-right:15px;color:#333;text-decoration:none;font-weight:500;transition:color .3s ease;}
+    .dark-mode .contact-phone{color:#f5f5f5;}
+
+    .social-icons{display:flex;margin-right:15px;}
+    .social-icons a{margin:0 5px;color:#333;transition:color .3s ease;}
+    .dark-mode .social-icons a{color:#f5f5f5;}
+    .social-icons a:hover{color:#ffd700;}
+
+    .theme-toggle{background:none;border:none;cursor:pointer;color:#333;font-size:18px;
+      display:flex;align-items:center;justify-content:center;transition:color .3s ease;}
+    .dark-mode .theme-toggle{color:#f5f5f5;}
+    .theme-toggle:hover{color:#ffd700;}
+
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:10px;}
+    .bar{display:block;width:25px;height:3px;margin:5px 0;background:#333;
+      transition:transform .3s ease,opacity .3s ease,background-color .3s ease;}
+    .dark-mode .bar{background:#f5f5f5;}
+    .mobile-only{display:none;}
+
+    .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:999;display:none;}
+
+    /* ---------- Blog Header ---------- */
+    .blog-header{
+      text-align:center;
+      background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+        url('https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/assets/images/jamaica.jpg?v=1741224005817');
+      background-size:cover;background-position:center;
+      color:#fff;padding:150px 20px 80px;margin-bottom:40px;
     }
-    footer ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    footer ul li a {
-      color: #f8f9fa;
-      text-decoration: none;
+    .blog-header h1{font-size:3rem;margin-bottom:1rem;}
+    .blog-header p{font-size:1.2rem;max-width:800px;margin:0 auto;}
+
+    /* ---------- Blog Content ---------- */
+    .blog-content{max-width:1340px;margin:0 auto 2rem;padding:20px;background:#fff;
+      border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);
+      transition:background-color .3s ease,color .3s ease,box-shadow .3s ease;}
+    .dark-mode .blog-content{background:#1a1a1a;color:#f5f5f5;box-shadow:0 4px 8px rgba(0,0,0,.3);}  
+
+    .section-title{text-align:center;font-size:2.5rem;margin:0 0 2rem;color:#0056b3;}
+    .dark-mode .section-title{color:#3a8bd8;}
+
+    .blog-image{width:100%;max-width:800px;height:auto;margin:1.5rem auto;display:block;border-radius:8px;}
+
+    .blog-post-content{padding:0 20px;text-align:justify;}
+
+    .activity-list,.dining-list,.tips-list,.accommodation-list{padding-left:20px;}
+    .activity-list li,.dining-list li,.tips-list li,.accommodation-list li{margin-bottom:10px;}
+
+    /* ---------- CTA ---------- */
+    .cta-button{display:block;width:max-content;margin:20px auto;padding:12px 24px;font-size:1em;
+      background:#0056b3;color:#ffd700;text-decoration:none;border-radius:5px;transition:background-color .3s ease;}
+    .cta-button:hover{background:#004080;}
+    .dark-mode .cta-button{background:#3a8bd8;color:#ffd700;}
+    .dark-mode .cta-button:hover{background:#2a6fb8;}
+
+    /* ---------- Footer ---------- */
+    footer{background:#000;color:#fff;text-align:center;padding:20px;margin-top:40px;}
+    footer p{margin:0 0 10px;}
+    footer ul{list-style:none;padding:0;display:flex;justify-content:center;flex-wrap:wrap;}
+    footer li{margin:0 10px;}
+    footer a{color:#fff;text-decoration:none;}
+    footer a:hover{color:#ffd700;}
+
+    /* ---------- Mobile ---------- */
+    @media(max-width:768px){
+      .navbar-container{padding:0 15px;}
+      .logo a{font-size:20px;}
+
+      .navbar-links{position:fixed;top:70px;left:-100%;width:100%;height:calc(100% - 70px);
+        background:#fff;flex-direction:column;align-items:center;padding:20px 0;
+        transition:left .3s ease;z-index:1000;overflow-y:auto;}
+      .dark-mode .navbar-links{background:#1a1a1a;}
+      .navbar-links.active{left:0;}
+
+      .nav-item{margin:15px 0;}
+      .contact-info{display:none;}
+      .hamburger{display:block;z-index:1001;}
+      .hamburger.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg);}  
+      .hamburger.active .bar:nth-child(2){opacity:0;}
+      .hamburger.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg);}  
+      .mobile-only{display:block;}
+
+      .blog-header h1{font-size:2.2rem;}
+      .section-title{font-size:2rem;}
+      .blog-content{padding:15px;}
     }
   </style>
 </head>
+
 <body>
+  <!-- ---------- Navbar ---------- -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="../index.html">ParadisePortfolios</a></div>
 
-  <!-- Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="destination.html">Destinations</a></li>
-      <li><a href="trip-planner.html">Trip Planner</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="community.html">Community</a></li>
-    </ul>
+      <button class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="../index.html"        class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="../destination.html"  class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="../trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="../explore.html"      class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="../blog.html"         class="nav-links active">Blog</a></li>
+        <li class="nav-item"><a href="../book.html"         class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="../contact-us.html"   class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only"><button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+      </ul>
+
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
   </nav>
+  <div class="overlay" id="overlay"></div>
 
-  <!-- Blog Header -->
+  <!-- ---------- Header ---------- -->
   <header class="blog-header">
-    <img src="../assets/images/jamaica.jpg" alt="Jamaica">
-    <h1>Discover Jamaica</h1>
+    <h1>The Vibrance of Jamaica</h1>
+    <p>Reggae rhythms, cascading waterfalls, and Blue Mountain breezes</p>
   </header>
 
-  <!-- Blog Content Section -->
-  <main class="blog-content">
-    <section class="section">
-      <h2>Top Activities in Jamaica</h2>
-      <img src="../assets/images/jamaica-activities.jpg" alt="Top Activities in Jamaica">
-      <p>Jamaica is a paradise for nature lovers and adventurers alike. Explore the vibrant culture, scenic landscapes, and hidden gems across the island.</p>
-      <ul>
-        <li><strong>Dunn’s River Falls:</strong> One of Jamaica’s most iconic attractions, these waterfalls offer a thrilling experience for climbers and nature lovers.</li>
-        <li><strong>Bob Marley Museum:</strong> Visit the home of reggae legend Bob Marley and explore his life’s work and influence on Jamaican culture.</li>
-        <li><strong>Blue Mountains:</strong> Hike or bike through Jamaica’s famous Blue Mountains for breathtaking views and a taste of the island’s coffee culture.</li>
-        <li><strong>Negril’s Seven Mile Beach:</strong> Relax on this expansive beach with pristine waters and vibrant local bars.</li>
+  <!-- ---------- Blog Content ---------- -->
+  <div class="blog-content">
+
+    <!-- Activities -->
+    <h2 class="section-title">Top Activities in Jamaica</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/e9.jpg?v=1744781366326" alt="Top Activities in Jamaica" class="blog-image">
+    <div class="blog-post-content">
+      <p>Jamaica bursts with adventure and culture:</p>
+      <ul class="activity-list">
+        <li><strong>Dunn’s River Falls:</strong> Hand‑hold your way up 600‑ft terraced cascades in Ocho Rios.</li>
+        <li><strong>Blue Mountain Hike:</strong> Sunrise trek rewards you with coffee farm aromas and island‑wide vistas.</li>
+        <li><strong>Bob Marley Museum:</strong> Explore Kingston’s musical shrine to the reggae legend.</li>
+        <li><strong>Bamboo Rafting Martha Brae:</strong> Glide past lush jungle on a 30‑ft bamboo raft steered by a local captain.</li>
+        <li><strong>Seven Mile Beach, Negril:</strong> Chill on powder sand by day, catch cliff divers at Rick’s Café by sunset.</li>
+        <li><strong>Luminous Lagoon:</strong> Night‑time swim among bioluminescent dinoflagellates near Falmouth.</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Dining in Jamaica</h2>
-      <img src="../assets/images/jamaica-dining.jpg" alt="Dining in Jamaica">
-      <p>Experience Jamaica's bold flavors and unique culinary heritage, from jerk chicken to fresh seafood. Here are some top dining spots.</p>
-      <ul>
-        <li><strong>Scotchies:</strong> Known for its authentic jerk chicken, Scotchies is a must-visit for a true taste of Jamaica.</li>
-        <li><strong>Rick’s Café:</strong> Located in Negril, this iconic spot offers stunning sunsets, live music, and thrilling cliff diving.</li>
-        <li><strong>Pepper’s Jerk Center:</strong> A casual dining spot famous for its jerk pork and local vibes.</li>
-        <li><strong>Usain Bolt’s Tracks & Records:</strong> A lively sports bar and restaurant owned by Jamaica’s own sprint legend, Usain Bolt.</li>
+    <!-- Dining -->
+    <h2 class="section-title">Dining in Jamaica</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Dining%20in%20Jamaica.jpg?v=1744781414225" alt="Dining in Jamaica" class="blog-image">
+    <div class="blog-post-content">
+      <p>Island spices meet farm‑fresh produce:</p>
+      <ul class="dining-list">
+        <li><strong>Jerk Shacks:</strong> Scotch‑bonnet‑blasted chicken and pork at Boston Bay or Scotchies.</li>
+        <li><strong>Ackee &amp; Saltfish:</strong> National breakfast—try it with festival bread on the roadside.</li>
+        <li><strong>Juici Patties:</strong> Flaky pastry pockets filled with beef, chicken, or curried veg.</li>
+        <li><strong>Miss T’s Kitchen:</strong> Ocho Rios favorite elevating yam, callaloo, and oxtail.</li>
+        <li><strong>Blue Mountain Coffee:</strong> Sip a pour‑over at Café Blue overlooking misty peaks.</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Local Tips for Travelers</h2>
-      <img src="../assets/images/jamaica-tips.jpg" alt="Travel Tips for Jamaica">
-      <p>Here are some tips to make the most of your Jamaican adventure:</p>
-      <ul>
-        <li><strong>Best Time to Visit:</strong> December to April offers ideal weather. Avoid hurricane season (June-November) for a smoother experience.</li>
-        <li><strong>Local Markets:</strong> Visit local craft markets in Kingston and Montego Bay to find authentic souvenirs and support local artisans.</li>
-        <li><strong>Respect the Culture:</strong> Jamaicans are proud of their heritage. Be respectful and open to learning about the island’s unique customs and traditions.</li>
-        <li><strong>Currency:</strong> Jamaican dollars are widely accepted, but some tourist areas also accept U.S. dollars.</li>
+    <!-- Tips -->
+    <h2 class="section-title">Local Tips for Travelers</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Travel%20Tips%20for%20Jamaica.jpg?v=1744781494710" alt="Travel Tips for Jamaica" class="blog-image">
+    <div class="blog-post-content">
+      <ul class="tips-list">
+        <li><strong>Best Time:</strong> Peak season Dec–Apr; shoulder months May &amp; Nov see fewer crowds.</li>
+        <li><strong>Currency:</strong> Jamaican Dollar (JMD); USD accepted in resorts but carry small JMD bills for street eats.</li>
+        <li><strong>Transport:</strong> Route taxis are cheap—look for red license plates; agree fare first.</li>
+        <li><strong>Language:</strong> English official; greet locals with “Wah gwaan?” for instant smiles.</li>
+        <li><strong>Safety:</strong> Stick to licensed guides for excursions and avoid isolated beaches at night.</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Where to Stay</h2>
-      <img src="../assets/images/jamaica-stay.jpg" alt="Places to Stay in Jamaica">
-      <p>From luxury resorts to charming guesthouses, Jamaica offers a variety of accommodations.</p>
-      <ul>
-        <li><strong>Sandals Montego Bay:</strong> A luxury resort with all-inclusive options and beachfront views.</li>
-        <li><strong>Rockhouse Hotel:</strong> Located in Negril, this boutique hotel offers stunning cliffside views and private cottages.</li>
-        <li><strong>Half Moon Resort:</strong> A sprawling resort with golf courses, a spa, and numerous dining options.</li>
-        <li><strong>Jakes Treasure Beach:</strong> A relaxed, bohemian getaway perfect for those seeking an authentic Jamaican experience.</li>
+    <!-- Accommodation -->
+    <h2 class="section-title">Where to Stay</h2>
+    <img src="https://cdn.glitch.global/80e40de0-8518-4576-afc6-5373d95fb039/Places%20to%20Stay%20in%20Aruba.webp?v=1744781593267" alt="Places to Stay in Jamaica" class="blog-image">
+    <div class="blog-post-content">
+      <ul class="accommodation-list">
+        <li><strong>Half Moon, Montego Bay:</strong> Iconic horseshoe‑shaped beach and luxe villas.</li>
+        <li><strong>Rockhouse Hotel, Negril:</strong> Cliff‑edge cabins with ladders into turquoise sea.</li>
+        <li><strong>Strawberry Hill, Blue Mountains:</strong> Gingerbread cottages and infinity pool in cool highlands.</li>
+        <li><strong>Geejam, Port Antonio:</strong> Music‑studio boutique nestled between jungle and beach.</li>
       </ul>
-    </section>
-  </main>
+    </div>
 
-  <!-- Call to Action -->
-  <a href="trip-planner.html" class="cta-button">Plan Your Jamaican Getaway Now!</a>
+  </div>
 
-  <!-- Footer -->
+
+
+
+  <!-- ---------- Footer ---------- -->
+
+  <!-- ---------- CTA ---------- -->
+  <a href="https://www.sandals.com/?referral=138577" target="_blank" class="cta-button">Plan Your Adventure Now!</a>
+
   <footer>
     <p>&copy; 2024 The Robert's Group</p>
     <ul>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="terms.html">Terms and Conditions</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="../about.html">About Us</a></li>
+      <li><a href="../contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
     </ul>
   </footer>
+
+  <!-- ---------- Scripts ---------- -->
+  <script src="../assets/js/navbar.js"></script>
 </body>
 </html>
