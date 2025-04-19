@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Book Your Dream Vacation with Sandals - ParadisePortfolios</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Project CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    /* ===== Booking card ===== */
+    .booking-section {
+      padding: 4rem 2rem;
+      margin: 100px auto 2rem;
+      background: #fff;
+      color: #333;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,.1);
+      text-align: center;
+      max-width: 1300px;
+      transition: background .3s, color .3s, box-shadow .3s;
+    }
+    .dark-mode .booking-section {
+      background: #2a2a2a;
+      color: #f5f5f5;
+      box-shadow: 0 4px 8px rgba(0,0,0,.3);
+    }
+    .booking-section h2 {
+      margin-bottom: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #0056b3;
+    }
+    .dark-mode .booking-section h2 {
+      color: #3a8bd8;
+    }
+    .booking-section p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    /* ===== Generic white‑card wrapper ===== */
+    .white-card {
+      padding: 3rem 2rem;
+      max-width: 1300px;
+      margin: 2rem auto;
+      background: rgba(255,255,255,.9);
+      border-radius: 8px;
+      transition: background .3s;
+    }
+    .dark-mode .white-card {
+      background: rgba(42,42,42,.9);
+    }
+    .white-card h2, .white-card h3 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-family: 'Playfair Display', serif;
+      color: #0056b3;
+    }
+    .dark-mode .white-card h2, .dark-mode .white-card h3 {
+      color: #3a8bd8;
+    }
+
+    /* ===== 777 promo video – adjusted size + thumbnail ===== */
+    .promo-embed {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .promo-embed video {
+      width: 100%;
+      height: auto;
+      max-height: 360px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #000;
+      box-shadow: 0 4px 8px rgba(0,0,0,.1);
+    }
+    .dark-mode .promo-embed video {
+      box-shadow: 0 4px 8px rgba(0,0,0,.3);
+    }
+
+    /* ===== Blog‑post card ===== */
+    .blog-post-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,.1);
+      margin: 0 auto;
+      max-width: 600px;
+      transition: background .3s, box-shadow .3s;
+    }
+    .dark-mode .blog-post-card {
+      background: #333;
+      box-shadow: 0 4px 8px rgba(0,0,0,.3);
+    }
+    .blog-post-card h3 {
+      padding: 1rem;
+      margin: 0;
+      color: #0056b3;
+    }
+    .dark-mode .blog-post-card h3 {
+      color: #3a8bd8;
+    }
+    .blog-post-card p {
+      padding: 0 1rem 1rem;
+      margin: 0;
+      color: #666;
+    }
+    .dark-mode .blog-post-card p {
+      color: #ccc;
+    }
+    .read-more {
+      display: inline-block;
+      padding: .5rem 1rem;
+      font-weight: 700;
+      color: #ffd700;
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .read-more:hover {
+      color: #e6c200;
+    }
+
+    /* ===== Book‑Now button (unchanged) ===== */
+    .btn-primary {
+      color: #000;
+      background: transparent;
+      border: none;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+      color: #000;
+      background: transparent;
+      outline: none;
+    }
+
+    .text-center { text-align: center; }
+  </style>
+</head>
+<body>
+
+  <!-- Background layers -->
+  <div id="bg1" class="bg"></div>
+  <div id="bg2" class="bg"></div>
+
+  <!-- ===== Navbar (unchanged) ===== -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="index.html" style="color:##0056b3;text-decoration:none">ParadisePortfolios</a></div>
+      <button class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="index.html" class="nav-links">Home</a></li>
+        <li class="nav-item"><a href="destination.html" class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="explore.html" class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-links">Blog</a></li>
+        <li class="nav-item"><a href="book.html" class="nav-links active">Book</a></li>
+        <li class="nav-item"><a href="contact-us.html" class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only">
+          <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ===== Booking card ===== -->
+  <section class="booking-section">
+    <h2>Book Your Dream Vacation with Sandals</h2>
+    <p>Experience the ultimate in all‑inclusive luxury with Sandals Resorts. Enjoy pristine beaches, gourmet dining, and endless activities in the Caribbean – perfect for romance, adventure, or simply relaxing.</p>
+    <p>Take the first step toward an unforgettable getaway. Click below to book directly with Sandals!</p>
+    <a href="https://www.sandals.com/?referral=138577" target="_blank" class="btn-primary">Book Now with Sandals</a>
+  </section>
+
+  <!-- ===== 777 Promotion card ===== -->
+  <section class="white-card">
+    <h3>777 Promotion</h3>
+    <div class="promo-embed">
+      <video controls class="no-fullscreen" preload="metadata" poster="assets/images/777.png">
+        <source src="assets/videos/777%20Promo.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <!-- ===== Recommended Blog Post card ===== -->
+  <section class="white-card">
+    <h2>Recommended Blog Post</h2>
+    <div id="randomBlogContainer"></div>
+    <div class="text-center" style="margin-top:2rem">
+      <a href="blog.html" class="read-more">See All Blog Posts</a>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>&copy; 2025 ParadisePortfolios</p>
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
+    </ul>
+  </footer>
+
+  <!-- ===== Scripts ===== -->
+  <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/navbar.js"></script>
+
+  <script>
+    /* Pull one random blog card from blog.html */
+    fetch('blog.html')
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const cards = [...doc.querySelectorAll('.blog-post-card')];
+        const pick = cards.length ? cards[Math.floor(Math.random() * cards.length)] : null;
+        const obj = pick
+          ? {
+              img: pick.querySelector('img')?.src || '',
+              alt: pick.querySelector('img')?.alt || '',
+              title: pick.querySelector('h3')?.textContent.trim() || '',
+              snippet: pick.querySelector('p')?.textContent.trim() || '',
+              link: pick.querySelector('a')?.href || '#'
+            }
+          : {
+              img: 'assets/images/placeholder.jpg',
+              alt: 'Placeholder',
+              title: 'Check out our blog',
+              snippet: 'Discover travel tips and destination guides on our blog.',
+              link: 'blog.html'
+            };
+        document.getElementById('randomBlogContainer').innerHTML = `
+          <div class="blog-post-card">
+            <img src="${obj.img}" alt="${obj.alt}">
+            <h3>${obj.title}</h3>
+            <p>${obj.snippet}</p>
+            <a href="${obj.link}" class="read-more">Read More</a>
+          </div>`;
+      })
+      .catch(console.error);
+  </script>
+</body>
+</html>
