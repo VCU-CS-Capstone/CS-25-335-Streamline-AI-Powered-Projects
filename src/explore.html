@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF‑8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore a Destination – ParadisePortfolios</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Global CSS already in your project -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+
+  <!-- Icons & Leaflet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <style>
+  /* ========== BASIC TYPOGRAPHY & LAYOUT ========== */
+  body{
+    font-family:'Instrument Sans',sans-serif;
+    margin:0;
+    background:#f8f9fa;
+    color:#333;
+  }
+  h1,h2,h3,h4,h5,h6{
+    font-family:'Instrument Sans',sans-serif;
+    font-weight:600;
+    letter-spacing:-0.02em;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:300px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#fff;
+    text-shadow:2px 2px 4px rgba(0,0,0,.4);
+    margin-top:70px;
+  }
+  .hero h1{font-size:2.5rem;margin-bottom:1rem;}
+
+  /* ---------- Explore panel ---------- */
+  .explore-panel{
+    max-width:800px;
+    margin:-50px auto 2rem;
+    background:rgba(255,255,255,.9);
+    border-radius:8px;
+    padding:2rem;
+    position:relative;
+    z-index:10;
+    box-shadow:0 4px 8px rgba(0,0,0,.1);
+  }
+  .explore-panel h2{font-size:1.8rem;text-align:center;margin-bottom:1rem;color:#000}
+
+  .dropdown-row{text-align:center;margin-bottom:2rem;}
+  .dropdown-row select{
+    padding:.6rem;font-size:1rem;border-radius:4px;border:1px solid #ccc;outline:none;
+  }
+
+  /* ---------- Legend ---------- */
+  .legend{display:none;text-align:center;margin-bottom:1rem;}
+  .legend-title{font-weight:bold;margin-bottom:.5rem;}
+  .legend-items{display:inline-flex;gap:1rem;}
+  .legend-circle{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:4px;}
+
+  /* ---------- Circle container & video boxes ---------- */
+  #circleContainer{width:600px;height:600px;margin:0 auto;position:relative;display:none;}
+
+  .video-box{
+    position:absolute;
+    width:200px;height:120px;
+    top:0;left:0;
+    transform:translate(-50%,-50%);
+    cursor:pointer;
+    overflow:hidden;
+    border-radius:8px;
+    transition:opacity .5s ease,box-shadow .4s ease;
+    box-shadow:0 2px 5px rgba(0,0,0,.2);
+  }
+
+  /* colored aura – color is provided via the custom property --glow */
+  .video-box.video-glow{
+    box-shadow:
+      0 0 8px  var(--glow),
+      0 0 15px var(--glow),
+      0 0 25px var(--glow);
+  }
+
+  /* overlay tint */
+  .overlay{
+    position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;
+  }
+
+  .video-box video{width:100%;height:100%;border-radius:8px;}
+
+  /* hide fullscreen control */
+  .no-fullscreen::-webkit-media-controls-fullscreen-button,
+  .no-fullscreen::-moz-fullscreen-button,
+  .no-fullscreen::-ms-fullscreen-button,
+  .no-fullscreen::fullscreen-button{display:none;}
+
+  /* ---------- Featured blog post ---------- */
+  .featured-blog-post{
+    padding:2rem;background:rgba(255,255,255,.9);
+    margin:2rem auto;max-width:800px;border-radius:8px;
+    box-shadow:0 4px 8px rgba(0,0,0,.1);
+  }
+  .featured-blog-post h2{text-align:center;margin-bottom:2rem;color:#333;}
+  .featured-blog-post button{
+    display:block;margin:2rem auto 0;padding:.75rem 1.5rem;
+    background:#0056b3;color:#fff;border:none;border-radius:4px;
+    font-size:1rem;cursor:pointer;
+  }
+  .featured-blog-post button:hover{background:#004080;}
+
+  /* ---------- Dark‑mode tweaks ---------- */
+  .dark-mode{background:#121212;color:#f5f5f5;}
+  .dark-mode .explore-panel{background:#222;box-shadow:0 4px 8px rgba(0,0,0,.3);}
+  .dark-mode .explore-panel h2{color:#f5f5f5;}
+  .dark-mode .dropdown-row select{background:#333;color:#f5f5f5;border-color:#444;}
+  .dark-mode .featured-blog-post{background:#222;}
+  .dark-mode .featured-blog-post h2{color:#f5f5f5;}
+  .dark-mode .video-box{box-shadow:0 2px 5px rgba(255,255,255,.1);}
+  </style>
+</head>
+
+<body>
+  <!-- rotating background layers already handled by site scripts -->
+  <div id="bg1" class="bg"></div>
+  <div id="bg2" class="bg"></div>
+
+  <!-- NAVBAR (unchanged – assumes your global navbar styles/scripts) -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="index.html">ParadisePortfolios</a></div>
+
+      <button class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a class="nav-links" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-links" href="destination.html">Destinations</a></li>
+        <li class="nav-item"><a class="nav-links" href="trip-planner.html">Trip Planner</a></li>
+        <li class="nav-item"><a class="nav-links active" href="explore.html">Explore</a></li>
+        <li class="nav-item"><a class="nav-links" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-links" href="book.html">Book</a></li>
+        <li class="nav-item"><a class="nav-links" href="contact-us.html">Contact Us</a></li>
+        <li class="nav-item mobile-only"><button id="mobile-theme-toggle" class="theme-toggle"><i class="fas fa-moon"></i></button></li>
+      </ul>
+
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>Explore a Destination</h1>
+      <p>Select a category, watch the videos spin, and click one to bring it front and center!</p>
+    </div>
+  </section>
+
+  <!-- EXPLORE PANEL -->
+  <div class="explore-panel">
+    <h2>Select Your Destination</h2>
+    <div class="dropdown-row">
+      <select id="destSelect">
+        <option value="">-- Select a Destination --</option>
+        <option value="jamaica">Jamaica</option>
+        <option value="bahamas">Bahamas</option>
+        <option value="grenada">Grenada</option>
+        <option value="stlucia">St. Lucia</option>
+        <option value="barbados">Barbados</option>
+        <option value="antigua">Antigua</option>
+      </select>
+    </div>
+
+    <div class="legend" id="legend">
+      <div class="legend-title">Hotspots</div>
+      <div class="legend-items" id="legendItems"></div>
+    </div>
+
+    <div id="circleContainer"></div>
+  </div>
+
+  <!-- RANDOM BLOG POST -->
+  <section class="featured-blog-post">
+    <h2>Recommended Blog Post</h2>
+    <div id="randomBlogContainer"></div>
+    <button onclick="location.href='blog.html'">See All Blog Posts</button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 ParadisePortfolios</p>
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
+    </ul>
+  </footer>
+
+  <!-- GLOBAL SCRIPTS -->
+  <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/navbar.js"></script>
+
+  <script>
+  /* ========== 1. Data (videos & legend colours) ========== */
+  const destinations = {
+    jamaica:{
+      legend:[
+        {name:"Negril",      color:"rgba(0,0,255,0.35)"},
+        {name:"Ocho Rios",   color:"rgba(255,0,0,0.35)"},
+        {name:"White House", color:"rgba(255,255,0,0.35)"}
+      ],
+      videos:[
+        {title:"Negril Beach",     color:"rgba(0,0,255,0.35)", subLoc:"Negril",      src:"assets/videos/NEGRIL_JAMAICA_10_16x9.mp4"},
+        {title:"Dunn's River Falls",color:"rgba(255,0,0,0.35)", subLoc:"Ocho Rios",  src:"assets/videos/OCHO_RIOS_JAMAICA_11_16x9.mp4"},
+        {title:"White House Beach", color:"rgba(255,255,0,0.35)", subLoc:"White House",src:"assets/videos/WHITEHOUSE_JAMAICA_2_16x9.mp4"}
+      ]
+    },
+    bahamas:{
+      legend:[{name:"Nassau",color:"rgba(255,0,0,0.35)"}],
+      videos:[{title:"Bahamas Intro",color:"rgba(255,0,0,0.35)",subLoc:"Nassau",src:"assets/videos/NASSAU_BAHAMAS_10_16x9.mp4"}]
+    },
+    grenada:{
+      legend:[
+        {name:"St Vincent & Grenadines",color:"rgba(0,0,255,0.35)"},
+        {name:"St Georges",             color:"rgba(0,255,0,0.35)"}
+      ],
+      videos:[
+        {title:"St Georges",color:"rgba(0,0,255,0.35)",subLoc:"St Georges",src:"assets/videos/ST._GEORGES_GRENADA_11_16x9.mp4"},
+        {title:"Grenadines",color:"rgba(0,255,0,0.35)",subLoc:"St Vincent & Grenadines",src:"assets/videos/AND_THE_GRENADINES_7_16x9.mp4"}
+      ]
+    },
+    barbados:{
+      legend:[{name:"St Lawrence Gap",color:"rgba(0,0,255,0.35)"}],
+      videos:[
+        {title:"St Lawrence Gap 1",color:"rgba(0,0,255,0.35)",subLoc:"St Lawrence Gap",src:"assets/videos/ST_LAWRENCE_GAP_BARBADOS_7_16x9.mp4"}
+      ]
+    },
+    stlucia:{
+      legend:[
+        {name:"Castries",  color:"rgba(0,0,255,0.35)"},
+        {name:"Gros Islet",color:"rgba(0,255,0,0.35)"}
+      ],
+      videos:[
+        {title:"Castries", color:"rgba(0,0,255,0.35)",subLoc:"Castries",src:"assets/videos/CASTRIES_SAINT_LUCIA_9_16x9.mp4"},
+        {title:"Gros Islet",color:"rgba(0,255,0,0.35)",subLoc:"Gros Islet",src:"assets/videos/GROS-ISLET_SAINT_LUCIA_4_16x9.mp4"}
+      ]
+    },
+    antigua:{
+      legend:[{name:"St Johns",color:"rgba(0,0,255,0.35)"}],
+      videos:[
+        {title:"St Johns 1",color:"rgba(0,0,255,0.35)",subLoc:"St Johns",src:"assets/videos/ST._JOHNS_ANTIGUA_AND_BARBUDA_8_16x9.mp4"}
+      ]
+    }
+  };
+
+  /* ========== 2. Spin logic ========== */
+  const destSelect      = document.getElementById("destSelect");
+  const circleContainer = document.getElementById("circleContainer");
+  const legendDiv       = document.getElementById("legend");
+  const legendItemsDiv  = document.getElementById("legendItems");
+
+  let isSpinning=false,rotation=0,animationId,boxes=[];
+
+  destSelect.addEventListener("change",()=>{
+    const chosen=destSelect.value;
+
+    cancelAnimationFrame(animationId);
+    rotation=0;isSpinning=false;boxes=[];
+    circleContainer.innerHTML="";
+    legendItemsDiv.innerHTML="";
+    circleContainer.style.display="none";
+    legendDiv.style.display="none";
+
+    if(!chosen||!destinations[chosen])return;
+    const {legend,videos}=destinations[chosen];
+
+    /* legend */
+    if(legend.length){
+      legend.forEach(item=>{
+        const d=document.createElement("div");
+        d.style.display="flex";d.style.alignItems="center";
+        const c=document.createElement("span");
+        c.className="legend-circle";c.style.background=item.color;
+        d.appendChild(c);
+        const t=document.createElement("span");t.textContent=item.name;
+        d.appendChild(t);
+        legendItemsDiv.appendChild(d);
+      });
+      legendDiv.style.display="block";
+    }
+
+    if(!videos.length)return;
+
+    /* boxes */
+    videos.forEach(vid=>{
+      const box=document.createElement("div");
+      box.className="video-box video-glow";
+      box.style.setProperty("--glow",vid.color);
+
+      const overlay=document.createElement("div");
+      overlay.className="overlay";
+      overlay.style.backgroundColor=vid.color;
+      const v=document.createElement("video");
+      v.className="no-fullscreen";v.controls=true;
+      const s=document.createElement("source");
+      s.src=vid.src;s.type="video/mp4";
+      v.appendChild(s);
+
+      box.appendChild(v);box.appendChild(overlay);
+
+      box.addEventListener("click",()=>{
+        if(isSpinning){cancelAnimationFrame(animationId);isSpinning=false;}
+        boxes.forEach(b=>{if(b!==box){b.style.opacity="0";b.style.pointerEvents="none";}});
+        overlay.style.backgroundColor="transparent";
+        box.style.boxShadow="none";
+        box.style.width="400px";box.style.height="225px";
+        box.style.top="50%";box.style.left="50%";
+        box.style.transform="translate(-50%,-50%)";
+        box.style.zIndex="9999";
+      });
+
+      circleContainer.appendChild(box);
+      boxes.push(box);
+    });
+
+    circleContainer.style.display="block";
+    isSpinning=true;
+    animateSpin();
+  });
+
+  function animateSpin(){
+    if(!isSpinning)return;
+    rotation+=0.01;
+    const radius=200,centerX=300,centerY=300,total=boxes.length;
+    boxes.forEach((box,i)=>{
+      const angle=rotation+i*(2*Math.PI/total);
+      const x=centerX+radius*Math.cos(angle);
+      const y=centerY+radius*Math.sin(angle);
+      box.style.left=`${x}px`;box.style.top=`${y}px`;
+    });
+    animationId=requestAnimationFrame(animateSpin);
+  }
+
+  /* ========== 3. Random blog post ========== */
+  fetch("blog.html")
+    .then(r=>{if(!r.ok)throw new Error("Network");return r.text();})
+    .then(html=>{
+      const doc=new DOMParser().parseFromString(html,"text/html");
+      const cards=[...doc.querySelectorAll(".blog-post-card")];
+      if(!cards.length)return;
+      const card=cards[Math.floor(Math.random()*cards.length)];
+      const p={
+        img:card.querySelector("img")?.src||"",
+        alt:card.querySelector("img")?.alt||"",
+        title:card.querySelector("h3")?.textContent.trim()||"",
+        snip:card.querySelector("p")?.textContent.trim()||"",
+        link:card.querySelector("a")?.href||"#"
+      };
+      document.getElementById("randomBlogContainer").innerHTML=
+        `<div class="blog-post-card">
+           <img src="${p.img}" alt="${p.alt}">
+           <h3>${p.title}</h3>
+           <p>${p.snip}</p>
+           <a class="read-more" href="${p.link}">Read More</a>
+         </div>`;
+    })
+    .catch(err=>console.error(err));
+  </script>
+</body>
+</html>
