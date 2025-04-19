@@ -2,116 +2,234 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Adventure Starts Here - ParadisePortfolios</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <title>Your Adventure Starts Here</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    /* ---------- GLOBAL TYPOGRAPHY ---------- */
+    body            { font-family: 'Playfair Display', serif; }
+    h1,h2,h3,h4,h5,h6{
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 100%;
+      letter-spacing: -0.02em;
+    }
+
+    /* ---------- NAVBAR ---------- */
+    .navbar{
+      background:#fff;
+      height:70px; display:flex; justify-content:center; align-items:center;
+      position:fixed; top:0; left:0; width:100%; z-index:1000;
+      box-shadow:0 2px 10px rgba(0,0,0,.1);
+    }
+    .navbar-container{display:flex; justify-content:space-between; align-items:center;
+      width:100%; max-width:1300px; padding:0 20px;}
+    .logo a{font-family:'Playfair Display',serif;font-weight:700;color:#0056b3;text-decoration:none;font-size:1.5rem}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+    .hamburger .bar{width:25px;height:3px;background:#333;transition:.3s}
+    .navbar-links{display:flex;list-style:none;margin:0;padding:0;transition:right .3s ease-in-out}
+    .nav-item{margin:0 1.2rem}
+    .nav-links{color:#333;text-decoration:none;font-size:1rem;font-weight:500;transition:.3s}
+    .nav-links:hover,.nav-links.active{color:#0056b3}
+    .contact-info{display:flex;align-items:center;text-align:right}
+    .contact-phone{color:#333;text-decoration:none;margin-right:1rem}
+    .social-icons a{color:#333;margin-left:.5rem;font-size:1.2rem}
+
+    /* ---------- “SHADE” OVERLAY – NOW HIDDEN ---------- */
+    .overlay{display:none;}
+
+    /* ---------- MOBILE ---------- */
+    @media (max-width:768px){
+      .hamburger{display:flex}
+      .navbar-links{
+        position:fixed; top:70px; right:-300px; width:250px; height:100vh;
+        background:#fff; flex-direction:column; gap:20px; padding:30px 20px;
+        box-shadow:-2px 0 10px rgba(0,0,0,.1); z-index:1001;
+      }
+      .navbar-links.active{right:0}
+      .nav-item{margin:10px 0}
+      .contact-info{display:none}
+      .hamburger.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+      .hamburger.active .bar:nth-child(2){opacity:0}
+      .hamburger.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+      body.menu-open{overflow:hidden}
+      .hero{margin-top:70px}
+    }
+
+    /* ---------- HERO / BLOG ---------- */
+    .hero-content h1{
+      font-size:2.5rem;
+      margin-bottom:1.5rem;
+      text-shadow:2px 2px 4px rgba(0,0,0,.5);
+    }
+    .featured-blog-post{
+      padding:4rem 2rem;
+      background:rgba(255,255,255,.9);
+      margin:2rem auto;
+      max-width:600px;   /* updated from 1200px to match book.html */
+      border-radius:8px;
+    }
+    .featured-blog-post h3{
+      text-align:center;
+      margin-bottom:2rem;
+      color:#333;
+    }
+    .featured-blog-post button{
+      display:block;
+      margin:2rem auto 0;
+      padding:.75rem 1.5rem;
+      background:#0056b3;
+      color:#fff;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+      font-size:1rem;
+    }
+    .hero{
+      padding-top:70px;
+      height:calc(100vh - 70px);
+    }
+  </style>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="destination.html">Destinations</a></li>
-      <li><a href="trip-planner.html">Trip Planner</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="community.html">Community</a></li>
-    </ul>
+  <div id="bg1" class="bg"></div>
+  <div id="bg2" class="bg"></div>
+
+  <!-- ---------- NAVBAR ---------- -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="index.html">ParadisePortfolios</a></div>
+      <button class="hamburger" id="hamburger">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <ul class="navbar-links" id="navLinks">
+        <li class="nav-item"><a href="index.html" class="nav-links active">Home</a></li>
+        <li class="nav-item"><a href="destination.html" class="nav-links">Destinations</a></li>
+        <li class="nav-item"><a href="trip-planner.html" class="nav-links">Trip Planner</a></li>
+        <li class="nav-item"><a href="explore.html" class="nav-links">Explore</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-links">Blog</a></li>
+        <li class="nav-item"><a href="book.html" class="nav-links">Book</a></li>
+        <li class="nav-item"><a href="contact-us.html" class="nav-links">Contact Us</a></li>
+        <li class="nav-item mobile-only">
+          <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        </li>
+      </ul>
+      <div class="contact-info">
+        <a href="tel:+18045920201" class="contact-phone">(804) 592‑0201</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thevacationchic" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/thevacationchic" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thevacationchic" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- ---------- HERO ---------- -->
   <section class="hero" id="hero">
     <div class="hero-content">
-      <h1>Your Adventure Starts Here</h1>
-      <!-- Updated form action and input name -->
-      <form action="trip-planner.html" method="get">
-        <input type="text" name="message" placeholder="What kind of place do you want to go to?">
-        <button type="submit">Search</button>
+      <h1>Your Adventure Starts Here...</h1>
+      <form id="searchForm" action="trip-planner.html" method="GET" class="search-container">
+        <input id="searchInput" name="message" type="text" class="search-input" placeholder="" autocomplete="off" required>
+        <button type="submit" class="search-button"><i class="fas fa-arrow-right"></i></button>
       </form>
     </div>
   </section>
 
-  
-  <!-- Recommended Blog Post (Random) -->
+  <!-- ---------- BLOG SNIPPET ---------- -->
   <section class="featured-blog-post">
-    <h2>Recommended Blog Post</h2>
-    <div id="randomBlogContainer">
-      <!-- We will insert a random blog post here via JavaScript -->
-    </div>
-    <button onclick="location.href='blog.html'">See All Blog Posts</button>
+    <h3>From the blog:</h3>
+    <div id="randomBlogContainer"></div>
+    <button onclick="location.href='blog.html'">Read More</button>
   </section>
 
-  <!-- Footer -->
+  <!-- ---------- FOOTER ---------- -->
   <footer>
-    <p>&copy; 2024 The Robert's Group</p>
+    <p>&copy; 2025 ParadisePortfolios</p>
     <ul>
       <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="terms.html">Terms and Conditions</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+      <li><a href="https://www.thevacationchic.com/specials.html">Specials</a></li>
     </ul>
   </footer>
 
-  <!-- Existing scripts for your site -->
+  <!-- ---------- SCRIPTS ---------- -->
   <script src="assets/js/scripts.js"></script>
-
-  <!-- Script to fetch blog.html, parse blog-posts, and display a random one -->
+  <script src="assets/js/navbar.js"></script>
   <script>
-    // Ensure you're serving from http:// or https://, not file://
+    /* Random blog post injection */
     fetch('blog.html')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not OK');
-        }
-        return response.text();
-      })
+      .then(r => r.ok ? r.text() : Promise.reject('Fetch failed'))
       .then(html => {
-        // Parse the returned blog.html text into a DOM
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-
-        // Select all .blog-post-card elements
-        const cards = doc.querySelectorAll('.blog-post-card');
-        const blogPosts = [];
-
-        // Convert each card into a simple data object
-        cards.forEach(card => {
-          const img = card.querySelector('img');
-          const titleEl = card.querySelector('h3');
-          const snippetEl = card.querySelector('p');
-          const linkEl = card.querySelector('a');
-
-          blogPosts.push({
-            imageSrc: img ? img.getAttribute('src') : '',
-            altText: img ? img.getAttribute('alt') : '',
-            title: titleEl ? titleEl.textContent.trim() : '',
-            snippet: snippetEl ? snippetEl.textContent.trim() : '',
-            link: linkEl ? linkEl.getAttribute('href') : '#'
-          });
-        });
-
-        // Pick one random blog post
-        const randomIndex = Math.floor(Math.random() * blogPosts.length);
-        const randomPost = blogPosts[randomIndex];
-
-        // Build the HTML for that random post
-        const randomBlogHTML = `
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const cards = [...doc.querySelectorAll('.blog-post-card')];
+        const pick = cards.length
+          ? cards[Math.floor(Math.random() * cards.length)]
+          : null;
+        const obj = pick
+          ? {
+              img: pick.querySelector('img')?.src  || '',
+              alt: pick.querySelector('img')?.alt  || '',
+              title: pick.querySelector('h3')?.textContent.trim() || '',
+              snippet: pick.querySelector('p')?.textContent.trim() || '',
+              link: pick.querySelector('a')?.href   || '#'
+            }
+          : {
+              img: 'assets/images/placeholder.jpg',
+              alt: 'Placeholder',
+              title: 'Check out our blog',
+              snippet: 'Discover travel tips and destination guides on our blog.',
+              link: 'blog.html'
+            };
+        document.getElementById('randomBlogContainer').innerHTML = `
           <div class="blog-post-card">
-            <img src="${randomPost.imageSrc}" alt="${randomPost.altText}">
-            <h3>${randomPost.title}</h3>
-            <p>${randomPost.snippet}</p>
-            <a href="${randomPost.link}" class="read-more">Read More</a>
-          </div>
-        `;
-
-        // Inject that into our homepage
-        const randomBlogContainer = document.getElementById('randomBlogContainer');
-        if (randomBlogContainer) {
-          randomBlogContainer.innerHTML = randomBlogHTML;
-        }
+            <img src="${obj.img}" alt="${obj.alt}">
+            <h3>${obj.title}</h3>
+            <p>${obj.snippet}</p>
+            <a href="${obj.link}" class="read-more">Read More</a>
+          </div>`;
       })
-      .catch(error => {
-        console.error('Error fetching blog.html:', error);
-      });
+      .catch(console.error);
+
+    /* Placeholder typing animation */
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('searchInput');
+      const phrases = [
+        'I want to visit somewhere tropical',
+        'I have a family of 4 and want relaxing vibes',
+        'Something extravagant...',
+        'Where can I go for 1‑of‑a‑kind dishes',
+        'I want to go on a romantic getaway for my honeymoon'
+      ];
+      let pi = 0, ci = 0, del = false, speed = 100;
+      const endPause = 2000, emptyPause = 500;
+      function type() {
+        const phrase = phrases[pi];
+        input.placeholder = phrase.substring(0, del ? ci - 1 : ci + 1);
+        ci += del ? -1 : 1;
+        speed = del ? 50 : 100;
+        if (!del && ci === phrase.length) { del = true; speed = endPause; }
+        else if (del && ci === 0) { del = false; pi = (pi + 1) % phrases.length; speed = emptyPause; }
+        setTimeout(type, speed);
+      }
+      setTimeout(type, 1000);
+    });
   </script>
 </body>
 </html>
