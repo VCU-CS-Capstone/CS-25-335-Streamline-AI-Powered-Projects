@@ -11,18 +11,21 @@ html, body {
 }
 
 body {
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
   line-height: 1.6;
-  color: #fff;
+  color: #ffffff;
   background-color: #4682B4; /* Background Blue */
-}
-
-/* Add universal dark overlay */
-body {
   position: relative;
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+body.dark-mode {
+  background-color: #000000;
+  color: #f5f5f5;
+}
+
+/* Dark Overlay via pseudo-element */
 body::before {
   content: "";
   position: fixed;
@@ -30,7 +33,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5); /* Dark overlay */
+  /* background: rgba(0,0,0,0.5); *\ /* Dark overlay */
   z-index: 1;
   pointer-events: none;
 }
@@ -41,14 +44,14 @@ main, nav, section, footer {
 }
 
 h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Sans', sans-serif;
   margin-bottom: 1rem;
-  color: #fff;
+  color: #ffffff;
 }
 
 /* Navigation Bar */
 nav {
-  background-color: #000; /* Black */
+  background-color: #000000; /* Black */
   position: fixed;
   top: 0;
   left: 0;
@@ -70,15 +73,48 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 500;
   font-size: 1.1rem;
   transition: color 0.3s ease;
 }
 
-nav ul li a:hover, nav ul li.active a {
+nav ul li a:hover,
+nav ul li.active a {
   color: #FFD700; /* Gold */
+}
+
+#bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.dark-mode .bg {
+  filter: brightness(0.7);
 }
 
 /* Section Title */
@@ -87,8 +123,11 @@ nav ul li a:hover, nav ul li.active a {
   font-size: 2.5rem;
   margin-top: 6rem; 
   margin-bottom: 3rem;
-  color: #fff;
-  /* Removed background and radius */
+  color: #ffffff;
+}
+
+.dark-mode .section-title {
+  color: #ffffff;
 }
 
 /* Travel Videos Section */
@@ -102,45 +141,40 @@ nav ul li a:hover, nav ul li.active a {
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   justify-content: center;
-  padding: 0 2rem;
 }
 
 .video-card {
-  background-color: #00aee8;
+  background-color: #222;
   border-radius: 8px;
   text-align: center;
   padding: 1.5rem;
-  margin: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .video-card h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #333;
-}
-
-.video-card video {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  display: block;
-  border-radius: 8px;
+  color: #333333; /* Full 6-digit hex: #333333 */
 }
 
 .video-card p {
-  color: #666;
+  color: #666666; /* Full 6-digit hex: #666666 */
   font-size: 0.9rem;
   margin-top: 1rem;
 }
 
 /* Remove backgrounds from travel-videos text */
-.travel-videos p, .travel-videos h2 {
-  /* Removed background and radius */
-  color: #fff;
+.travel-videos p,
+.travel-videos h2 {
+  color: #ffffff;
 }
 
-/* Hide the full-screen button */
+.dark-mode .travel-videos p,
+.dark-mode .travel-videos h2 {
+  color: #ffffff;
+}
+
+/* Hide the full-screen button in video controls */
 video::-webkit-media-controls-fullscreen-button {
   display: none;
 }
@@ -157,7 +191,15 @@ video::fullscreen-button {
 /* Search Bar */
 .search-bar {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2rem
+}
+
+.video-card video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border-radius: 8px;
 }
 
 #searchBar {
@@ -170,7 +212,7 @@ video::fullscreen-button {
 }
 
 #searchBar::placeholder {
-  color: #999;
+  color: #999999;
 }
 
 /* Interactive Map */
@@ -189,8 +231,8 @@ video::fullscreen-button {
 
 /* Footer */
 footer {
-  background-color: #000; /* Black */
-  color: #fff;
+  background-color: #000000; /* Black */
+  color: #ffffff;
   padding: 3rem 2rem;
   text-align: center;
   width: 100vw;
@@ -208,7 +250,7 @@ footer ul li {
 }
 
 footer ul li a {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -238,8 +280,9 @@ footer ul li a:hover {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+}
 
-  .video-card {
-    padding: 1rem;
-  }
+.destination-section-containers {
+  max-width: 1300px;
+  margin: 0 auto;
 }
