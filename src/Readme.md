@@ -5,9 +5,9 @@ In order for the chatbot to run properly, you'll need to update the env file in 
 
 Please document here
 | Subdirectory Name | Description |
-|./assets|---|
-|./blogs | |
-|./chatbot-backend | |
-|./video_generator_prototype | |
+| ./assets |---|
+| ./blogs | |
+| ./chatbot-backend | |
+| ./video_generator_prototype | |
 | | |
 | | |
