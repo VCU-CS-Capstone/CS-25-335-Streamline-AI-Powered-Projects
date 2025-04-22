@@ -8,7 +8,7 @@ In order for the chatbot to run properly, you'll need to update the `.env` file 
 | ------------------------------ | ----------- |
 | `./assets`                     | `Contains the css, javascript, image files, and video files for the project` |
 | `./blogs`                      | `Contains all blogs for the "Blog" page with captivating thumbnails` |
-| `./chatbot-backend`            | `Contains Server.js -> prompt and implementation for the chatbot on the "Trip Planner" page, program launches with "Node server.js` |
+| `./chatbot-backend`            | `Contains Server.js -> prompt and implementation for the chatbot on the "Trip Planner" page, program launches with "node server.js"` |
 | `./video_generator_prototype`  | `Contains the source code for the Video Generator used in the Explore page` |
 | `index.html`                   | `The "Home" page which has a way to jump to the chatbot and blogs` |
 | `destination.html`             | `The "Destinations" page with an AI-generated video for every destination that our company offers ` |
