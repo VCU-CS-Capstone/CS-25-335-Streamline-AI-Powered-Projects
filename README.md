@@ -1,5 +1,5 @@
 # *Streamline process for using AI powered projects to help digital marketers save time in the contact creation process*
-## *The Robert's Group*
+## *Paradise Portfolios*
 ## *We are building a platform that directs guests to the hotel that best suites their needs using AI-powered tools. This will be done by collecting details about their experience like what they are celebrating, what they are looking to do, what region they want to be in, and what kind of experience they are looking for to perfect our recommendations.*
 
 | Folder | Description |
